@@ -5,7 +5,7 @@
     inherit system;
 
     modules = [
-      ./configuration.nix
+      ./system-conf.nix
 
       home-manager.darwinModules.home-manager {
         home-manager.useGlobalPkgs = true;
