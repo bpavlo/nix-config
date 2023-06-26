@@ -1,8 +1,8 @@
 { config, pkgs, user, ... }:
 
 {
-  users.users."${user}" = {
-    home = "/Users/${user}";
+  users.users.pbunakalia = {
+    home = "/Users/pbunakalia";
     shell = pkgs.zsh;
   };
 

@@ -18,17 +18,13 @@
   };
 
   outputs = inputs @ { nixpkgs, home-manager, darwin, ... }: 
-  
-  let
-    user = "pbunakalia";
-    location = "$HOME/.setup";
-  in
 
   {
     darwinConfigurations = (
       import ./darwin {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs home-manager darwin user;
+        inherit darwin home-manager nixpkgs;
+        system = "aarch64-darwin";
+        user   = "pbunakalia";
         }
       );
     }; 
