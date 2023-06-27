@@ -1,6 +1,7 @@
-{ pkgs, ... }: 
+{ config, pkgs, ... }: 
 
 {
+  imports = (import ./config);
   manual.manpages.enable = false;
   home = {
     stateVersion = "23.11";
@@ -44,6 +45,9 @@
   };
 
   programs = {
+    home-manager = {
+      enable = true;
+    };
     zsh = {
       dotDir = ".config/zsh";
       enable = true;
@@ -74,7 +78,7 @@
         fi
         # End Nix
         '';
-      };
+    };
     starship = {
       enable = true;
       settings = {
@@ -84,7 +88,7 @@
         "$character"
         ];
         };
-      };
+    };
     neovim = {
       defaultEditor = true;
     };

@@ -1,0 +1,29 @@
+{
+    "workspace.library": [
+        "/Users/pbunakalia/.config/nvim",
+        "/Users/pbunakalia/.local/share/nvim/site",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/LuaSnip",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/mason.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/neosolarized",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/packer.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/undotree",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/zk-nvim",
+        "/nix/store/9g5g1r9lmc6lv9kwjxs2fxh0wahwd6a9-neovim-unwrapped-0.9.1/share/nvim/runtime",
+        "/nix/store/9g5g1r9lmc6lv9kwjxs2fxh0wahwd6a9-neovim-unwrapped-0.9.1/share/nvim/runtime/pack/dist/opt/matchit",
+        "/nix/store/9g5g1r9lmc6lv9kwjxs2fxh0wahwd6a9-neovim-unwrapped-0.9.1/lib/nvim",
+        "/Users/pbunakalia/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp/after",
+        "${3rd}/luassert/library"
+    ]
+}

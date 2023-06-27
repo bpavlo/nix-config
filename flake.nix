@@ -20,12 +20,16 @@
   outputs = inputs @ { nixpkgs, home-manager, darwin, ... }: 
 
   {
-    darwinConfigurations = (
-      import ./darwin {
-        inherit darwin home-manager nixpkgs;
-        system = "aarch64-darwin";
-        user   = "pbunakalia";
+    darwinConfigurations.darwin = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./darwin-conf.nix
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.pbunakalia = import ./darwin-home.nix;
         }
-      );
-    }; 
+      ];  
+    };
+  };
 }
