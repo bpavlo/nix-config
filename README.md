@@ -2,7 +2,13 @@
 
 This is my personal nix config for my work laptop featuring nix, nix-darwin and home-manager.
 
-# How to install
+## To do
+
+- Move neovim and configs to separate repo to avoid stacking miscallenous code in Nix config repo.
+- Neovim related: consider switching to lazy.nvim and 'refactor' lsp, setup bindings.
+- Create flake for NixOS.
+
+## How to install
 
 1. Install nix
 
