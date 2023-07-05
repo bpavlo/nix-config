@@ -1,6 +1,24 @@
 local lsp = require("lsp-zero").preset({})
 lsp.preset("recommended")
 
+lsp.ensure_installed({
+  'bashls', -- bash
+  'clangd', -- c, c++
+  'cssls', -- css
+  'eslint', -- js
+  'html', -- html
+  'jdtls', -- java
+  'tsserver', -- typescript
+  'marksman', -- markdown
+  'nil_ls', -- nix
+  'rust_analyzer', -- rust
+  'lua_ls',
+  'gopls', -- go
+  'terraformls', -- terraform
+})
+
+require'lspconfig'.marksman.setup{}
+
 lsp.configure("lua_ls", {
 	settings = {
 		Lua = {
@@ -14,6 +32,7 @@ lsp.configure("lua_ls", {
 		},
 	},
 })
+
 
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()

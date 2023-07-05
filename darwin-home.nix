@@ -12,21 +12,22 @@
       colima
       exa
       gnupg
+      go
+      hugo
       karabiner-elements
       keepassxc
       kubernetes-helm
-      k9s
       kubectx
       kubectl
       lf
       lua
       macchina
+      marksman
       mpc-cli
       mpd
       mpv-unwrapped
       nb
       ncmpcpp
-      neovim
       nodejs_20
       packer
       ripgrep
@@ -35,10 +36,12 @@
       stylua
       syncthing
       terraform
+      tree-sitter
       wezterm
       wireguard-go
       wireguard-tools
       utm
+      yarn
       yt-dlp
       zathura
     ];
@@ -88,9 +91,6 @@
         "$character"
         ];
         };
-    };
-    neovim = {
-      defaultEditor = true;
     };
   };
 }

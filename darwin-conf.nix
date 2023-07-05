@@ -25,7 +25,7 @@
   environment = {
     shells = with pkgs; [ zsh ];
     loginShell = pkgs.zsh;
-    systemPackages = with pkgs; [ git curl coreutils ];
+    systemPackages = with pkgs; [ git curl coreutils jq wget ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };
@@ -60,7 +60,10 @@
       "slack"
       "tunnelblick"
     ];
-    brews = [ "skhd" ];
+    brews = [
+    "k9s"
+    "skhd"
+    ];
   };
 
   nix = {
