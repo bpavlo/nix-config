@@ -58,10 +58,11 @@
       "microsoft-remote-desktop"
       "session-manager-plugin"
       "slack"
+      "steam"
+      "telegram-desktop"
       "tunnelblick"
     ];
     brews = [
-    "k9s"
     "skhd"
     ];
   };

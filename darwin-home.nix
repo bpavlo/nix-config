@@ -14,6 +14,7 @@
       gnupg
       go
       hugo
+      k9s
       karabiner-elements
       keepassxc
       kubernetes-helm
@@ -36,6 +37,7 @@
       stylua
       syncthing
       terraform
+      tflint
       tree-sitter
       wezterm
       wireguard-go
