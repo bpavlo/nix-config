@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
   users.users.pbunakalia = {
     home = "/Users/pbunakalia";
     shell = pkgs.zsh;
@@ -49,8 +55,10 @@
       "battery"
       "blueharvest"
       "brave-browser"
+      "logseq"
       "mullvadvpn"
       "obs"
+      "obsidian"
       "raycast"
       # corpo
       "aws-vpn-client"
@@ -64,6 +72,7 @@
     ];
     brews = [
     "skhd"
+    "aws-nuke"
     ];
   };
 

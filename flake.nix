@@ -21,8 +21,8 @@
 
   {
     darwinConfigurations.darwin = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
+    system = "aarch64-darwin";
+    modules = [
         ./darwin-conf.nix
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;

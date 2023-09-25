@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 {
   imports = (import ./config);
@@ -7,6 +7,7 @@
     stateVersion = "23.11";
     packages = with pkgs; [
       awscli
+      alacritty
       bottom
       cargo
       colima
@@ -29,16 +30,19 @@
       mpv-unwrapped
       nb
       ncmpcpp
+      nmap
       nodejs_20
       packer
       ripgrep
       rustc
+      spotify
       starship
       stylua
       syncthing
       terraform
       tflint
       tree-sitter
+      w3m-nox
       wezterm
       wireguard-go
       wireguard-tools
