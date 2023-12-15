@@ -1,6 +1,3 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 vim.cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])
 
 vim.opt.ignorecase = true -- ignore case in search patterns
@@ -19,7 +16,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.swapfile = false
 vim.opt.backup = false
-
+vim.opt.colorcolumn = "80"
+vim.cmd [[colorscheme solarized-osaka]]
 vim.opt.clipboard:append("unnamedplus")
 
 vim.opt.guicursor = {

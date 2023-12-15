@@ -13,40 +13,11 @@ end
 -- first time startup
 local packer_bootstrap = ensure_packer()
 
-vim.cmd.packadd("packer.nvim")
-
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
-	use({
-		"overcache/neosolarized",
-		as = "neosolarized",
-		config = function()
-			vim.cmd("set background=dark")
-			vim.cmd("colorscheme neosolarized")
-		end,
-	})
-
-	use({
-		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("module.plugins.lualine")
-		end,
-	})
-
-	use({
-    "romgrk/barbar.nvim",
-    conf = function()
-      require('module.plugins.barbar')
-    end,
-  })
-
-	use({
-		"nvim-tree/nvim-tree.lua",
-		config = function()
-			require("module.plugins.nvim-tree")
-		end,
-	})
+  use("norcalli/nvim-colorizer.lua")
+  use("craftzdog/solarized-osaka.nvim")
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -68,7 +39,7 @@ return require("packer").startup(function(use)
 
 	use("tpope/vim-fugitive")
 
-	use("mickael-menu/zk-nvim")
+--	use("mickael-menu/zk-nvim")
 
   use {
 	  "windwp/nvim-autopairs",
