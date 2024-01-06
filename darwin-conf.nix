@@ -22,7 +22,7 @@
     fonts = with pkgs; [
       (nerdfonts.override {
         fonts = [
-          "JetBrainsMono"
+          "FiraCode"
         ];
       })
     ];
@@ -53,20 +53,16 @@
     casks = [
       "amethyst"
       "battery"
-      "blueharvest"
       "brave-browser"
-      "logseq"
       "mullvadvpn"
       "obs"
-      "obsidian"
       "raycast"
       # corpo
       "aws-vpn-client"
-      "google-chrome"
-      "microsoft-remote-desktop"
       "session-manager-plugin"
       "slack"
       "steam"
+      "gog-galaxy"
       "telegram-desktop"
       "tunnelblick"
     ];

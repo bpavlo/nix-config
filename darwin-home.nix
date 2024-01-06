@@ -12,6 +12,7 @@
       cargo
       colima
       exa
+#     fastfetch
       gnupg
       go
       hugo
@@ -28,11 +29,11 @@
       mpc-cli
       mpd
       mpv-unwrapped
-      nb
       ncmpcpp
       nmap
       nodejs_20
       packer
+      qbittorrent
       ripgrep
       rustc
       spotify
@@ -40,6 +41,7 @@
       stylua
       syncthing
       terraform
+      teleport
       tflint
       tree-sitter
       w3m-nox
@@ -69,7 +71,7 @@
         save = 10000;
       };
       shellAliases = {
-        ls = "exa --icons --color=auto --git-ignore --git -F --extended";
+        ls = "exa --color=auto --git-ignore --git -F --extended";
         grep = "ripgrep";
         diff = "diff --color=auto";
         cp = "cp -iv";
