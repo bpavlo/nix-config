@@ -12,7 +12,6 @@
       cargo
       colima
       exa
-#     fastfetch
       gnupg
       go
       hugo
@@ -24,7 +23,6 @@
       kubectl
       lf
       lua
-      macchina
       marksman
       mpc-cli
       mpd

@@ -54,9 +54,9 @@
       "amethyst"
       "battery"
       "brave-browser"
-      "mullvadvpn"
       "obs"
       "raycast"
+      "mullvadvpn"
       # corpo
       "aws-vpn-client"
       "session-manager-plugin"
