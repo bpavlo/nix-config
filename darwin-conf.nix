@@ -54,15 +54,16 @@
       "amethyst"
       "battery"
       "brave-browser"
+      "firefox"
+      "karabiner-elements"
       "obs"
-      "raycast"
       "mullvadvpn"
+      "raycast"
       # corpo
       "aws-vpn-client"
       "session-manager-plugin"
       "slack"
       "steam"
-      "gog-galaxy"
       "telegram-desktop"
       "tunnelblick"
     ];
