@@ -1,5 +1,5 @@
 # nix-config
-DISCLAIMER: This is OMEGA broken. For a few reasons:
+DISCLAIMER: This is OMEGA broken. Main reason:
 Default nix config needs to be adjusted to allow experimental features - flakes.
 This is my personal nix config for my work laptop featuring nix, nix-darwin and home-manager.
 
