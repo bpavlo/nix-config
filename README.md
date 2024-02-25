@@ -38,12 +38,7 @@ nix-channel --update
 Then use grep to find `pbunakalia` and replace it. This is my username on my work laptop and you don't want it :)
 Same goes for hostname which is `darwin` in this case.
 
-~~5. First build of nix-darwin
-
-```
-nix build ~/nix-config/.#darwinConfigurations.darwin
-```
-~~
+~~5. First build of nix-darwin `nix build ~/nix-config/.#darwinConfigurations.darwin`~~
 
 5. Well, actually tested fresh install on 2024-02-24 and this is how it worked. Don't forget to delete `flake.lock` file.
 
