@@ -108,6 +108,12 @@
           x = 10;
           y = 10;
         };
+        font = {
+          normal = {
+            family = "FiraCode Nerd Font";
+            };
+          size = 16;
+        };
         colors = {
           primary = {
             background = "#002b36";

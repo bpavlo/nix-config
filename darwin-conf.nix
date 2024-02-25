@@ -53,7 +53,6 @@
     casks = [
       "amethyst"
       "battery"
-      "brave-browser"
       "firefox"
       "karabiner-elements"
       "obs"
