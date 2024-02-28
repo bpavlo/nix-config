@@ -53,16 +53,15 @@
     casks = [
       "amethyst"
       "battery"
+      "discord"
       "firefox"
       "karabiner-elements"
       "obs"
       "mullvadvpn"
       "raycast"
-      # corpo
       "aws-vpn-client"
       "session-manager-plugin"
       "slack"
-      "steam"
       "telegram-desktop"
       "tunnelblick"
     ];

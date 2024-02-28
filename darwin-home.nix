@@ -6,7 +6,7 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
-      awscli
+      awscli2
       alacritty
       bottom
       cargo
@@ -42,8 +42,6 @@
       teleport
       tflint
       tree-sitter
-      w3m-nox
-      wezterm
       wireguard-go
       wireguard-tools
       utm
@@ -71,8 +69,8 @@
         save = 10000;
       };
       shellAliases = {
-        ls = "exa --color=auto --git-ignore --git -F --extended";
-        grep = "ripgrep";
+        ls = "eza --color=auto --git-ignore --git -F --extended";
+        grep = "rg";
         diff = "diff --color=auto";
         cp = "cp -iv";
         ka = "killall";
