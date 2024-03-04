@@ -46,6 +46,7 @@
       wireguard-go
       wireguard-tools
       utm
+      yabai
       yarn
       yt-dlp
       zathura

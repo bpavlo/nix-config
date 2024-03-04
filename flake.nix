@@ -23,11 +23,11 @@
     darwinConfigurations.darwin = darwin.lib.darwinSystem {
     system = "aarch64-darwin";
     modules = [
-        ./darwin-conf.nix
+        ./darwin.nix
         home-manager.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.pbunakalia = import ./darwin-home.nix;
+          home-manager.users.pbunakalia = import ./home-manager.nix;
         }
       ];  
     };
