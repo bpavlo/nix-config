@@ -98,6 +98,9 @@
         "$git_branch"
         "$character"
         ];
+        git_branch = {
+          style = "bold yellow";
+        };
         };
     };
     alacritty = {
