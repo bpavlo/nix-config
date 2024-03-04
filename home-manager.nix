@@ -107,9 +107,12 @@
     alacritty = {
       enable = true;
       settings = {  
-        window.padding = {
+        window = {
+          padding = {
           x = 10;
           y = 10;
+        };
+          decorations = "None";
         };
         font = {
           normal = {
