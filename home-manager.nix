@@ -112,7 +112,7 @@
           x = 10;
           y = 10;
         };
-          decorations = "None";
+          decorations = "none";
         };
         font = {
           normal = {
