@@ -12,6 +12,7 @@
       cargo
       colima
       eza
+      fastfetch
       gnupg
       go
       hugo
@@ -114,7 +115,7 @@
         };
         colors = {
           primary = {
-            background = "#002b36";
+            background = "#001a1d";
             foreground = "#839496";
           };
           normal = {
@@ -128,7 +129,7 @@
             white   = "#eee8d5";
           };
           bright = {
-            black   = "#002b36";
+            black   = "#4c4c4c";
             red     = "#cb4b16";
             green   = "#586e75";
             yellow  = "#657b83";
@@ -140,5 +141,11 @@
         };
       };
     };
+    zathura = {
+      enable = true;
+      options = {
+        font = "FiraCode Nerd Font 16";
+      };
+      };
   };
 }
