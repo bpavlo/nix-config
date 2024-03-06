@@ -62,6 +62,7 @@
       "aws-vpn-client"
       "session-manager-plugin"
       "slack"
+      "tor-browser"
       "telegram-desktop"
       "tunnelblick"
     ];

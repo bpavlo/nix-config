@@ -17,7 +17,12 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
   use("norcalli/nvim-colorizer.lua")
-  use("craftzdog/solarized-osaka.nvim")
+  use({
+    "craftzdog/solarized-osaka.nvim",
+    config = function()
+      require("module.plugins.solarized-osaka")
+    end,
+  })
 
 	use({
 		"nvim-telescope/telescope.nvim",
