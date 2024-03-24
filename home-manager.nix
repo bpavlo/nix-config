@@ -6,18 +6,20 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
+# osx specific
+      karabiner-elements
+      colima
+# general
       awscli2
       alacritty
       bottom
       cargo
-      colima
       eza
       fastfetch
       gnupg
       go
       hugo
       k9s
-      karabiner-elements
       keepassxc
       kubernetes-helm
       kubectx
@@ -31,11 +33,11 @@
       ncmpcpp
       nmap
       nodejs_20
+      ollama
       packer
       qbittorrent
       ripgrep
       rustc
-      spotify
       starship
       stylua
       syncthing
