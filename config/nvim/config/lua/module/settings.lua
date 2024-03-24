@@ -18,8 +18,6 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.colorcolumn = "80"
 vim.opt.clipboard:append("unnamedplus")
-vim.cmd [[colorscheme solarized-osaka]]
-
 
 vim.opt.guicursor = {
 	"n-v:block",
