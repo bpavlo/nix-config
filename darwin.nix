@@ -55,7 +55,6 @@
       "battery"
       "discord"
       "firefox"
-      "karabiner-elements"
       "obs"
       "mullvadvpn"
       "raycast"
@@ -65,10 +64,6 @@
       "tor-browser"
       "telegram-desktop"
       "tunnelblick"
-    ];
-    brews = [
-    "skhd"
-    "aws-nuke"
     ];
   };
 

@@ -7,8 +7,10 @@
     stateVersion = "23.11";
     packages = with pkgs; [
 # osx specific
-      karabiner-elements
       colima
+      karabiner-elements
+      skhd
+      yabai
 # general
       awscli2
       alacritty
@@ -124,7 +126,7 @@
         };
         colors = {
           primary = {
-            background = "#202020";
+            background = "#001a1d";
             foreground = "#839496";
           };
           normal = {
