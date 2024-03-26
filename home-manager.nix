@@ -11,6 +11,7 @@
       karabiner-elements
       skhd
       yabai
+      sketchybar
 # general
       awscli2
       alacritty
