@@ -41,7 +41,7 @@
   };
 
   services = {
-    nix-daemon.enable = true;
+    nix-daemon.enable = true; 
   };
 
   homebrew = {
@@ -64,6 +64,7 @@
       "tor-browser"
       "telegram-desktop"
       "tunnelblick"
+      "karabiner-elements"
     ];
   };
 

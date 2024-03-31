@@ -8,10 +8,7 @@
     packages = with pkgs; [
 # osx specific
       colima
-      karabiner-elements
-      skhd
-      yabai
-      sketchybar
+      utm
 # general
       awscli2
       alacritty
@@ -50,8 +47,6 @@
       tree-sitter
       wireguard-go
       wireguard-tools
-      utm
-      yabai
       yarn
       yt-dlp
       zathura
