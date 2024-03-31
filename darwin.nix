@@ -42,6 +42,14 @@
 
   services = {
     nix-daemon.enable = true; 
+    skhd = {
+      enable = true;
+      skhdConfig = builtins.readFile ./skhdrc;
+    };
+    yabai = {
+      enable = true;
+      extraConfig = builtins.readFile ./yabairc;
+    };
   };
 
   homebrew = {
@@ -51,7 +59,6 @@
     taps = [ "koekeishiya/formulae" ];
     masApps = { };
     casks = [
-      "amethyst"
       "battery"
       "discord"
       "firefox"

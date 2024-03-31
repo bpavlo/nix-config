@@ -1,0 +1,22 @@
+cmd - return : open -a alacritty
+
+ctrl + alt + cmd -r : yabai --restart-service
+
+hyper - b : yabai -m space --layout bsp
+hyper - s : yabai -m space --layout stack
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+cmd + alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+hyper - j : yabai -m window --focus stack.next 
+hyper - k : yabai -m window --focus stack.prev 

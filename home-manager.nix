@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = (import ./config);
@@ -26,11 +26,7 @@
       kubectl
       lf
       lua
-      marksman
-      mpc-cli
-      mpd
       mpv-unwrapped
-      ncmpcpp
       nmap
       nodejs_20
       ollama
@@ -38,15 +34,11 @@
       qbittorrent
       ripgrep
       rustc
-      starship
       stylua
       syncthing
       terraform
       teleport
       tflint
-      tree-sitter
-      wireguard-go
-      wireguard-tools
       yarn
       yt-dlp
       zathura
