@@ -1,3 +1,5 @@
 yabai -m space --layout bsp
 
 yabai -m rule --add app="^System Settings$" manage=off
+
+yabai -m config mouse_follows_focus on

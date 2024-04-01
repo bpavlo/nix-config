@@ -31,3 +31,6 @@ cmd + alt - e : yabai -m space --balance
 cmd + alt - 1 : yabai -m window --display 1; yabai -m display --focus 1
 
 cmd + alt - 2 : yabai -m window --display 2; yabai -m display --focus 2
+
+hyper - 1 : yabai -m display --focus 1
+hyper - 2 : yabai -m display --focus 2

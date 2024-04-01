@@ -41,7 +41,6 @@
       tflint
       yarn
       yt-dlp
-      zathura
     ];
   };
 
