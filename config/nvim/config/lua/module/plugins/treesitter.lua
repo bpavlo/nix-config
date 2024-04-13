@@ -12,6 +12,7 @@ require("nvim-treesitter.configs").setup({
 		"python",
 		"rust",
 		"typescript",
+    "elixir",
 	},
 
 	sync_install = false,

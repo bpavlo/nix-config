@@ -15,6 +15,7 @@ lsp.ensure_installed({
   'lua_ls',
   'gopls', -- go
   'terraformls', -- terraform
+  'elixirls', -- elixir
 })
 
 require'lspconfig'.marksman.setup{}

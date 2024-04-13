@@ -41,6 +41,8 @@
       tflint
       yarn
       yt-dlp
+    # learning new stuff
+      elixir
     ];
   };
 
@@ -137,6 +139,10 @@
             white   = "#fdf6e3";
         };
         };
+        keyboard.bindings = [
+          { key = "D"; mods = "Control"; action = "ScrollLineDown";}
+          { key = "U"; mods = "Control"; action = "ScrollLineUp";}
+        ];
       };
     };
     zathura = {

@@ -56,8 +56,6 @@
     enable = true;
     caskArgs.no_quarantine = true;
     global.brewfile = true;
-    taps = [ "koekeishiya/formulae" ];
-    masApps = { };
     casks = [
       "battery"
       "discord"
@@ -72,6 +70,7 @@
       "telegram-desktop"
       "tunnelblick"
       "karabiner-elements"
+      "shortcat"
     ];
   };
 
