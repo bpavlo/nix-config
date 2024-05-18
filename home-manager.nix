@@ -16,6 +16,7 @@
       cargo
       eza
       fastfetch
+      gimp
       gnupg
       go
       hugo
@@ -139,10 +140,6 @@
             white   = "#fdf6e3";
         };
         };
-        keyboard.bindings = [
-          { key = "D"; mods = "Control"; action = "ScrollLineDown";}
-          { key = "U"; mods = "Control"; action = "ScrollLineUp";}
-        ];
       };
     };
     zathura = {
@@ -151,5 +148,8 @@
         font = "FiraCode Nerd Font 16";
       };
       };
+    neovim = {
+      enable = true;
+    };
   };
 }
