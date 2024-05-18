@@ -148,8 +148,5 @@
         font = "FiraCode Nerd Font 16";
       };
       };
-    neovim = {
-      enable = true;
-    };
   };
 }
