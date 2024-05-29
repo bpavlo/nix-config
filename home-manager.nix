@@ -32,6 +32,7 @@
       nodejs_20
       ollama
       packer
+      pre-commit
       qbittorrent
       ripgrep
       rustc
@@ -42,6 +43,7 @@
       tflint
       yarn
       yt-dlp
+      wireguard-go
     # learning new stuff
       elixir
     ];
