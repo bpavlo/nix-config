@@ -14,6 +14,7 @@
       alacritty
       bottom
       cargo
+      docker
       eza
       fastfetch
       gimp
@@ -27,10 +28,14 @@
       kubectl
       lf
       lua
+      minikube
       mpv-unwrapped
+      mkpasswd
       nmap
       nodejs_20
       ollama
+      openvpn
+      openssh
       packer
       pre-commit
       qbittorrent
@@ -38,13 +43,12 @@
       rustc
       stylua
       syncthing
-      terraform
       teleport
+      tenv
       tflint
       yarn
       yt-dlp
       wireguard-go
-    # learning new stuff
       elixir
     ];
   };
@@ -57,7 +61,7 @@
       dotDir = ".config/zsh";
       enable = true;
       enableCompletion = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       syntaxHighlighting = {
 	enable = true;
 };
@@ -94,6 +98,7 @@
         "$directory"
         "$git_branch"
         "$character"
+        "$aws"
         ];
         git_branch = {
           style = "bold yellow";
@@ -150,5 +155,18 @@
         font = "FiraCode Nerd Font 16";
       };
       };
+    password-store = {
+      enable = true;
+      package = pkgs.pass.withExtensions (
+        exts: with exts; [
+          pass-import # https://github.com/roddhjav/pass-import
+          pass-otp # https://github.com/tadfisher/pass-otp
+          pass-update # https://github.com/roddhjav/pass-update
+        ]
+      );
+    };
+    browserpass = {
+      enable = true;
+    };
   };
 }

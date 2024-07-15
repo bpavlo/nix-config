@@ -57,7 +57,9 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     casks = [
+      "appcleaner"
       "battery"
+      "brave-browser"
       "discord"
       "firefox"
       "obs"
@@ -71,6 +73,7 @@
       "tunnelblick"
       "karabiner-elements"
       "shortcat"
+      "openvpn-connect"
     ];
   };
 
