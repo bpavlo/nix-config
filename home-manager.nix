@@ -50,6 +50,10 @@
       yt-dlp
       wireguard-go
       elixir
+
+      sbt-with-scala-native
+      jdk
+      spark_3_4
     ];
   };
 
@@ -107,7 +111,10 @@
     };
     alacritty = {
       enable = true;
-      settings = {  
+      settings = {
+        env = {
+          TERM = "xterm-256color";
+        };
         window = {
           padding = {
           x = 10;
@@ -145,7 +152,7 @@
             magenta = "#6c71c4";
             cyan    = "#93a1a1";
             white   = "#fdf6e3";
-        };
+          };
         };
       };
     };
@@ -155,18 +162,5 @@
         font = "FiraCode Nerd Font 16";
       };
       };
-    password-store = {
-      enable = true;
-      package = pkgs.pass.withExtensions (
-        exts: with exts; [
-          pass-import # https://github.com/roddhjav/pass-import
-          pass-otp # https://github.com/tadfisher/pass-otp
-          pass-update # https://github.com/roddhjav/pass-update
-        ]
-      );
-    };
-    browserpass = {
-      enable = true;
-    };
   };
 }
