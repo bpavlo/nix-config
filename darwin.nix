@@ -60,7 +60,6 @@
       "appcleaner"
       "battery"
       "brave-browser"
-      "discord"
       "firefox"
       "obs"
       "mullvadvpn"
