@@ -44,6 +44,7 @@ return require("packer").startup(function(use)
 
 	use("tpope/vim-fugitive")
 
+  use("folke/which-key.nvim")
 --	use("mickael-menu/zk-nvim")
 
   use {
