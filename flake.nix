@@ -24,7 +24,7 @@
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.pbunakalia = import ./home-manager.nix;
+            home-manager.users.pvl = import ./home-manager.nix;
           }
           ];
     };

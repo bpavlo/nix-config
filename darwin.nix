@@ -7,8 +7,8 @@
       allowUnfreePredicate = (_: true);
     };
   };
-  users.users.pbunakalia = {
-    home = "/Users/pbunakalia";
+  users.users.pvl = {
+    home = "/Users/pvl";
     shell = pkgs.zsh;
   };
 
@@ -73,6 +73,7 @@
       "karabiner-elements"
       "shortcat"
       "openvpn-connect"
+      "heroic"
     ];
   };
 

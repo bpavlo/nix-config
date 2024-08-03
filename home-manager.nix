@@ -50,10 +50,7 @@
       yt-dlp
       wireguard-go
       elixir
-
-      sbt-with-scala-native
       jdk
-      spark_3_4
     ];
   };
 
@@ -121,6 +118,7 @@
           y = 10;
         };
           decorations = "none";
+          option_as_alt = "Both";
         };
         font = {
           normal = {
@@ -181,6 +179,12 @@
         };
         theme = "solarized-osaka";
         pane_frames = false;
+        ui = {
+          pane_frames = {
+            hide_session_name = true;
+          };
+        };
+        default_layout = "compact";
     };
 
 };
