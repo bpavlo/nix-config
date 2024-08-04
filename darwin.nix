@@ -50,6 +50,9 @@
       enable = true;
       extraConfig = builtins.readFile ./yabairc;
     };
+    tailscale = {
+      enable = true;
+    };
   };
 
   homebrew = {
