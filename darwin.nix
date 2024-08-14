@@ -78,6 +78,7 @@
       "whisky"
       "steam"
       "heroic"
+      "discord"
     ];
   };
 
