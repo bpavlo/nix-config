@@ -76,6 +76,8 @@
       "shortcat"
       "openvpn-connect"
       "whisky"
+      "steam"
+      "heroic"
     ];
   };
 
