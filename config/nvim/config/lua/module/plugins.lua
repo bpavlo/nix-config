@@ -16,7 +16,11 @@ local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
-  use("norcalli/nvim-colorizer.lua")
+  use({"norcalli/nvim-colorizer.lua",
+    config = function()
+      require("module.plugins.colorizer")
+    end,
+  })
   use({
     "craftzdog/solarized-osaka.nvim",
     config = function()

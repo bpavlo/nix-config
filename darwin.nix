@@ -19,19 +19,19 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-        ];
-      })
-    ];
+    fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
   };
 
   environment = {
     shells = with pkgs; [ zsh ];
     loginShell = pkgs.zsh;
-    systemPackages = with pkgs; [ git curl coreutils jq wget ];
+    systemPackages = with pkgs; [
+      git
+      curl
+      coreutils
+      jq
+      wget
+    ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };
@@ -41,7 +41,7 @@
   };
 
   services = {
-    nix-daemon.enable = true; 
+    nix-daemon.enable = true;
     skhd = {
       enable = true;
       skhdConfig = builtins.readFile ./skhdrc;
@@ -72,17 +72,16 @@
       "slack"
       "tor-browser"
       "telegram-desktop"
-      "tunnelblick"
       "karabiner-elements"
       "shortcat"
       "openvpn-connect"
-      "heroic"
+      "whisky"
     ];
   };
 
   nix = {
     package = pkgs.nix;
-    gc = { 
+    gc = {
       automatic = true;
       interval.Day = 7;
       options = "--delete-older-than 7d";
