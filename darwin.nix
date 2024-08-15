@@ -79,6 +79,7 @@
       "steam"
       "heroic"
       "discord"
+      "spaceid"
     ];
   };
 
