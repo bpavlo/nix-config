@@ -32,23 +32,23 @@
           foreground = "#839496";
         };
         normal = {
-          black = "#073642";
+          black = "#00141a";
           red = "#dc322f";
-          green = "#859900";
-          yellow = "#b58900";
+          green = "#849900";
+          yellow = "#b28500";
           blue = "#268bd2";
           magenta = "#d33682";
           cyan = "#2aa198";
           white = "#eee8d5";
         };
         bright = {
-          black = "#4c4c4c";
-          red = "#cb4b16";
-          green = "#586e75";
-          yellow = "#657b83";
-          blue = "#839496";
-          magenta = "#6c71c4";
-          cyan = "#93a1a1";
+          black = "#073642";
+          red = "#f55350";
+          green = "#b7f900";
+          yellow = "#ffbf00";
+          blue = "#46acf5";
+          magenta = "#f254a0";
+          cyan = "#2aeddd";
           white = "#fdf6e2";
         };
       };
