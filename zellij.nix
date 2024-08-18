@@ -7,13 +7,13 @@
 
 {
   programs.zellij = {
-    enable = false;
+    enable = true;
     enableZshIntegration = true;
     settings = {
       themes.solarized-osaka = {
         fg = "#839496";
         bg = "#00141a";
-        black = "#073642";
+        black = "#00141a";
         red = "#dc322f";
         green = "#859900";
         yellow = "#b58900";

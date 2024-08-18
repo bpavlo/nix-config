@@ -1,4 +1,4 @@
-cmd - return : open -a wezterm
+cmd - return : open -a alacritty
 
 ctrl + alt + cmd -r : yabai --restart-service
 
