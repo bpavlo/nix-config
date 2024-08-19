@@ -80,6 +80,7 @@
       "heroic"
       "discord"
       "spaceid"
+      "spotify"
     ];
   };
 
