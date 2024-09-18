@@ -58,6 +58,8 @@
       wireguard-go
       elixir
       jdk
+      yamllint
+      ruff
     ];
   };
 
