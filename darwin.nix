@@ -42,6 +42,10 @@
 
   services = {
     nix-daemon.enable = true; 
+    skhd = {
+      enable = true;
+      skhdConfig = builtins.readFile ./skhdrc;
+    };
     tailscale = {
       enable = true;
     };
@@ -76,6 +80,7 @@
       "spaceid"
       "spotify"
       "nikitabobko/tap/aerospace"
+      "libreoffice"
     ];
   };
 
