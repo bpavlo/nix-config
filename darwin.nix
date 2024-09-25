@@ -41,15 +41,7 @@
   };
 
   services = {
-    nix-daemon.enable = true;
-    skhd = {
-      enable = true;
-      skhdConfig = builtins.readFile ./skhdrc;
-    };
-    yabai = {
-      enable = true;
-      extraConfig = builtins.readFile ./yabairc;
-    };
+    nix-daemon.enable = true; 
     tailscale = {
       enable = true;
     };
@@ -62,10 +54,11 @@
     casks = [
       "appcleaner"
       "battery"
-      "brave-browser"
       "caffeine"
+      "brave-browser"
       "dbeaver-community"
       "firefox"
+      "firefox@nightly"
       "obs"
       "raycast"
       "aws-vpn-client"
@@ -82,6 +75,7 @@
       "discord"
       "spaceid"
       "spotify"
+      "nikitabobko/tap/aerospace"
     ];
   };
 

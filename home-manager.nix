@@ -8,6 +8,7 @@
     ./zellij.nix
     ./zathura.nix
     ./starship.nix
+    ./aerospace.nix
   ];
   manual.manpages.enable = false;
   home = {
