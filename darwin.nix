@@ -59,7 +59,6 @@
       "appcleaner"
       "battery"
       "caffeine"
-      "brave-browser"
       "dbeaver-community"
       "firefox"
       "firefox@nightly"
