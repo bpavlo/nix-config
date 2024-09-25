@@ -61,7 +61,6 @@
       "caffeine"
       "dbeaver-community"
       "firefox"
-      "firefox@nightly"
       "obs"
       "raycast"
       "aws-vpn-client"

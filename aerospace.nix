@@ -30,6 +30,9 @@
       outer.right =      0
       
       [mode.main.binding]
+      cmd-h = [] # Disable "hide application"
+      cmd-alt-h = [] # Disable "hide others"
+
       alt-slash = 'layout tiles horizontal vertical'
       alt-comma = 'layout accordion horizontal vertical'
       
