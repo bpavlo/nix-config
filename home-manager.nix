@@ -4,7 +4,6 @@
   imports = [
     ./config/nvim/default.nix
     ./alacritty.nix
-    ./wezterm.nix
     ./zellij.nix
     ./zathura.nix
     ./starship.nix
