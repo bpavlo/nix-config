@@ -18,8 +18,7 @@
   };
 
   fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
+    packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
   };
 
   environment = {
@@ -79,6 +78,7 @@
       "spotify"
       "nikitabobko/tap/aerospace"
       "libreoffice"
+      "zen-browser"
     ];
   };
 

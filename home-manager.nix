@@ -36,7 +36,7 @@
       lf
       lua
       minikube
-      mpv-unwrapped
+     # mpv-unwrapped
       mkpasswd
       nmap
       nodejs_20
