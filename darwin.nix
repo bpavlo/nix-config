@@ -74,7 +74,6 @@
       "steam"
       "heroic"
       "discord"
-      "spaceid"
       "spotify"
       "nikitabobko/tap/aerospace"
       "libreoffice"
