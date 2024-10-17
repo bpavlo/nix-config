@@ -58,6 +58,7 @@
       "appcleaner"
       "battery"
       "caffeine"
+      "chatgpt"
       "dbeaver-community"
       "firefox"
       "obs"
@@ -77,7 +78,7 @@
       "spotify"
       "nikitabobko/tap/aerospace"
       "libreoffice"
-      "zen-browser"
+      "brave-browser"
     ];
   };
 

@@ -52,6 +52,7 @@
       syncthing
       teleport
       tenv
+      terraform-docs
       tflint
       yarn
       yt-dlp
