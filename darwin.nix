@@ -79,6 +79,7 @@
       "nikitabobko/tap/aerospace"
       "libreoffice"
       "brave-browser"
+      "nvidia-geforce-now"
     ];
   };
 

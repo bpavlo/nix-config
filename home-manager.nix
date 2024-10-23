@@ -61,6 +61,8 @@
       jdk
       yamllint
       ruff
+      poetry
+      isort
     ];
   };
 
@@ -76,13 +78,14 @@
       syntaxHighlighting = {
         enable = true;
       };
+
       history = {
         expireDuplicatesFirst = true;
         ignoreSpace = true;
         save = 10000;
       };
       shellAliases = {
-        ls = "eza --color=auto --git-ignore --git -F --extended";
+        ls = "eza --color=auto --git -F --extended";
         grep = "rg";
         diff = "diff --color=auto";
         cp = "cp -iv";
@@ -91,7 +94,9 @@
         sdn = "shutdown -h now";
         v = "nvim";
         z = "zathura";
-        ncmp = "ncmpcpp";
+        tailscale = "tail";
+        terraform = "tf";
+        terraform-docs = "tfd";
       };
       initExtra = ''
         # Nix
