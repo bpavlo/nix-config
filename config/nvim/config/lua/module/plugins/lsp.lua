@@ -8,7 +8,6 @@ lsp.ensure_installed({
   'eslint', -- js
   'html', -- html
   'jdtls', -- java
-  'tsserver', -- typescript
   'marksman', -- markdown
   'nil_ls', -- nix
   'rust_analyzer', -- rust

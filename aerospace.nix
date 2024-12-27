@@ -8,8 +8,8 @@
       
       start-at-login = false
       
-      enable-normalization-flatten-containers = true
-      enable-normalization-opposite-orientation-for-nested-containers = true
+      enable-normalization-flatten-containers = false
+      enable-normalization-opposite-orientation-for-nested-containers = false
       
       accordion-padding = 0
       
@@ -84,6 +84,12 @@
       alt-shift-j = ['join-with down', 'mode main']
       alt-shift-k = ['join-with up', 'mode main']
       alt-shift-l = ['join-with right', 'mode main']
+
+      [[on-window-detected]]
+      if.app-id = "com.mitchellh.ghostty"
+      run = [
+        "layout floating",
+      ]
     '';
   };
 }

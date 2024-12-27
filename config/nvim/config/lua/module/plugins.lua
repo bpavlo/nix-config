@@ -28,6 +28,13 @@ return require("packer").startup(function(use)
     end,
   })
 
+--  use({
+--    "jameswalls/naysayer.nvim",
+--    config = function()
+--      require("module.plugins.naysayer")
+--    end,
+--  })
+
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/plenary.nvim" } },

@@ -4,7 +4,7 @@
   imports = [
     ./config/nvim/default.nix
     ./alacritty.nix
-    ./zellij.nix
+#    ./zellij.nix
     ./zathura.nix
     ./starship.nix
     ./aerospace.nix
@@ -13,10 +13,14 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
+      vesktop
+      terraformer
+      brave
       # osx specific
       colima
       utm
       # general
+      aws-vault
       awscli2
       alacritty
       bottom
@@ -36,7 +40,7 @@
       lf
       lua
       minikube
-     # mpv-unwrapped
+      mpv-unwrapped
       mkpasswd
       nmap
       nodejs_20
@@ -63,10 +67,16 @@
       ruff
       poetry
       isort
+      steampipe
+      powerpipe
     ];
   };
 
   programs = {
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-unwrapped;
+    };
     home-manager = {
       enable = true;
     };
@@ -94,9 +104,6 @@
         sdn = "shutdown -h now";
         v = "nvim";
         z = "zathura";
-        tailscale = "tail";
-        terraform = "tf";
-        terraform-docs = "tfd";
       };
       initExtra = ''
         # Nix

@@ -17,13 +17,12 @@
     hostName = "darwin";
   };
 
-  fonts = {
-    packages = with pkgs; [ (nerdfonts.override { fonts = [ "FiraCode" ]; }) ];
-  };
+  fonts.packages = [ pkgs.nerd-fonts.fira-code ];
+
 
   environment = {
     shells = with pkgs; [ zsh ];
-    loginShell = pkgs.zsh;
+#    loginShell = pkgs.zsh;
     systemPackages = with pkgs; [
       git
       curl
@@ -60,7 +59,6 @@
       "caffeine"
       "chatgpt"
       "dbeaver-community"
-      "firefox"
       "obs"
       "raycast"
       "aws-vpn-client"
@@ -68,7 +66,6 @@
       "slack"
       "tor-browser"
       "telegram-desktop"
-      "karabiner-elements"
       "openvpn-connect"
       "shortcat"
       "whisky"
@@ -78,8 +75,7 @@
       "spotify"
       "nikitabobko/tap/aerospace"
       "libreoffice"
-      "brave-browser"
-      "nvidia-geforce-now"
+#      "brave-browser"
     ];
   };
 
