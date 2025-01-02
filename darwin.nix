@@ -21,7 +21,6 @@
 
   environment = {
     shells = with pkgs; [ zsh ];
-    #    loginShell = pkgs.zsh;
     systemPackages = with pkgs; [
       git
       curl
@@ -66,6 +65,8 @@
       "openvpn-connect"
       "discord"
       "spotify"
+      "raycast"
+      "nikitabobko/tap/aerospace"
     ];
   };
 

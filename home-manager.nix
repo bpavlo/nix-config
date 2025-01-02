@@ -20,9 +20,6 @@
       # osx specific
       colima
       utm
-      aerospace
-      raycast
-
       # general
       aws-vault
       awscli2
