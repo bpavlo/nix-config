@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./config/nvim/default.nix
     ./alacritty.nix
     ./zellij.nix
     ./zathura.nix
@@ -73,6 +72,9 @@
   };
 
   programs = {
+    neovim = {
+	enable = true;
+};
     firefox = {
       enable = true;
       package = pkgs.firefox-unwrapped;

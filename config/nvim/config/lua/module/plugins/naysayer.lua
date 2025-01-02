@@ -1,3 +1,0 @@
---require("naysayer").setup({
---})
---vim.cmd [[colorscheme naysayer]]
