@@ -8,8 +8,8 @@
       
       start-at-login = false
       
-      enable-normalization-flatten-containers = false
-      enable-normalization-opposite-orientation-for-nested-containers = false
+      enable-normalization-flatten-containers = true
+      enable-normalization-opposite-orientation-for-nested-containers = true
       
       accordion-padding = 0
       

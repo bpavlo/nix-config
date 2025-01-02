@@ -1,1 +1,1 @@
-cmd - return : open -a /Applications/Ghostty.app/Contents/MacOS/ghostty
+cmd - return : open -a alacritty

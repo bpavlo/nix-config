@@ -4,7 +4,7 @@
   imports = [
     ./config/nvim/default.nix
     ./alacritty.nix
-#    ./zellij.nix
+    ./zellij.nix
     ./zathura.nix
     ./starship.nix
     ./aerospace.nix

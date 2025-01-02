@@ -24,7 +24,7 @@
         normal = {
           family = "FiraCode Nerd Font";
         };
-        size = 16;
+        size = 20;
       };
       colors = {
         primary = {
