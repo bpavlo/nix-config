@@ -12,12 +12,17 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
+      telegram-desktop
+      aws-vault
       vesktop
       terraformer
       brave
       # osx specific
       colima
       utm
+      aerospace
+      raycast
+
       # general
       aws-vault
       awscli2

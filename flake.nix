@@ -39,9 +39,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.pvl = import ./home-manager.nix;
-#            home.packages = [
-#              ghostty.packages.aarch64-darwin.default
-#            ];
+            #            home.packages = [
+            #              ghostty.packages.aarch64-darwin.default
+            #            ];
           }
         ];
       };

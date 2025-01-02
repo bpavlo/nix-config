@@ -19,10 +19,9 @@
 
   fonts.packages = [ pkgs.nerd-fonts.fira-code ];
 
-
   environment = {
     shells = with pkgs; [ zsh ];
-#    loginShell = pkgs.zsh;
+    #    loginShell = pkgs.zsh;
     systemPackages = with pkgs; [
       git
       curl
@@ -39,7 +38,7 @@
   };
 
   services = {
-    nix-daemon.enable = true; 
+    nix-daemon.enable = true;
     skhd = {
       enable = true;
       skhdConfig = builtins.readFile ./skhdrc;
@@ -64,18 +63,9 @@
       "aws-vpn-client"
       "session-manager-plugin"
       "slack"
-      "tor-browser"
-      "telegram-desktop"
       "openvpn-connect"
-      "shortcat"
-      "whisky"
-      "steam"
-      "heroic"
       "discord"
       "spotify"
-      "nikitabobko/tap/aerospace"
-      "libreoffice"
-#      "brave-browser"
     ];
   };
 
