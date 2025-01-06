@@ -17,7 +17,10 @@
     hostName = "darwin";
   };
 
-  fonts.packages = [ pkgs.nerd-fonts.fira-code ];
+  fonts.packages = [
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.jetbrains-mono
+  ];
 
   environment = {
     shells = with pkgs; [ zsh ];
@@ -58,7 +61,6 @@
       "chatgpt"
       "dbeaver-community"
       "obs"
-      "raycast"
       "aws-vpn-client"
       "session-manager-plugin"
       "slack"
@@ -67,6 +69,9 @@
       "spotify"
       "raycast"
       "nikitabobko/tap/aerospace"
+      "windows-app"
+      "obsidian"
+      "ghostty"
     ];
   };
 

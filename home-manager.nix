@@ -74,6 +74,10 @@
   };
 
   programs = {
+    ghostty = {
+      enable = false;
+      enableZshIntegration = true;
+    };
     neovim = {
       enable = true;
     };

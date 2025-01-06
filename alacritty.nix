@@ -42,7 +42,7 @@
           white = "#eee8d5";
         };
         bright = {
-          black = "#073642";
+          black = "#163848";
           red = "#f55350";
           green = "#b7f900";
           yellow = "#ffbf00";

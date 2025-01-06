@@ -12,7 +12,7 @@
     settings = {
       themes.solarized-osaka = {
         fg = "#839496";
-        bg = "#00141a";
+        bg = "#163848";
         black = "#00141a";
         red = "#dc322f";
         green = "#859900";
