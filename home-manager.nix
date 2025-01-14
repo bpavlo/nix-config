@@ -17,6 +17,7 @@
       vesktop
       terraformer
       brave
+      yazi
       # osx specific
       colima
       utm
@@ -80,6 +81,7 @@
     };
     neovim = {
       enable = true;
+      defaultEditor = true;
     };
     firefox = {
       enable = true;
