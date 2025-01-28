@@ -73,6 +73,8 @@
       "windows-app"
       "obsidian"
       "ghostty"
+      "firefox"
+      "whisky"
     ];
   };
 

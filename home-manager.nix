@@ -16,7 +16,6 @@
       aws-vault
       vesktop
       terraformer
-      brave
       yazi
       # osx specific
       colima
@@ -84,7 +83,7 @@
       defaultEditor = true;
     };
     firefox = {
-      enable = true;
+      enable = false;
       package = pkgs.firefox-unwrapped;
     };
     home-manager = {
