@@ -14,7 +14,6 @@
     packages = with pkgs; [
       telegram-desktop
       aws-vault
-      vesktop
       terraformer
       yazi
       # osx specific
@@ -83,7 +82,7 @@
       defaultEditor = true;
     };
     firefox = {
-      enable = false;
+      enable = true;
       package = pkgs.firefox-unwrapped;
     };
     home-manager = {
