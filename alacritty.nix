@@ -17,7 +17,7 @@
           x = 10;
           y = 10;
         };
-        decorations = "none";
+        decorations = "Full";
         option_as_alt = "Both";
       };
       font = {

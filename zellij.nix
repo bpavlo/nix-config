@@ -7,7 +7,7 @@
 
 {
   programs.zellij = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
     settings = {
       themes.solarized-osaka = {

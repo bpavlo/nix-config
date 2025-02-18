@@ -1,1 +1,1 @@
-cmd - return : open -a alacritty
+cmd - return : open -a ghostty

@@ -16,6 +16,7 @@
       aws-vault
       terraformer
       yazi
+      zoxide
       # osx specific
       colima
       utm
@@ -111,7 +112,7 @@
         g = "git";
         sdn = "shutdown -h now";
         v = "nvim";
-        z = "zathura";
+#        z = "zathura";
       };
       initExtra = ''
         # Nix
