@@ -16,7 +16,9 @@
       aws-vault
       terraformer
       yazi
+      google-cloud-sdk
       zoxide
+      azure-cli
       # osx specific
       colima
       utm
