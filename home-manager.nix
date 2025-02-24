@@ -84,7 +84,7 @@
       defaultEditor = true;
     };
     firefox = {
-      enable = true;
+      enable = false;
       package = pkgs.firefox-unwrapped;
     };
     home-manager = {

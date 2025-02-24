@@ -60,6 +60,7 @@
       "battery"
       "caffeine"
       "chatgpt"
+      "eloston-chromium"
       "dbeaver-community"
       "obs"
       "aws-vpn-client"
@@ -75,6 +76,7 @@
       "ghostty"
       "firefox"
       "whisky"
+      "zen-browser"
     ];
   };
 
