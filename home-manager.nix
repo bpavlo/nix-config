@@ -18,7 +18,7 @@
       yazi
       google-cloud-sdk
       zoxide
-      azure-cli
+      #      azure-cli
       # osx specific
       colima
       utm
@@ -49,7 +49,6 @@
       nodejs_20
       ollama
       openvpn
-      openssh
       packer
       pre-commit
       qbittorrent
@@ -114,7 +113,7 @@
         g = "git";
         sdn = "shutdown -h now";
         v = "nvim";
-#        z = "zathura";
+        #        z = "zathura";
       };
       initExtra = ''
         # Nix
