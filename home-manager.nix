@@ -12,12 +12,14 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
+      treefmt2
       telegram-desktop
       aws-vault
       terraformer
       yazi
       google-cloud-sdk
       zoxide
+      wireguard-tools
       #      azure-cli
       # osx specific
       colima
@@ -69,8 +71,6 @@
       ruff
       poetry
       isort
-      steampipe
-      powerpipe
     ];
   };
 
