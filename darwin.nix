@@ -71,6 +71,7 @@
       "spotify"
       "raycast"
       "nikitabobko/tap/aerospace"
+      "tailscale"
       "windows-app"
       "obsidian"
       "ghostty"
