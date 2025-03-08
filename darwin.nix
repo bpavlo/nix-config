@@ -41,13 +41,13 @@
   };
 
   services = {
-    nix-daemon.enable = true;
+    #nix-daemon.enable = true;
     skhd = {
       enable = true;
       skhdConfig = builtins.readFile ./skhdrc;
     };
     tailscale = {
-      enable = true;
+      enable = false;
     };
   };
 
