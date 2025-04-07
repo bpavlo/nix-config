@@ -19,7 +19,9 @@
       yazi
       google-cloud-sdk
       zoxide
-      wireguard-tools
+      gh
+      ansible
+#      wireguard-tools
       #      azure-cli
       # osx specific
       colima
@@ -64,7 +66,7 @@
       tflint
       yarn
       yt-dlp
-      wireguard-go
+#      wireguard-go
       elixir
       jdk
       yamllint
