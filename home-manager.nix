@@ -20,7 +20,7 @@
       google-cloud-sdk
       zoxide
       gh
-      ansible
+#      ansible
 #      wireguard-tools
       #      azure-cli
       # osx specific
@@ -88,6 +88,10 @@
     firefox = {
       enable = false;
       package = pkgs.firefox-unwrapped;
+    };
+    pyenv = {
+      enable = true;
+      enableZshIntegration = true;
     };
     home-manager = {
       enable = true;
