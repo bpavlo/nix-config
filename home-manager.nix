@@ -20,6 +20,7 @@
       google-cloud-sdk
       zoxide
       gh
+      tree
 #      ansible
 #      wireguard-tools
       #      azure-cli
