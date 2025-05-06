@@ -75,7 +75,6 @@
       "obsidian"
       "ghostty"
       "firefox"
-      "orbstack"
       "whisky"
     ];
   };
