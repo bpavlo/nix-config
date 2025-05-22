@@ -76,6 +76,8 @@
       "ghostty"
       "firefox"
       "whisky"
+      "brave-browser"
+      "iina"
     ];
   };
 
@@ -93,6 +95,7 @@
   };
 
   system = {
+    primaryUser = "pvl";
     defaults = {
       NSGlobalDomain = {
         KeyRepeat = 1;

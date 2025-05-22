@@ -12,7 +12,7 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
-      treefmt2
+      treefmt
       telegram-desktop
       aws-vault
       terraformer
@@ -122,7 +122,7 @@
         v = "nvim";
         #        z = "zathura";
       };
-      initExtra = ''
+      initContent = ''
         # Nix
         if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
