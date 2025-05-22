@@ -18,7 +18,6 @@
       terraformer
       yazi
       google-cloud-sdk
-      zoxide
       gh
       tree
 #      ansible
@@ -94,6 +93,10 @@
       enable = true;
       enableZshIntegration = true;
     };
+    zoxide = {
+      enable = true;
+      enableZshIntegration =  true;
+    };
     home-manager = {
       enable = true;
     };
@@ -130,6 +133,9 @@
         # End Nix
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         export GPG_TTY=$(tty)
+        
+        # Python fix
+        export PATH="$HOME/Library/Python/3.9/bin:$PATH"
       '';
     };
   };
