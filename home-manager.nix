@@ -13,7 +13,6 @@
     stateVersion = "23.11";
     packages = with pkgs; [
       treefmt
-      telegram-desktop
       aws-vault
       terraformer
       yazi
