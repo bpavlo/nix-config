@@ -41,7 +41,6 @@
   };
 
   services = {
-    #nix-daemon.enable = true;
     skhd = {
       enable = true;
       skhdConfig = builtins.readFile ./skhdrc;

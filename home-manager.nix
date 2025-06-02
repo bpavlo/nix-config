@@ -12,6 +12,7 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
+      nodejs_24
       treefmt
       aws-vault
       terraformer
@@ -19,9 +20,6 @@
       google-cloud-sdk
       gh
       tree
-#      ansible
-#      wireguard-tools
-      #      azure-cli
       # osx specific
       colima
       utm
@@ -34,12 +32,10 @@
       docker
       eza
       fastfetch
-      gimp
       gnupg
       go
       hugo
       k9s
-      keepassxc
       kubernetes-helm
       kubectx
       kubectl
@@ -49,7 +45,6 @@
       mpv-unwrapped
       mkpasswd
       nmap
-      nodejs_20
       ollama
       openvpn
       packer
@@ -65,7 +60,6 @@
       tflint
       yarn
       yt-dlp
-#      wireguard-go
       elixir
       jdk
       yamllint
@@ -94,7 +88,7 @@
     };
     zoxide = {
       enable = true;
-      enableZshIntegration =  true;
+      enableZshIntegration = true;
     };
     home-manager = {
       enable = true;
@@ -122,7 +116,6 @@
         g = "git";
         sdn = "shutdown -h now";
         v = "nvim";
-        #        z = "zathura";
       };
       initContent = ''
         # Nix
@@ -132,9 +125,10 @@
         # End Nix
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
         export GPG_TTY=$(tty)
-        
+
         # Python fix
         export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+        export PATH="$HOME/.npm/bin:$PATH"
       '';
     };
   };
