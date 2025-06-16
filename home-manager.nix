@@ -53,7 +53,6 @@
       ripgrep
       rustc
       stylua
-      syncthing
       teleport
       tenv
       terraform-docs
@@ -89,6 +88,9 @@
     zoxide = {
       enable = true;
       enableZshIntegration = true;
+    };
+    syncthing = {
+      enable = true;
     };
     home-manager = {
       enable = true;
