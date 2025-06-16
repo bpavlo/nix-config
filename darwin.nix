@@ -51,6 +51,7 @@
     enable = true;
     caskArgs.no_quarantine = true;
     global.brewfile = true;
+    brews = ["syncthing"];
     casks = [
       "appcleaner"
       "battery"
@@ -74,7 +75,6 @@
       "whisky"
       "brave-browser"
       "iina"
-      "syncthing"
     ];
   };
 
