@@ -45,9 +45,6 @@
       enable = true;
       skhdConfig = builtins.readFile ./skhdrc;
     };
-    tailscale = {
-      enable = false;
-    };
   };
 
   homebrew = {
@@ -77,6 +74,7 @@
       "whisky"
       "brave-browser"
       "iina"
+      "syncthing"
     ];
   };
 

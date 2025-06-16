@@ -89,9 +89,6 @@
       enable = true;
       enableZshIntegration = true;
     };
-    syncthing = {
-      enable = true;
-    };
     home-manager = {
       enable = true;
     };
