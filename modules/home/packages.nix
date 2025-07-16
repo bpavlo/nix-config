@@ -1,0 +1,60 @@
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    aws-vault
+    awscli2
+    bob
+    bottom
+    cargo
+    colima
+    docker
+    elixir
+    eza
+    fastfetch
+    gh
+    gnupg
+    go
+    google-cloud-sdk
+    hugo
+    isort
+    jdk
+    jellyfin-ffmpeg
+    k9s
+    kubectl
+    kubectx
+    kubernetes-helm
+    lf
+    lua
+    mermaid-cli
+    minikube
+    mkpasswd
+    mpv-unwrapped
+    nix-du
+    nix-top
+    nix-tree
+    nmap
+    ollama
+    packer
+    poetry
+    pre-commit
+    ripgrep
+    ruff
+    rustc
+    ssm-session-manager-plugin
+    stylua
+    teleport
+    tenv
+    terraform-docs
+    terraformer
+    tflint
+    tree
+    treefmt
+    trivy
+    unstable.nodejs_24
+    yamllint
+    yarn
+    yazi
+    yt-dlp
+  ];
+}

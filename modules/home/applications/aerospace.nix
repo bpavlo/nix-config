@@ -7,7 +7,7 @@
 
       after-startup-command = []
 
-      start-at-login = false
+      start-at-login = true
 
       enable-normalization-flatten-containers = true
       enable-normalization-opposite-orientation-for-nested-containers = true
@@ -91,6 +91,24 @@
       run = [
         "layout floating",
       ]
+
+      [[on-window-detected]]
+      if.app-id = 'com.brave.Browser'
+      if.window-title-regex-substring = 'Bitwarden'
+      if.during-aerospace-startup = false
+      run = 'layout floating'
+
+      [[on-window-detected]]
+      if.app-id = 'org.mozilla.firefox'
+      if.window-title-regex-substring = 'Bitwarden'
+      if.during-aerospace-startup = false
+      run = 'layout floating'
+
+      [[on-window-detected]]
+      if.app-id = 'app.zen-browser.zen'
+      if.window-title-regex-substring = 'Bitwarden'
+      if.during-aerospace-startup = false
+      run = 'layout floating'
     '';
   };
 }
