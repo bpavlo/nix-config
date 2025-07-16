@@ -51,7 +51,10 @@
     enable = true;
     caskArgs.no_quarantine = true;
     global.brewfile = true;
-    brews = ["syncthing"];
+    brews = [
+      "syncthing"
+      "tailscale"
+    ];
     casks = [
       "appcleaner"
       "battery"
@@ -67,7 +70,6 @@
       "spotify"
       "raycast"
       "nikitabobko/tap/aerospace"
-      "tailscale"
       "windows-app"
       "obsidian"
       "ghostty"

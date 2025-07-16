@@ -12,6 +12,7 @@
   home = {
     stateVersion = "23.11";
     packages = with pkgs; [
+      trivy 
       nodejs_24
       treefmt
       aws-vault
@@ -20,6 +21,7 @@
       google-cloud-sdk
       gh
       tree
+      jellyfin-ffmpeg
       # osx specific
       colima
       utm
@@ -108,7 +110,6 @@
       };
       shellAliases = {
         ls = "eza --color=auto --git -F --extended";
-        grep = "rg";
         diff = "diff --color=auto";
         cp = "cp -iv";
         ka = "killall";
