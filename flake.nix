@@ -2,16 +2,18 @@
   description = "NixOS and nix-darwin configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # nixos-unstable is tested against NixOS, more stable than nixpkgs-unstable
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Keep stable as fallback if needed
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
+      url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,7 +26,7 @@
     inputs@{
       self,
       nixpkgs,
-      nixpkgs-unstable,
+      nixpkgs-stable,
       home-manager,
       darwin,
       nixos-hardware,
@@ -45,7 +47,8 @@
 
       overlays = [
         (final: prev: {
-          unstable = import nixpkgs-unstable {
+          # Stable packages available as pkgs.stable.xxx if needed
+          stable = import nixpkgs-stable {
             system = final.system;
             config.allowUnfree = true;
           };
