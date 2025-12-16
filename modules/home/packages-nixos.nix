@@ -13,7 +13,7 @@
     jdk
     lua
     rustc
-    unstable.nodejs_24
+    nodejs_24
     poetry
     yarn
 
