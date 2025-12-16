@@ -5,9 +5,51 @@
     enable = true;
     caskArgs.no_quarantine = true;
     global.brewfile = true;
+
+    taps = [
+      "nikitabobko/tap"
+    ];
+
     brews = [
       "syncthing"
+
+      "awscli"
+      "gh"
+      "go"
+      "hugo"
+      "lua"
+      "node"
+      "poetry"
+      "pre-commit"
+      "ruff"
+      "rustup"
+      "stylua"
+      "terraform-docs"
+      "tflint"
+      "treefmt"
+      "yamllint"
+      "yarn"
+
+      "colima"
+      "docker"
+      "k9s"
+      "kubectl"
+      "kubectx"
+      "helm"
+      "minikube"
+      "trivy"
+
+      "fastfetch"
+      "gnupg"
+      "lf"
+      "nmap"
+      "yazi"
+      "yt-dlp"
+      "zoxide"
+      "pyenv"
+
     ];
+
     casks = [
       "appcleaner"
       "battery"
@@ -30,5 +72,11 @@
       "tunnelblick"
       "whisky"
     ];
+
+    onActivation = {
+      autoUpdate = false;
+      cleanup = "zap";
+      upgrade = false;
+    };
   };
 }
