@@ -3,9 +3,8 @@
 {
   imports = [
     ./configuration.nix
-    ./hardware.nix
-    ../../modules/darwin/homebrew.nix
     ../../modules/darwin/system.nix
+    ../../modules/darwin/homebrew.nix
     ../../users/pvl
   ];
 
@@ -18,15 +17,14 @@
 
   users.users.pvl = {
     home = "/Users/pvl";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   networking = {
-    computerName = "darwin";
-    hostName = "darwin";
+    computerName = "jade";
+    hostName = "jade";
   };
 
-  # Disable nix management for Determinate Nix compatibility
   nix.enable = false;
 
   system = {

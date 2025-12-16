@@ -1,8 +1,7 @@
 {
-  description = "flake";
+  description = "NixOS and nix-darwin configurations";
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -16,27 +15,34 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs =
     inputs@{
+      self,
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
       darwin,
+      nixos-hardware,
       treefmt-nix,
-      self,
-      systems,
       ...
     }:
     let
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
-      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      # Make unstable packages available via overlay
+      treefmtEval = forAllSystems (
+        system: treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix
+      );
+
       overlays = [
         (final: prev: {
           unstable = import nixpkgs-unstable {
@@ -45,19 +51,43 @@
           };
         })
       ];
+
+      nixpkgsConfig = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
     in
     {
-      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
+      formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
+
+      checks = forAllSystems (system: {
+        formatting = treefmtEval.${system}.config.build.check self;
       });
 
-      darwinConfigurations.darwin = darwin.lib.darwinSystem {
+      darwinConfigurations.jade = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/darwin
+          ./hosts/jade
           home-manager.darwinModules.home-manager
-          { nixpkgs.overlays = overlays; }
+          {
+            nixpkgs.overlays = overlays;
+            nixpkgs.config = nixpkgsConfig;
+          }
+        ];
+      };
+
+      nixosConfigurations.phoenix = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          nixos-hardware.nixosModules.framework-13-7040-amd
+          ./hosts/nixos/phoenix
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = overlays;
+            nixpkgs.config = nixpkgsConfig;
+          }
         ];
       };
     };
