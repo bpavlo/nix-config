@@ -25,6 +25,8 @@
 
   services.fwupd.enable = true;
 
+  services.tailscale.enable = true;
+
   programs.fish.enable = true;
 
   programs.firefox.enable = true;

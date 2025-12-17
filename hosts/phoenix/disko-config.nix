@@ -26,27 +26,27 @@
                 name = "cryptroot";
                 passwordFile = "/tmp/secret.key"; # Create this file during installation
                 settings = {
-                  # LUKS2 with 4K sectors for modern NVMe performance
+                  # Boot-time unlock settings
                   allowDiscards = true;
                   bypassWorkqueues = true;
-                  cryptsetupExtraOpts = [
-                    "--type=luks2"
-                    "--cipher=aes-xts-plain64"
-                    "--hash=sha256"
-                    "--iter-time=1000"
-                    "--key-size=256"
-                    "--pbkdf=argon2id"
-                    "--use-urandom"
-                    "--verify-passphrase"
-                    # Performance optimization for NVMe
-                    "--perf-no_read_workqueue"
-                    "--perf-no_write_workqueue"
-                    "--sector-size=4096"
-                  ];
                 };
+                # LUKS2 creation options (used during formatting)
+                extraFormatArgs = [
+                  "--type=luks2"
+                  "--cipher=aes-xts-plain64"
+                  "--hash=sha256"
+                  "--iter-time=1000"
+                  "--key-size=256"
+                  "--pbkdf=argon2id"
+                  "--sector-size=4096"
+                ];
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" "--label" "nixos" ];
+                  extraArgs = [
+                    "-f"
+                    "--label"
+                    "nixos"
+                  ];
                   subvolumes = {
                     # Root subvolume
                     "@root" = {
@@ -126,4 +126,3 @@
     };
   };
 }
-

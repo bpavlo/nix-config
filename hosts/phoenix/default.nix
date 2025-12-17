@@ -37,6 +37,37 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # TPM2 auto-unlock for LUKS
+  boot.initrd.systemd.enable = true;
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
+
+  # LUKS TPM2 unlock
+  boot.initrd.luks.devices."cryptroot" = {
+    # Device will be set by disko
+    allowDiscards = true;
+    bypassWorkqueues = true;
+    crypttabExtraOpts = [ "tpm2-device=auto" ];
+  };
+
+  # Memory management
+  boot.kernelParams = [ "zswap.enabled=1" ];
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50; # Use 50% of RAM for zram (16GB compressed)
+  };
+
+  # Better OOM handling
+  systemd.oomd = {
+    enable = true;
+    enableRootSlice = true;
+    enableUserSlices = true;
+  };
+
   # Btrfs-specific options
   services.btrfs.autoScrub = {
     enable = true;
