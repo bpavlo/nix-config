@@ -27,8 +27,14 @@
 
   services.tailscale.enable = true;
 
-  # Disable WiFi power saving for better performance
-  networking.networkmanager.wifi.powersave = false;
+  # WiFi optimizations
+  networking.networkmanager.wifi = {
+    powersave = false; # Better performance
+    scanRandMacAddress = false; # More reliable connections
+  };
+
+  # Prefer 5GHz WiFi when available
+  networking.networkmanager.connectionConfig."wifi.band" = "5ghz";
 
   # Enable WebHID for Keychron configurator (launcher.keychron.com)
   services.udev.extraRules = ''
