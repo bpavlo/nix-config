@@ -33,4 +33,10 @@
   programs.fish.enable = true;
 
   programs.firefox.enable = true;
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.commit-mono
+  ];
 }

@@ -1,6 +1,6 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
-  home.file.aerospace = {
+  home.file.aerospace = lib.mkIf pkgs.stdenv.isDarwin {
     target = ".aerospace.toml";
     text = ''
       after-login-command = []

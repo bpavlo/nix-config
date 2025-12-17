@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.pvl = import ./home-jade.nix;
+    users.pavlo = import ../modules/home;
   };
 }

@@ -5,7 +5,7 @@
     ./configuration.nix
     ../../modules/darwin/system.nix
     ../../modules/darwin/homebrew.nix
-    ../../users/pvl
+    ../../users/pvl.nix
   ];
 
   nixpkgs = {
@@ -17,7 +17,7 @@
 
   users.users.pvl = {
     home = "/Users/pvl";
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   networking = {

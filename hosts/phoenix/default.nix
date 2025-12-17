@@ -4,9 +4,9 @@
   imports = [
     ./hardware-configuration.nix
     ./configuration.nix
-    ../../../modules/common
-    ../../../modules/nixos/desktop.nix
-    ../../../users/pavlo/phoenix.nix
+    ../../modules/common
+    ../../modules/nixos/desktop.nix
+    ../../users/pavlo.nix
   ];
 
   nixpkgs = {
@@ -19,13 +19,14 @@
   users.users.pavlo = {
     isNormalUser = true;
     description = "pavlo";
+    home = "/home/pavlo";
+    shell = pkgs.fish;
     extraGroups = [
       "networkmanager"
       "wheel"
       "video"
       "audio"
     ];
-    shell = pkgs.fish;
   };
 
   networking = {

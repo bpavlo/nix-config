@@ -2,9 +2,7 @@
   description = "NixOS and nix-darwin configurations";
 
   inputs = {
-    # nixos-unstable is tested against NixOS, more stable than nixpkgs-unstable
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Keep stable as fallback if needed
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     home-manager = {
@@ -85,7 +83,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           nixos-hardware.nixosModules.framework-13-7040-amd
-          ./hosts/nixos/phoenix
+          ./hosts/phoenix
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = overlays;

@@ -48,6 +48,12 @@
       "zoxide"
       "pyenv"
 
+      "bash-language-server"
+      "gopls"
+      "lua-language-server"
+      "nil"
+      "pyright"
+      "terraform-ls"
     ];
 
     casks = [
