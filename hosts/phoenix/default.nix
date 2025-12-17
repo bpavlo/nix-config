@@ -31,6 +31,7 @@
 
   # Lanzaboote Secure Boot
   boot.loader.systemd-boot.enable = false;
+  boot.loader.systemd-boot.consoleMode = "max"; # Larger font for high-DPI displays
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";
