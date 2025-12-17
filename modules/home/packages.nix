@@ -5,17 +5,19 @@
 
     # Must Have
     brave
-    ghostty
+
+    # Social
+    telegram-desktop
+    signal-desktop
+    vesktop
+    slack
+    zoom-us
 
     # AI
     gemini-cli
     codex
     claude-code
     ollama
-
-    # Must Have
-    brave
-    ghostty
 
     # Cloud & Infrastructure
     aws-vault
@@ -25,7 +27,6 @@
     teleport
 
     # Containers & Kubernetes
-    colima
     docker
     k9s
     kubectl
