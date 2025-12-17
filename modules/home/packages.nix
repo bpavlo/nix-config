@@ -1,60 +1,95 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  home.packages = with pkgs; [
-    aws-vault
-    awscli2
-    bob
-    bottom
-    cargo
-    colima
-    docker
-    elixir
-    eza
-    fastfetch
-    gh
-    gnupg
-    go
-    google-cloud-sdk
-    hugo
-    isort
-    jdk
-    jellyfin-ffmpeg
-    k9s
-    kubectl
-    kubectx
-    kubernetes-helm
-    lf
-    lua
-    mermaid-cli
-    minikube
-    mkpasswd
-    mpv-unwrapped
-    nix-du
-    nix-top
-    nix-tree
-    nmap
-    ollama
-    packer
-    poetry
-    pre-commit
-    ripgrep
-    ruff
-    rustc
-    ssm-session-manager-plugin
-    stylua
-    teleport
-    tenv
-    terraform-docs
-    terraformer
-    tflint
-    tree
-    treefmt
-    trivy
-    unstable.nodejs_24
-    yamllint
-    yarn
-    yazi
-    yt-dlp
-  ];
+  home.packages =
+    with pkgs;
+    [
+      # AI
+      gemini-cli
+      codex
+      ollama
+
+      # Cloud & Infrastructure
+      aws-vault
+      awscli2
+      google-cloud-sdk
+      ssm-session-manager-plugin
+      teleport
+
+      # Containers & Kubernetes
+      colima
+      docker
+      k9s
+      kubectl
+      kubectx
+      kubernetes-helm
+      minikube
+      trivy
+
+      # IaC
+      packer
+      tenv
+      terraform-docs
+      terraformer
+      tflint
+
+      # Languages & Runtimes
+      cargo
+      elixir
+      go
+      jdk
+      lua
+      nodejs_24
+      poetry
+      rustc
+      yarn
+
+      # Dev Tools
+      gh
+      hugo
+      isort
+      mermaid-cli
+      pre-commit
+      ruff
+      stylua
+      treefmt
+
+      # CLI Utilities
+      bottom
+      eza
+      fastfetch
+      gnupg
+      lf
+      mkpasswd
+      nmap
+      ripgrep
+      tree
+      yamllint
+      yazi
+      yt-dlp
+
+      # Media
+      jellyfin-ffmpeg
+      mpv-unwrapped
+
+      # Nix Tools
+      nix-du
+      nix-top
+      nix-tree
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      # LSPs
+      bash-language-server
+      gopls
+      lua-language-server
+      nil
+      pyright
+      terraform-ls
+
+      # Linux-specific apps
+      bob
+      brave
+      claude-code
+      ghostty
+    ];
 }
