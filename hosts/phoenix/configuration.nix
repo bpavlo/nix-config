@@ -27,6 +27,16 @@
 
   services.tailscale.enable = true;
 
+  # Disable WiFi power saving for better performance
+  networking.networkmanager.wifi.powersave = false;
+
+  # Enable WebHID for Keychron configurator (launcher.keychron.com)
+  services.udev.extraRules = ''
+    # Keychron devices - allow user access for WebHID
+    KERNEL=="hidraw*", ATTRS{idVendor}=="3434", MODE="0666"
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+  '';
+
   programs.fish.enable = true;
 
   programs.firefox.enable = true;

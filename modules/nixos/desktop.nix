@@ -11,6 +11,10 @@
     variant = "";
   };
 
+  # Key repeat speed (matches macOS: InitialKeyRepeat=14, KeyRepeat=1)
+  services.xserver.autoRepeatDelay = 210; # ms before repeat starts
+  services.xserver.autoRepeatInterval = 15; # ms between repeats
+
   environment.systemPackages = with pkgs; [
     gnome-tweaks
     dconf-editor
