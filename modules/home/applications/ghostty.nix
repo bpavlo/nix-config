@@ -8,7 +8,7 @@
 {
   programs.ghostty = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
-    enableFishIntergration = true;
+    enableFishIntegration = true;
     settings = {
       font-family = "FiraCode Nerd Font";
       font-size = 14;
