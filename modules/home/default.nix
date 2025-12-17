@@ -23,10 +23,6 @@
       defaultEditor = true;
     };
     home-manager.enable = true;
-    ghostty = lib.mkIf pkgs.stdenv.isLinux {
-      enable = true;
-      enableFishIntegration = true;
-    };
   };
 
   services = {

@@ -1,0 +1,20 @@
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+
+{
+  programs.ghostty = lib.mkIf pkgs.stdenv.isLinux {
+    enable = true;
+    enableFishIntergration = true;
+    settings = {
+      font-family = "FiraCode Nerd Font";
+      font-size = 14;
+      theme = "Black Metal (Mayhem)";
+      window-padding-x = 10;
+      window-padding-y = 10;
+    };
+  };
+}
