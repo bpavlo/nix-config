@@ -84,18 +84,6 @@
                       ];
                     };
 
-                    # Logs - less compression, may be frequently written
-                    "@log" = {
-                      mountpoint = "/var/log";
-                      mountOptions = [
-                        "compress=zstd:1"
-                        "noatime"
-                        "space_cache=v2"
-                        "discard=async"
-                        "ssd"
-                      ];
-                    };
-
                     # Snapshots directory
                     "@snapshots" = {
                       mountpoint = "/.snapshots";
