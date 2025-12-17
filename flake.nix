@@ -18,6 +18,16 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +39,8 @@
       darwin,
       nixos-hardware,
       treefmt-nix,
+      disko,
+      lanzaboote,
       ...
     }:
     let
@@ -83,7 +95,10 @@
         specialArgs = { inherit inputs; };
         modules = [
           nixos-hardware.nixosModules.framework-13-7040-amd
+          disko.nixosModules.disko
+          lanzaboote.nixosModules.lanzaboote
           ./hosts/phoenix
+          ./hosts/phoenix/disko-config.nix
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = overlays;

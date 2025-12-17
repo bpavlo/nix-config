@@ -29,6 +29,48 @@
     ];
   };
 
+  # Lanzaboote Secure Boot
+  boot.loader.systemd-boot.enable = false;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Btrfs-specific options
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+    fileSystems = [ "/" ];
+  };
+
+  # Snapshot support
+  services.snapper = {
+    snapshotRootOnBoot = true;
+    configs = {
+      root = {
+        SUBVOLUME = "/";
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        TIMELINE_LIMIT_HOURLY = "5";
+        TIMELINE_LIMIT_DAILY = "7";
+        TIMELINE_LIMIT_WEEKLY = "0";
+        TIMELINE_LIMIT_MONTHLY = "0";
+        TIMELINE_LIMIT_YEARLY = "0";
+      };
+      home = {
+        SUBVOLUME = "/home";
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
+        TIMELINE_LIMIT_HOURLY = "5";
+        TIMELINE_LIMIT_DAILY = "7";
+        TIMELINE_LIMIT_WEEKLY = "0";
+        TIMELINE_LIMIT_MONTHLY = "0";
+        TIMELINE_LIMIT_YEARLY = "0";
+      };
+    };
+  };
+
   networking = {
     hostName = "phoenix";
     networkmanager.enable = true;

@@ -5,6 +5,7 @@
     with pkgs;
     [
       # AI
+      claude-code
       gemini-cli
       codex
       ollama
@@ -53,6 +54,7 @@
       ruff
       stylua
       treefmt
+      bob
 
       # CLI Utilities
       bottom
@@ -76,8 +78,7 @@
       nix-du
       nix-top
       nix-tree
-    ]
-    ++ lib.optionals stdenv.isLinux [
+
       # LSPs
       bash-language-server
       gopls
@@ -86,10 +87,8 @@
       pyright
       terraform-ls
 
-      # Linux-specific apps
-      bob
+      # Must Have
       brave
-      claude-code
       ghostty
     ];
 }
