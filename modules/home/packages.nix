@@ -1,94 +1,97 @@
 { pkgs, lib, ... }:
 
 {
-  home.packages =
-    with pkgs;
-    [
-      # AI
-      claude-code
-      gemini-cli
-      codex
-      ollama
+  home.packages = with pkgs; [
 
-      # Cloud & Infrastructure
-      aws-vault
-      awscli2
-      google-cloud-sdk
-      ssm-session-manager-plugin
-      teleport
+    # Must Have
+    brave
+    ghostty
 
-      # Containers & Kubernetes
-      colima
-      docker
-      k9s
-      kubectl
-      kubectx
-      kubernetes-helm
-      minikube
-      trivy
+    # AI
+    gemini-cli
+    codex
+    claude-code
+    ollama
 
-      # IaC
-      packer
-      tenv
-      terraform-docs
-      terraformer
-      tflint
+    # Must Have
+    brave
+    ghostty
 
-      # Languages & Runtimes
-      cargo
-      elixir
-      go
-      jdk
-      lua
-      nodejs_24
-      poetry
-      rustc
-      yarn
+    # Cloud & Infrastructure
+    aws-vault
+    awscli2
+    google-cloud-sdk
+    ssm-session-manager-plugin
+    teleport
 
-      # Dev Tools
-      gh
-      hugo
-      isort
-      mermaid-cli
-      pre-commit
-      ruff
-      stylua
-      treefmt
-      bob
+    # Containers & Kubernetes
+    colima
+    docker
+    k9s
+    kubectl
+    kubectx
+    kubernetes-helm
+    minikube
+    trivy
 
-      # CLI Utilities
-      bottom
-      eza
-      fastfetch
-      gnupg
-      lf
-      mkpasswd
-      nmap
-      ripgrep
-      tree
-      yamllint
-      yazi
-      yt-dlp
+    # IaC
+    packer
+    tenv
+    terraform-docs
+    terraformer
+    tflint
 
-      # Media
-      jellyfin-ffmpeg
-      mpv-unwrapped
+    # Languages & Runtimes
+    cargo
+    elixir
+    go
+    jdk
+    lua
+    nodejs_24
+    poetry
+    rustc
+    yarn
 
-      # Nix Tools
-      nix-du
-      nix-top
-      nix-tree
+    # Dev Tools
+    gh
+    hugo
+    isort
+    mermaid-cli
+    pre-commit
+    ruff
+    stylua
+    treefmt
 
-      # LSPs
-      bash-language-server
-      gopls
-      lua-language-server
-      nil
-      pyright
-      terraform-ls
+    # CLI Utilities
+    bottom
+    eza
+    fastfetch
+    gnupg
+    lf
+    mkpasswd
+    nmap
+    ripgrep
+    tree
+    yamllint
+    yazi
+    yt-dlp
 
-      # Must Have
-      brave
-      ghostty
-    ];
+    # Media
+    jellyfin-ffmpeg
+    mpv-unwrapped
+
+    # Nix Tools
+    nix-du
+    nix-top
+    nix-tree
+
+    # LSPs
+    bash-language-server
+    gopls
+    lua-language-server
+    nil
+    pyright
+    terraform-ls
+
+  ];
 }
