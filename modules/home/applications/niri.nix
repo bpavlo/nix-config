@@ -6,16 +6,21 @@
       input {
           keyboard {
               xkb {
-                  layout "us"
+                  layout "us,ca,ru,ua"
+                  options "grp:ctrl_space_toggle"
               }
-              repeat-delay 210
-              repeat-rate 15
+              repeat-delay 250
+              repeat-rate 25
           }
 
           touchpad {
               tap
               natural-scroll
               click-method "clickfinger"
+          }
+
+          mouse {
+            natural-scroll
           }
       }
 
@@ -29,6 +34,17 @@
       }
 
       prefer-no-csd
+
+      output "eDP-1" {
+        mode "2880x1920@120.030"
+        scale 2.0
+        variable-refresh-rate
+      }
+
+      output "DP-4" {
+        mode "2560x1440@120.030"
+        variable-refresh-rate
+      }
 
       spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
       spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-c" "#000000"
