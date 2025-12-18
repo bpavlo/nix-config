@@ -114,7 +114,7 @@
         settingsPanelMode = "attached";
       };
       location = {
-        name = "Tokyo";
+        name = "Montreal";
         weatherEnabled = true;
         weatherShowEffects = true;
         useFahrenheit = false;
@@ -123,7 +123,7 @@
         showCalendarEvents = true;
         showCalendarWeather = true;
         analogClockInCalendar = false;
-        firstDayOfWeek = -1;
+        firstDayOfWeek = 0;
       };
       calendar = {
         cards = [
@@ -157,7 +157,7 @@
         videoSource = "portal";
       };
       wallpaper = {
-        enabled = true;
+        enabled = false;
         overviewEnabled = false;
         directory = "";
         monitorDirectories = [ ];
