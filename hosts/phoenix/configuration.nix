@@ -27,16 +27,20 @@
 
   services.tailscale.enable = true;
 
-  # WiFi optimizations
   networking.networkmanager.wifi = {
-    powersave = false; # Better performance
-    scanRandMacAddress = false; # More reliable connections
+    backend = "iwd";
+    powersave = false;
+    scanRandMacAddress = false;
   };
 
-  # Prefer 5GHz WiFi when available
-  networking.networkmanager.connectionConfig."wifi.band" = "5ghz";
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General.EnableNetworkConfiguration = false;
+      Rank.BandModifier5Ghz = 2.0;
+    };
+  };
 
-  # Enable WebHID for Keychron configurator (launcher.keychron.com)
   services.udev.extraRules = ''
     # Keychron devices - allow user access for WebHID
     KERNEL=="hidraw*", ATTRS{idVendor}=="3434", MODE="0666"
