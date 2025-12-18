@@ -6,5 +6,6 @@
     ./starship.nix
     ./zathura.nix
     ./niri.nix
+    ./noctalia.nix
   ];
 }

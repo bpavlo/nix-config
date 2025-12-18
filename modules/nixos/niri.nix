@@ -13,6 +13,8 @@
     xwayland-satellite
     wl-clipboard
     qt6.qtwayland
+    swaybg
+    fuzzel
   ];
 
   programs.dconf.enable = true;
