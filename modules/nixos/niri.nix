@@ -1,18 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+  };
 
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; [
-    fuzzel
-    waybar
-    mako
-    swaylock
-    swayidle
     xwayland-satellite
     wl-clipboard
+    qt6.qtwayland
   ];
+
+  programs.dconf.enable = true;
 }

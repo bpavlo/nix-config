@@ -1,6 +1,56 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
+  imports = [
+    inputs.noctalia.homeModules.default
+  ];
+
+  programs.noctalia-shell = lib.mkIf pkgs.stdenv.isLinux {
+    enable = true;
+    systemd.enable = true;
+    settings = {
+      bar = {
+        position = "top";
+        density = "comfortable";
+        left = [
+          "SidePanel"
+          "Wifi"
+          "Bluetooth"
+        ];
+        center = [ "Workspaces" ];
+        right = [
+          "Battery"
+          "Clock"
+        ];
+        widgets = {
+          workspaces = {
+            showLabels = false;
+            showOccupied = true;
+          };
+          battery = {
+            showPercentage = true;
+            warnThreshold = 20;
+          };
+          clock = {
+            use24Hour = true;
+          };
+        };
+      };
+      general = {
+        colorScheme = "custom";
+        customColors = {
+          background = "#000000";
+          foreground = "#c1c1c1";
+          primary = "#5f8787";
+          accent = "#eecc6c";
+          warning = "#eecc6c";
+          error = "#5f8787";
+        };
+        cornerRadiusRatio = 0.2;
+      };
+    };
+  };
+
   xdg.configFile."niri/config.kdl" = lib.mkIf pkgs.stdenv.isLinux {
     text = ''
       input {
@@ -10,6 +60,12 @@
               }
               repeat-delay 210
               repeat-rate 15
+          }
+
+          touchpad {
+              tap
+              natural-scroll
+              click-method "clickfinger"
           }
       }
 
@@ -23,7 +79,6 @@
       }
 
       spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
-      spawn-at-startup "${pkgs.waybar}/bin/waybar"
       spawn-at-startup "${pkgs.mako}/bin/mako"
 
       binds {
@@ -125,77 +180,6 @@
           Super+Shift+Space { toggle-window-floating; }
 
           Super+O { toggle-overview; }
-      }
-    '';
-  };
-
-  programs.waybar = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-    systemd.enable = true;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "bottom";
-        height = 32;
-        modules-left = [ "niri/workspaces" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "network" "battery" ];
-
-        "niri/workspaces" = {
-          format = "{name}";
-        };
-
-        clock = {
-          format = "{:%H:%M}";
-          format-alt = "{:%Y-%m-%d}";
-        };
-
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = " ";
-          format-icons = {
-            default = [ "" "" "" ];
-          };
-        };
-
-        network = {
-          format-wifi = " {essid}";
-          format-ethernet = " {ifname}";
-          format-disconnected = "";
-        };
-
-        battery = {
-          format = "{icon} {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
-        };
-      };
-    };
-    style = ''
-      * {
-        font-family: "FiraCode Nerd Font";
-        font-size: 12px;
-      }
-
-      window#waybar {
-        background-color: #000000;
-        color: #c1c1c1;
-        border-top: 2px solid #5f8787;
-      }
-
-      #workspaces button {
-        padding: 0 8px;
-        background-color: transparent;
-        color: #c1c1c1;
-        border: none;
-      }
-
-      #workspaces button.active {
-        background-color: #404040;
-        color: #5f8787;
-      }
-
-      #clock, #pulseaudio, #network, #battery {
-        padding: 0 10px;
       }
     '';
   };

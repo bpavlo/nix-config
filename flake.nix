@@ -28,6 +28,16 @@
       url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -41,6 +51,8 @@
       treefmt-nix,
       disko,
       lanzaboote,
+      niri,
+      noctalia,
       ...
     }:
     let
@@ -97,6 +109,7 @@
           nixos-hardware.nixosModules.framework-13-7040-amd
           disko.nixosModules.disko
           lanzaboote.nixosModules.lanzaboote
+          niri.nixosModules.niri
           ./hosts/phoenix
           ./hosts/phoenix/disko-config.nix
           home-manager.nixosModules.home-manager
