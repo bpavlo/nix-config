@@ -18,6 +18,7 @@
       keybind = [
         "super+c=copy_to_clipboard"
         "super+v=paste_from_clipboard"
+        "super+w=close_tab"
       ];
       window-decoration = "none";
     };
