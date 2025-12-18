@@ -37,10 +37,6 @@
               leftClickExec = "qs -c noctalia-shell ipc call launcher toggle";
             }
             {
-              id = "Clock";
-              usePrimaryColor = false;
-            }
-            {
               id = "SystemMonitor";
             }
             {
@@ -75,6 +71,10 @@
               id = "Brightness";
             }
             {
+              id = "Clock";
+              usePrimaryColor = false;
+            }
+            {
               id = "ControlCenter";
             }
           ];
@@ -106,8 +106,8 @@
       ui = {
         fontDefault = "";
         fontFixed = "";
-        fontDefaultScale = 1;
-        fontFixedScale = 1;
+        fontDefaultScale = 1.25;
+        fontFixedScale = 1.25;
         tooltipsEnabled = true;
         panelBackgroundOpacity = 0.85;
         panelsAttachedToBar = true;

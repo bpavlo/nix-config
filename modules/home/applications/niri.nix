@@ -25,7 +25,17 @@
       }
 
       layout {
-          gaps 16
+          gaps 14
+          focus-ring {
+            on
+            width 2
+            active-color "cccccc"
+            inactive-color "aaaaaa"
+            urgent-color "dddddd"
+          }
+          border {
+            off
+          }
       }
 
       cursor {
@@ -36,13 +46,13 @@
       prefer-no-csd
 
       output "eDP-1" {
-        mode "2880x1920@120.030"
+        mode "2880x1920@119.97"
         scale 2.0
         variable-refresh-rate
       }
 
       output "DP-4" {
-        mode "2560x1440@120.030"
+        mode "2560x1440@99.3"
         variable-refresh-rate
       }
 

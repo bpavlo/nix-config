@@ -25,7 +25,20 @@
 
   services.fwupd.enable = true;
 
+  services.flatpak.enable = true;
+
   services.tailscale.enable = true;
+
+  # Key remapping - remap Caps Lock to Alt
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings.main = {
+        capslock = "leftalt";
+      };
+    };
+  };
 
   hardware.bluetooth.enable = true;
   services.upower.enable = true;
