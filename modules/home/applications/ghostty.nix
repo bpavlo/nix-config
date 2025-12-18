@@ -15,6 +15,10 @@
       theme = "Black Metal (Mayhem)";
       window-padding-x = 10;
       window-padding-y = 10;
+      keybind = [
+        "super+c=copy_to_clipboard"
+        "super+v=paste_from_clipboard"
+      ];
     };
   };
 }

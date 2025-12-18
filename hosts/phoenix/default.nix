@@ -6,6 +6,7 @@
     ./configuration.nix
     ../../modules/common
     ../../modules/nixos/desktop.nix
+    ../../modules/nixos/niri.nix
     ../../users/pavlo.nix
   ];
 
