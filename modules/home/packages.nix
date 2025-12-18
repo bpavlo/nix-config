@@ -6,6 +6,9 @@
     # Must Have
     brave
 
+    # quickshell
+    quickshell
+
     # Social
     telegram-desktop
     signal-desktop

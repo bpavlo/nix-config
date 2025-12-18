@@ -1,56 +1,6 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  imports = [
-    inputs.noctalia.homeModules.default
-  ];
-
-  programs.noctalia-shell = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-    systemd.enable = true;
-    settings = {
-      bar = {
-        position = "top";
-        density = "comfortable";
-        left = [
-          "SidePanel"
-          "Wifi"
-          "Bluetooth"
-        ];
-        center = [ "Workspaces" ];
-        right = [
-          "Battery"
-          "Clock"
-        ];
-        widgets = {
-          workspaces = {
-            showLabels = false;
-            showOccupied = true;
-          };
-          battery = {
-            showPercentage = true;
-            warnThreshold = 20;
-          };
-          clock = {
-            use24Hour = true;
-          };
-        };
-      };
-      general = {
-        colorScheme = "custom";
-        customColors = {
-          background = "#000000";
-          foreground = "#c1c1c1";
-          primary = "#5f8787";
-          accent = "#eecc6c";
-          warning = "#eecc6c";
-          error = "#5f8787";
-        };
-        cornerRadiusRatio = 0.2;
-      };
-    };
-  };
-
   xdg.configFile."niri/config.kdl" = lib.mkIf pkgs.stdenv.isLinux {
     text = ''
       input {
@@ -78,13 +28,15 @@
           xcursor-size 24
       }
 
+      prefer-no-csd
+
       spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
-      spawn-at-startup "${pkgs.mako}/bin/mako"
+      spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-c" "#000000"
 
       binds {
-          Super+T { spawn "${pkgs.ghostty}/bin/ghostty"; }
           Super+D { spawn "${pkgs.fuzzel}/bin/fuzzel"; }
-          Super+Shift+Slash { spawn "${pkgs.swaylock}/bin/swaylock" "-f" "-c" "000000"; }
+          Super+Space { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --newest call launcher toggle"; }
+          Super+S { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --newest call controlCenter toggle"; }
           Super+Q { close-window; }
           Super+Shift+E { quit; }
 
@@ -184,19 +136,6 @@
     '';
   };
 
-  services.mako = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-    settings = {
-      default-timeout = 5000;
-      ignore-timeout = false;
-      font = "FiraCode Nerd Font 12";
-      background-color = "#000000";
-      text-color = "#c1c1c1";
-      border-color = "#5f8787";
-      border-size = 2;
-    };
-  };
-
   programs.swaylock = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     settings = {
@@ -230,31 +169,6 @@
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
-  };
-
-  programs.fuzzel = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-    settings = {
-      main = {
-        terminal = "${pkgs.ghostty}/bin/ghostty";
-        font = "FiraCode Nerd Font:size=12";
-        lines = 15;
-        width = 40;
-        horizontal-pad = 30;
-        vertical-pad = 10;
-        border-width = 2;
-        border-radius = 5;
-      };
-      colors = {
-        background = "000000dd";
-        text = "c1c1c1ff";
-        match = "eecc6cff";
-        selection = "404040ff";
-        selection-text = "c1c1c1ff";
-        selection-match = "5f8787ff";
-        border = "5f8787ff";
-      };
-    };
   };
 
   home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
