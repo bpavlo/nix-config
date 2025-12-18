@@ -27,6 +27,10 @@
 
   services.tailscale.enable = true;
 
+  hardware.bluetooth.enable = true;
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
+
   networking.networkmanager.wifi = {
     powersave = false;
     scanRandMacAddress = false;
