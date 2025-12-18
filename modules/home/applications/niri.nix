@@ -123,8 +123,6 @@
           Super+Shift+Equal { set-window-height "+10%"; }
 
           Super+Shift+Space { toggle-window-floating; }
-          Super+Space { toggle-focus-layer; }
-          Super+W { toggle-column-tabbed; }
 
           Super+O { toggle-overview; }
       }
