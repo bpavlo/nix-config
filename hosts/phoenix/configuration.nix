@@ -28,17 +28,8 @@
   services.tailscale.enable = true;
 
   networking.networkmanager.wifi = {
-    backend = "iwd";
     powersave = false;
     scanRandMacAddress = false;
-  };
-
-  networking.wireless.iwd = {
-    enable = true;
-    settings = {
-      General.EnableNetworkConfiguration = false;
-      Rank.BandModifier5Ghz = 2.0;
-    };
   };
 
   services.udev.extraRules = ''
