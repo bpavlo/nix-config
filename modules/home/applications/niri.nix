@@ -61,8 +61,8 @@
 
       binds {
           Super+D { spawn "${pkgs.fuzzel}/bin/fuzzel"; }
-          Super+Space { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --newest call launcher toggle"; }
-          Super+S { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --newest call controlCenter toggle"; }
+          Super+Space { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --pid $(${pkgs.procps}/bin/pgrep quickshell) call launcher toggle"; }
+          Super+S { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --pid $(${pkgs.procps}/bin/pgrep quickshell) call controlCenter toggle"; }
           Super+Q { close-window; }
           Super+Shift+E { quit; }
 

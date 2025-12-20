@@ -107,6 +107,7 @@
   networking = {
     hostName = "phoenix";
     networkmanager.enable = true;
+    firewall.checkReversePath = "loose"; # Required for Tailscale exit nodes
   };
 
   nix = {

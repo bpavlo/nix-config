@@ -10,6 +10,48 @@
     inputs.noctalia.homeModules.default
   ];
 
+  # Copy custom color scheme
+  xdg.configFile."noctalia/colorschemes/Monochrome.json" = lib.mkIf pkgs.stdenv.isLinux {
+    text = builtins.toJSON {
+      dark = {
+        mPrimary = "#aaaaaa";
+        mOnPrimary = "#111111";
+        mSecondary = "#a7a7a7";
+        mOnSecondary = "#111111";
+        mTertiary = "#cccccc";
+        mOnTertiary = "#111111";
+        mError = "#dddddd";
+        mOnError = "#111111";
+        mSurface = "#111111";
+        mOnSurface = "#828282";
+        mSurfaceVariant = "#191919";
+        mOnSurfaceVariant = "#5d5d5d";
+        mOutline = "#3c3c3c";
+        mShadow = "#000000";
+        mHover = "#cccccc";
+        mOnHover = "#111111";
+      };
+      light = {
+        mPrimary = "#555555";
+        mOnPrimary = "#eeeeee";
+        mSecondary = "#505058";
+        mOnSecondary = "#eeeeee";
+        mTertiary = "#333333";
+        mOnTertiary = "#eeeeee";
+        mError = "#222222";
+        mOnError = "#efefef";
+        mSurface = "#d4d4d4";
+        mOnSurface = "#696969";
+        mSurfaceVariant = "#e8e8e8";
+        mOnSurfaceVariant = "#9e9e9e";
+        mOutline = "#c3c3c3";
+        mShadow = "#fafafa";
+        mHover = "#333333";
+        mOnHover = "#eeeeee";
+      };
+    };
+  };
+
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;
@@ -19,7 +61,7 @@
       bar = {
         position = "top";
         monitors = [ ];
-        density = "default";
+        density = "comfortable";
         transparent = false;
         showOutline = false;
         showCapsule = true;
@@ -34,7 +76,7 @@
             {
               icon = "rocket";
               id = "CustomButton";
-              leftClickExec = "qs -c noctalia-shell ipc call launcher toggle";
+              leftClickExec = "qs ipc --pid $(pgrep quickshell) call launcher toggle";
             }
             {
               id = "SystemMonitor";
@@ -63,6 +105,7 @@
             }
             {
               id = "Battery";
+              displayMode = "alwaysShow";
             }
             {
               id = "Volume";
