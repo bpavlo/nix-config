@@ -10,6 +10,7 @@
     ./applications
     ./packages.nix
     ./fish.nix
+    ./ssh.nix
     ./applications/aerospace.nix
   ];
 

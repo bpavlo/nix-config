@@ -5,6 +5,8 @@
 
     # Must Have
     brave
+    bitwarden-desktop
+    bitwarden-cli
 
     # quickshell
     quickshell
