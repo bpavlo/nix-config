@@ -8,8 +8,9 @@
     bitwarden-desktop
     bitwarden-cli
 
-    # quickshell
+    # desktop
     quickshell
+
 
     # Social
     telegram-desktop
