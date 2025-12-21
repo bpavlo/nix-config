@@ -54,7 +54,7 @@
 
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
 
     settings = {
       settingsVersion = 0;
@@ -147,10 +147,10 @@
         allowPanelsOnScreenWithoutBar = true;
       };
       ui = {
-        fontDefault = "";
-        fontFixed = "";
-        fontDefaultScale = 1.25;
-        fontFixedScale = 1.25;
+        fontDefault = "FiraCode Nerd Font";
+        fontFixed = "FiraCode Nerd Font";
+        fontDefaultScale = 1;
+        fontFixedScale = 1;
         tooltipsEnabled = true;
         panelBackgroundOpacity = 0.85;
         panelsAttachedToBar = true;

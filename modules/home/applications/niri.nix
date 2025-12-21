@@ -29,9 +29,9 @@
           focus-ring {
             on
             width 2
-            active-color "cccccc"
+            active-color "5f8787"
             inactive-color "aaaaaa"
-            urgent-color "dddddd"
+            urgent-color "f3ecd4"
           }
           border {
             off
@@ -58,14 +58,17 @@
 
       spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
       spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-c" "#000000"
+      spawn-at-startup "sh" "-c" "QT_SCALE_FACTOR=1.25 noctalia-shell"
 
       binds {
           Super+D { spawn "${pkgs.fuzzel}/bin/fuzzel"; }
           Super+Space { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --pid $(${pkgs.procps}/bin/pgrep quickshell) call launcher toggle"; }
-          Super+S { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --pid $(${pkgs.procps}/bin/pgrep quickshell) call controlCenter toggle"; }
+          Super+Shift+P { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --pid $(${pkgs.procps}/bin/pgrep quickshell) call controlCenter toggle"; }
           Super+Q { close-window; }
           Super+Shift+E { quit; }
+          Super+Return { spawn "ghostty"; }
 
+          Super+S { screenshot; }
           Super+Shift+S { screenshot-screen; }
           Print { screenshot; }
           Ctrl+Print { screenshot-screen; }
@@ -158,6 +161,17 @@
           Super+Shift+Space { toggle-window-floating; }
 
           Super+O { toggle-overview; }
+
+          // XF86 Media keys (Function keys on Framework laptop)
+          XF86AudioRaiseVolume { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+          XF86AudioLowerVolume { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+          XF86AudioMute { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+          XF86AudioMicMute { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+          XF86MonBrightnessUp { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%+"; }
+          XF86MonBrightnessDown { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%-"; }
+          XF86AudioPlay { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
+          XF86AudioNext { spawn "${pkgs.playerctl}/bin/playerctl" "next"; }
+          XF86AudioPrev { spawn "${pkgs.playerctl}/bin/playerctl" "previous"; }
       }
     '';
   };

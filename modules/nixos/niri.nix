@@ -15,6 +15,8 @@
     qt6.qtwayland
     swaybg
     fuzzel
+    brightnessctl
+    playerctl
   ];
 
   programs.dconf.enable = true;
