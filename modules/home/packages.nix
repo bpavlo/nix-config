@@ -10,7 +10,7 @@
 
     # desktop
     quickshell
-
+    bluetui
 
     # Social
     telegram-desktop
@@ -74,7 +74,6 @@
     eza
     fastfetch
     gnupg
-    lf
     mkpasswd
     nmap
     ripgrep

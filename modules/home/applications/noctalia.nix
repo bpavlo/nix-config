@@ -54,7 +54,9 @@
 
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = false;
+    systemd = {
+      enable = true;
+    };
 
     settings = {
       settingsVersion = 0;
@@ -74,12 +76,7 @@
         widgets = {
           left = [
             {
-              icon = "rocket";
-              id = "CustomButton";
-              leftClickExec = "qs ipc --pid $(pgrep quickshell) call launcher toggle";
-            }
-            {
-              id = "SystemMonitor";
+              id = "Workspace";
             }
             {
               id = "ActiveWindow";
@@ -90,7 +87,8 @@
           ];
           center = [
             {
-              id = "Workspace";
+              id = "Clock";
+              usePrimaryColor = false;
             }
           ];
           right = [
@@ -114,8 +112,7 @@
               id = "Brightness";
             }
             {
-              id = "Clock";
-              usePrimaryColor = false;
+              id = "SystemMonitor";
             }
             {
               id = "ControlCenter";
@@ -134,8 +131,8 @@
         boxRadiusRatio = 1;
         screenRadiusRatio = 1;
         animationSpeed = 1;
-        animationDisabled = false;
-        compactLockScreen = false;
+        animationDisabled = true;
+        compactLockScreen = true;
         lockOnSuspend = true;
         showSessionButtonsOnLockScreen = true;
         showHibernateOnLockScreen = false;
@@ -282,19 +279,7 @@
           }
           {
             enabled = true;
-            id = "audio-card";
-          }
-          {
-            enabled = false;
-            id = "brightness-card";
-          }
-          {
-            enabled = true;
             id = "weather-card";
-          }
-          {
-            enabled = true;
-            id = "media-sysmon-card";
           }
         ];
       };

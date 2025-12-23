@@ -41,7 +41,6 @@
 
       "fastfetch"
       "gnupg"
-      "lf"
       "nmap"
       "yazi"
       "yt-dlp"

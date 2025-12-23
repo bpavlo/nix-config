@@ -66,9 +66,28 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.commit-mono
-  ];
+  fonts = {
+    packages = with pkgs; [
+      # Nerd fonts for terminal
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.commit-mono
+
+      # UI fonts
+      inter
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      font-awesome
+    ];
+
+    fontconfig = {
+      defaultFonts = {
+        sansSerif = [ "Noto Sans" ];
+        serif = [ "Noto Serif" ];
+        monospace = [ "FiraCode Nerd Font" "Noto Sans Mono" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+    };
+  };
 }
