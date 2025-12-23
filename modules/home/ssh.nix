@@ -3,16 +3,16 @@
 {
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
 
-    # Add keys to agent automatically
-    addKeysToAgent = "yes";
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+    };
   };
 
-  # Configure Bitwarden SSH agent on Linux
   home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
   };
 
-  # Disable other SSH agents to avoid conflicts
   services.ssh-agent.enable = false;
 }

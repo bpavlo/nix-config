@@ -16,10 +16,7 @@
       window-padding-x = 10;
       window-padding-y = 10;
       keybind = [
-        "super+c=copy_to_clipboard"
-        "super+v=paste_from_clipboard"
-        "super+w=close_tab"
-        "super+t=new_tab"
+        "ctrl+shift+w=close_tab"
       ];
       window-decoration = "none";
     };

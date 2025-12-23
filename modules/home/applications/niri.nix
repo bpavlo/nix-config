@@ -1,5 +1,8 @@
 { pkgs, lib, ... }:
 
+let
+  qs = "qs";
+in
 {
   xdg.configFile."niri/config.kdl" = lib.mkIf pkgs.stdenv.isLinux {
     text = ''
@@ -56,17 +59,22 @@
         variable-refresh-rate
       }
 
-      spawn-at-startup "${pkgs.xwayland-satellite}/bin/xwayland-satellite"
-      spawn-at-startup "${pkgs.swaybg}/bin/swaybg" "-c" "#000000"
-      spawn-at-startup "sh" "-c" "QT_SCALE_FACTOR=1.25 noctalia-shell"
+      animations {
+        off
+      }
+
+      spawn-at-startup "xwayland-satellite"
+      spawn-at-startup "swaybg" "-c" "#000000"
+      spawn-at-startup "swayosd-server"
 
       binds {
-          Super+D { spawn "${pkgs.fuzzel}/bin/fuzzel"; }
-          Super+Space { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --pid $(${pkgs.procps}/bin/pgrep quickshell) call launcher toggle"; }
-          Super+Shift+P { spawn "sh" "-c" "${pkgs.quickshell}/bin/qs ipc --pid $(${pkgs.procps}/bin/pgrep quickshell) call controlCenter toggle"; }
+          Super+D { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call launcher toggle"; }
+          Super+Space { switch-focus-between-floating-and-tiling; }
           Super+Q { close-window; }
-          Super+Shift+E { quit; }
+          Super+Shift+E { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call sessionMenu toggle"; }
+          Super+Shift+P { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call controlCenter toggle"; }
           Super+Return { spawn "ghostty"; }
+          Super+X { spawn "swaylock" "-f" "-c" "000000"; }
 
           Super+S { screenshot; }
           Super+Shift+S { screenshot-screen; }
@@ -163,15 +171,16 @@
           Super+O { toggle-overview; }
 
           // XF86 Media keys (Function keys on Framework laptop)
-          XF86AudioRaiseVolume { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
-          XF86AudioLowerVolume { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
-          XF86AudioMute { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-          XF86AudioMicMute { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-          XF86MonBrightnessUp { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%+"; }
-          XF86MonBrightnessDown { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "5%-"; }
-          XF86AudioPlay { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
-          XF86AudioNext { spawn "${pkgs.playerctl}/bin/playerctl" "next"; }
-          XF86AudioPrev { spawn "${pkgs.playerctl}/bin/playerctl" "previous"; }
+          // Using swayosd for OSD feedback
+          XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "raise"; }
+          XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "lower"; }
+          XF86AudioMute { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+          XF86AudioMicMute { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+          XF86MonBrightnessUp { spawn "swayosd-client" "--brightness" "raise"; }
+          XF86MonBrightnessDown { spawn "swayosd-client" "--brightness" "lower"; }
+          XF86AudioPlay { spawn "playerctl" "play-pause"; }
+          XF86AudioNext { spawn "playerctl" "next"; }
+          XF86AudioPrev { spawn "playerctl" "previous"; }
       }
     '';
   };
@@ -189,24 +198,18 @@
 
   services.swayidle = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
-      }
-      {
-        event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
-      }
-    ];
+    events = {
+      before-sleep = "swaylock -f -c 000000";
+      lock = "swaylock -f -c 000000";
+    };
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
+        command = "loginctl lock-session";
       }
       {
         timeout = 600;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
+        command = "systemctl suspend";
       }
     ];
   };
