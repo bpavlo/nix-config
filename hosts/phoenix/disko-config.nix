@@ -85,6 +85,12 @@
                     };
 
                     # Snapshots directory
+                    # NOTE: Currently unused. On next reinstall, replace with:
+                    # "@home-snapshots" = {
+                    #   mountpoint = "/home/.snapshots";
+                    #   mountOptions = [ "compress=zstd:1" "noatime" "space_cache=v2" "discard=async" "ssd" ];
+                    # };
+                    # We only need home snapshots since NixOS provides system rollback via generations.
                     "@snapshots" = {
                       mountpoint = "/.snapshots";
                       mountOptions = [
