@@ -156,7 +156,7 @@
       location = {
         name = "Montreal";
         weatherEnabled = true;
-        weatherShowEffects = true;
+        weatherShowEffects = false;
         useFahrenheit = false;
         use12hourFormat = false;
         showWeekNumberInCalendar = false;

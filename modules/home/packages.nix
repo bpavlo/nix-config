@@ -86,6 +86,10 @@
     jellyfin-ffmpeg
     mpv-unwrapped
 
+    # Gaming
+    gamemode
+    gamescope
+
     # Nix Tools
     nix-du
     nix-top
