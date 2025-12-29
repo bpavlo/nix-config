@@ -65,7 +65,6 @@ in
 
       spawn-at-startup "xwayland-satellite"
       spawn-at-startup "swaybg" "-c" "#000000"
-      spawn-at-startup "swayosd-server"
 
       binds {
           Super+D { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call launcher toggle"; }
@@ -91,24 +90,24 @@ in
           Super+J { focus-window-down; }
           Super+K { focus-window-up; }
 
-          Super+Ctrl+Left { move-column-left; }
-          Super+Ctrl+Right { move-column-right; }
-          Super+Ctrl+Down { move-window-down; }
-          Super+Ctrl+Up { move-window-up; }
-          Super+Ctrl+H { move-column-left; }
-          Super+Ctrl+L { move-column-right; }
-          Super+Ctrl+J { move-window-down; }
-          Super+Ctrl+K { move-window-up; }
+          Super+Shift+Left { move-column-left; }
+          Super+Shift+Right { move-column-right; }
+          Super+Shift+Down { move-window-down; }
+          Super+Shift+Up { move-window-up; }
+          Super+Shift+H { move-column-left; }
+          Super+Shift+L { move-column-right; }
+          Super+Shift+J { move-window-down; }
+          Super+Shift+K { move-window-up; }
 
           Super+Home { focus-column-first; }
           Super+End { focus-column-last; }
 
-          Super+Shift+Left { focus-monitor-left; }
-          Super+Shift+Right { focus-monitor-right; }
-          Super+Shift+Down { focus-monitor-down; }
-          Super+Shift+Up { focus-monitor-up; }
-          Super+Shift+H { focus-monitor-left; }
-          Super+Shift+L { focus-monitor-right; }
+          Super+Ctrl+Left { focus-monitor-left; }
+          Super+Ctrl+Right { focus-monitor-right; }
+          Super+Ctrl+Down { focus-monitor-down; }
+          Super+Ctrl+Up { focus-monitor-up; }
+          Super+Ctrl+H { focus-monitor-left; }
+          Super+Ctrl+L { focus-monitor-right; }
 
           Super+Shift+Ctrl+Left { move-column-to-monitor-left; }
           Super+Shift+Ctrl+Right { move-column-to-monitor-right; }
@@ -171,13 +170,13 @@ in
           Super+O { toggle-overview; }
 
           // XF86 Media keys (Function keys on Framework laptop)
-          // Using swayosd for OSD feedback
-          XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume" "raise"; }
-          XF86AudioLowerVolume { spawn "swayosd-client" "--output-volume" "lower"; }
-          XF86AudioMute { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
-          XF86AudioMicMute { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
-          XF86MonBrightnessUp { spawn "swayosd-client" "--brightness" "raise"; }
-          XF86MonBrightnessDown { spawn "swayosd-client" "--brightness" "lower"; }
+          // Using wpctl for audio control (more reliable than swayosd)
+          XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+          XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
+          XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+          XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+          XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
+          XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
           XF86AudioPlay { spawn "playerctl" "play-pause"; }
           XF86AudioNext { spawn "playerctl" "next"; }
           XF86AudioPrev { spawn "playerctl" "previous"; }

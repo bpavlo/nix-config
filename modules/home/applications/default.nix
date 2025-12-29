@@ -12,5 +12,6 @@
     ./mako.nix
     ./fuzzel.nix
     ./gammastep.nix
+    # ./anyrun.nix
   ];
 }
