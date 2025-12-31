@@ -61,12 +61,8 @@ in
       output "eDP-1" {
         mode "2880x1920@119.97"
         scale 2.0
-        variable-refresh-rate
-      }
-
-      output "DP-4" {
-        mode "2560x1440@99.3"
-        variable-refresh-rate
+        variable-refresh-rate on-demand=true
+        position x=0 y=0
       }
 
       animations {
