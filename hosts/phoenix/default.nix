@@ -6,6 +6,7 @@
     ./configuration.nix
     ../../modules/common
     ../../modules/nixos/niri.nix
+    ../../modules/nixos/gaming.nix
     ../../users/pavlo.nix
   ];
 
