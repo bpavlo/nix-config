@@ -30,6 +30,15 @@
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+  # Automounting for removable storage
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+
+  # Enable XDG portal support for Chromium-based browsers
+  environment.sessionVariables = {
+    NIXOS_XDG_OPEN_USE_PORTAL = "1";
+  };
+
   # Geolocation for gammastep
   services.geoclue2.enable = true;
 
@@ -51,6 +60,9 @@
     fuzzel
     brightnessctl
     playerctl
+
+    # File manager
+    nautilus
 
     # Modular shell components
     waybar
