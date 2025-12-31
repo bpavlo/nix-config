@@ -6,6 +6,7 @@
 
     kernelParams = [
       "amdgpu.dcdebugmask=0x12"
+      "amdgpu.ppfeaturemask=0xffffffff"
     ];
   };
 
