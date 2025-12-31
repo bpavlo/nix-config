@@ -87,7 +87,6 @@
     mpv-unwrapped
 
     # Gaming
-    gamemode
     gamescope
 
     # Nix Tools

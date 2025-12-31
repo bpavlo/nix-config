@@ -48,6 +48,16 @@ in
 
       prefer-no-csd
 
+      window-rule {
+          match app-id="^steam$"
+          open-floating true
+      }
+
+      window-rule {
+          match app-id="^steam_.*"
+          open-floating true
+      }
+
       output "eDP-1" {
         mode "2880x1920@119.97"
         scale 2.0
