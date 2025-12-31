@@ -91,7 +91,10 @@
       defaultFonts = {
         sansSerif = [ "Noto Sans" ];
         serif = [ "Noto Serif" ];
-        monospace = [ "FiraCode Nerd Font" "Noto Sans Mono" ];
+        monospace = [
+          "FiraCode Nerd Font"
+          "Noto Sans Mono"
+        ];
         emoji = [ "Noto Color Emoji" ];
       };
     };
