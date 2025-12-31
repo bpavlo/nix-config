@@ -96,8 +96,27 @@
 
   networking = {
     hostName = "phoenix";
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
     firewall.checkReversePath = "loose"; # Required for Tailscale exit nodes
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        General = {
+          EnableNetworkConfiguration = false; # Let NetworkManager handle this
+          RoamRetryInterval = 15;
+        };
+        Network = {
+          EnableIPv6 = true;
+          RoutePriorityOffset = 300;
+        };
+        Settings = {
+          AutoConnect = true;
+        };
+      };
+    };
   };
 
   nix = {
