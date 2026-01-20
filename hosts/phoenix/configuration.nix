@@ -63,13 +63,6 @@
   environment.systemPackages = with pkgs; [
     wdisplays
     wlr-randr
-
-    # Thermal monitoring and benchmarking
-    lm_sensors
-    stress-ng
-    s-tui
-    powertop
-    linuxPackages_latest.turbostat
   ];
 
   fonts = {

@@ -10,7 +10,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
         user = "greeter";
       };
     };
@@ -39,7 +39,7 @@
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
   };
 
-  # Geolocation for gammastep
+  # Geolocation for Noctalia night light
   services.geoclue2.enable = true;
 
   # XDG portals for file pickers, screensharing, etc.
@@ -57,18 +57,13 @@
     wl-clipboard
     qt6.qtwayland
     swaybg
-    fuzzel
     brightnessctl
     playerctl
 
-    # File manager
+    # GNOME file manager for XDG portal file pickers
     nautilus
 
-    # Modular shell components
-    waybar
-    mako
-    swayosd
-    gammastep
+    # System utilities
     pwvucontrol
   ];
 

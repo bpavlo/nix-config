@@ -8,6 +8,9 @@
     bitwarden-desktop
     bitwarden-cli
 
+    # Must have 2
+    awscli2
+
     # desktop
     quickshell
     bluetui
@@ -55,7 +58,7 @@
     jdk
     lua
     nodejs_24
-    poetry
+    stable.poetry
     rustc
     yarn
 
@@ -78,6 +81,7 @@
     nmap
     ripgrep
     tree
+    veracrypt
     yamllint
     yazi
     yt-dlp

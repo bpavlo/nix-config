@@ -20,6 +20,7 @@
         "super+t=new_tab"
         "super+c=copy_to_clipboard"
         "super+v=paste_from_clipboard"
+        "shift+enter=text:\x1b[13;2u"
       ];
       window-decoration = "none";
     };
