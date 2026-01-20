@@ -109,10 +109,11 @@
               id = "Volume";
             }
             {
-              id = "Brightness";
+              id = "Bluetooth";
             }
             {
               id = "SystemMonitor";
+              compactMode = false;
             }
             {
               id = "ControlCenter";
@@ -281,6 +282,10 @@
             enabled = true;
             id = "weather-card";
           }
+          {
+            enabled = true;
+            id = "system-monitor-card";
+          }
         ];
       };
       systemMonitor = {
@@ -306,7 +311,7 @@
         criticalColor = "";
       };
       dock = {
-        enabled = true;
+        enabled = false; # Disabled - using minimal Noctalia (bar only)
         displayMode = "auto_hide";
         backgroundOpacity = 1;
         floatingRatio = 1;

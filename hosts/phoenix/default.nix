@@ -57,6 +57,7 @@
 
   # Memory management
   boot.kernelParams = [ "zswap.enabled=1" ];
+
   zramSwap = {
     enable = true;
     algorithm = "zstd";
@@ -105,16 +106,11 @@
     wireless.iwd = {
       enable = true;
       settings = {
-        General = {
-          EnableNetworkConfiguration = false; # Let NetworkManager handle this
-          RoamRetryInterval = 15;
-        };
-        Network = {
-          EnableIPv6 = true;
-          RoutePriorityOffset = 300;
-        };
-        Settings = {
-          AutoConnect = true;
+        General.EnableNetworkConfiguration = false;
+        Settings.AutoConnect = true;
+        Rank = {
+          BandModifier5Ghz = 2.0;
+          BandModifier6Ghz = 2.0;
         };
       };
     };

@@ -11,5 +11,8 @@
     wget
     jq
     tree
+
+    gnumake
+    gcc
   ];
 }
