@@ -13,7 +13,17 @@
   time.timeZone = "America/Toronto";
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 ];
+  };
+
+  # Network printer discovery
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -63,6 +73,7 @@
   environment.systemPackages = with pkgs; [
     wdisplays
     wlr-randr
+    system-config-printer
   ];
 
   fonts = {
