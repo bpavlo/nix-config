@@ -27,5 +27,5 @@
   };
 
   # Shell activation script
-  system.activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh'';
+  system.activationScripts.postActivation.text = "sudo chsh -s ${pkgs.zsh}/bin/zsh";
 }
