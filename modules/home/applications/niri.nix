@@ -79,7 +79,6 @@ in
           Super+Shift+E { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call sessionMenu toggle"; }
           Super+Shift+P { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call controlCenter toggle"; }
           Super+Return { spawn "ghostty"; }
-          Super+X { spawn "swaylock" "-f" "-c" "000000"; }
 
           Super+S { screenshot; }
           Super+Shift+S { screenshot-screen; }
@@ -190,23 +189,8 @@ in
     '';
   };
 
-  programs.swaylock = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
-    settings = {
-      color = "000000";
-      font-size = 24;
-      indicator-idle-visible = false;
-      indicator-radius = 100;
-      show-failed-attempts = true;
-    };
-  };
-
   services.swayidle = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
-    events = {
-      before-sleep = "swaylock -f -c 000000";
-      lock = "swaylock -f -c 000000";
-    };
     timeouts = [
       {
         timeout = 300;
