@@ -73,6 +73,7 @@
     ruff
     stylua
     treefmt
+    uv
 
     # CLI Utilities
     bottom
