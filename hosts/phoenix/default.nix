@@ -7,6 +7,7 @@
     ../../modules/common
     ../../modules/nixos/niri.nix
     ../../modules/nixos/gaming.nix
+    ../../modules/nixos/wireguard.nix
     ../../users/pavlo.nix
   ];
 
