@@ -85,13 +85,13 @@
 
   fonts = {
     packages = with pkgs; [
-      # Nerd fonts for terminal
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.commit-mono
+      nerd-fonts.roboto-mono
 
-      # UI fonts
       inter
+      roboto
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
