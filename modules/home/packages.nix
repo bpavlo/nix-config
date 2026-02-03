@@ -7,6 +7,7 @@
     brave
     bitwarden-desktop
     bitwarden-cli
+    rmpc
 
     # Must have 2
     awscli2
@@ -32,7 +33,7 @@
     aws-vault
     awscli2
     google-cloud-sdk
-    ssm-session-manager-plugin
+    stable.ssm-session-manager-plugin
     teleport
 
     # Containers & Kubernetes
@@ -61,6 +62,7 @@
     stable.poetry
     rustc
     yarn
+    python312
 
     # Dev Tools
     gh
