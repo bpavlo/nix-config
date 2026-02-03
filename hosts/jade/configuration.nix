@@ -31,5 +31,5 @@
     fish.enable = true;
   };
 
-  system.activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.fish}/bin/fish'';
+  system.activationScripts.postActivation.text = "sudo chsh -s ${pkgs.fish}/bin/fish";
 }
