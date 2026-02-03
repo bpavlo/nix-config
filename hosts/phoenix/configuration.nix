@@ -40,6 +40,13 @@
 
   services.tailscale.enable = true;
 
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      log-driver = "journald";
+    };
+  };
+
   # Key remapping - remap Caps Lock to Alt
   services.keyd = {
     enable = true;
