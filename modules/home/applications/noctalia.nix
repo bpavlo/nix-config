@@ -102,18 +102,21 @@
               id = "NotificationHistory";
             }
             {
-              id = "Battery";
-              displayMode = "alwaysShow";
-            }
-            {
               id = "Volume";
             }
             {
               id = "Bluetooth";
             }
             {
+              id = "WiFi";
+            }
+            {
               id = "SystemMonitor";
               compactMode = false;
+            }
+            {
+              id = "Battery";
+              displayMode = "alwaysShow";
             }
             {
               id = "ControlCenter";
