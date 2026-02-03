@@ -15,7 +15,10 @@
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 ];
+    drivers = [
+      pkgs.epson-escpr
+      pkgs.epson-escpr2
+    ];
   };
 
   # Network printer discovery
