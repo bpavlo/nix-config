@@ -16,7 +16,7 @@
     };
 
     font = {
-      name = "Noto Sans";
+      name = "Roboto Medium";
       size = 12;
     };
 

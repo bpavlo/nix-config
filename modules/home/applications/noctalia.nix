@@ -145,11 +145,11 @@
         allowPanelsOnScreenWithoutBar = true;
       };
       ui = {
-        fontDefault = "FiraCode Nerd Font";
+        fontDefault = "Roboto Medium";
         fontFixed = "FiraCode Nerd Font";
         fontDefaultScale = 1;
         fontFixedScale = 1;
-        tooltipsEnabled = true;
+        tooltipsEnabled = false;
         panelBackgroundOpacity = 0.85;
         panelsAttachedToBar = true;
         settingsPanelMode = "attached";
