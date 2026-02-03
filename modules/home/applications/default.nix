@@ -8,5 +8,6 @@
     ./niri.nix
     ./noctalia.nix
     ./gtk.nix
+    ./mpd.nix
   ];
 }
