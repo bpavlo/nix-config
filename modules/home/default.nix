@@ -18,6 +18,14 @@
 
   manual.manpages.enable = false;
 
+  home.sessionPath = [
+    "$HOME/go/bin"
+  ];
+
+  home.sessionVariables = {
+    GOPATH = "$HOME/go";
+  };
+
   programs = {
     neovim = {
       enable = true;

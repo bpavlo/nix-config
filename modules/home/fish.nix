@@ -13,6 +13,7 @@
         set -g fish_greeting
         fish_vi_key_bindings
         set -gx GPG_TTY (tty)
+        fish_add_path $HOME/go/bin
       '';
 
       functions = {
