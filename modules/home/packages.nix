@@ -8,6 +8,7 @@
     bitwarden-desktop
     bitwarden-cli
     rmpc
+    obsidian
 
     # Must have 2
     awscli2
