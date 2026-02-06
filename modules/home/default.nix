@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -12,6 +13,7 @@
     ./fish.nix
     ./ssh.nix
     ./applications/aerospace.nix
+    inputs.zen-browser.homeModules.twilight
   ];
 
   home.stateVersion = "25.11";
@@ -32,6 +34,10 @@
       defaultEditor = true;
     };
     home-manager.enable = true;
+
+    zen-browser = lib.mkIf pkgs.stdenv.isLinux {
+      enable = true;
+    };
   };
 
   services = {
