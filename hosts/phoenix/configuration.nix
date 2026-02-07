@@ -61,7 +61,7 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = false;
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
 
