@@ -8,6 +8,7 @@
     ../../modules/nixos/niri.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/wireguard.nix
+    ../../modules/nixos/obs.nix
     ../../users/pavlo.nix
   ];
 
