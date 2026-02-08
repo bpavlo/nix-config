@@ -9,5 +9,6 @@
     ./noctalia.nix
     ./gtk.nix
     ./mpd.nix
+    ./obs.nix
   ];
 }
