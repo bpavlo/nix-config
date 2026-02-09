@@ -43,6 +43,8 @@
 
   services.tailscale.enable = true;
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
