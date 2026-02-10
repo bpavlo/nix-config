@@ -16,7 +16,7 @@
     };
 
     font = {
-      name = "Roboto Medium";
+      name = "Inter";
       size = 12;
     };
 

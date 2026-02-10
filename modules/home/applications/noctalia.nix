@@ -148,7 +148,7 @@
         allowPanelsOnScreenWithoutBar = true;
       };
       ui = {
-        fontDefault = "Roboto Medium";
+        fontDefault = "Inter";
         fontFixed = "FiraCode Nerd Font";
         fontDefaultScale = 1;
         fontFixedScale = 1;
