@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   imports = [
@@ -105,7 +105,13 @@
       enable = true;
       wifi.backend = "iwd";
     };
-    firewall.checkReversePath = "loose"; # Required for Tailscale exit nodes
+    nftables.enable = true;
+    firewall = {
+      enable = true;
+      checkReversePath = "loose"; # Required for Tailscale exit nodes
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
     wireless.iwd = {
       enable = true;
       settings = {
@@ -118,6 +124,15 @@
       };
     };
   };
+
+  # Tailscale nftables support
+  systemd.services.tailscaled.serviceConfig.Environment = [
+    "TS_DEBUG_FIREWALL_MODE=nftables"
+  ];
+
+  # Optimization: Prevent systemd from waiting for network online
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
 
   nix = {
     settings = {
