@@ -12,6 +12,7 @@
 
     # Must have 2
     awscli2
+    opencode
 
     # desktop
     quickshell
