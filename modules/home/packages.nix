@@ -13,6 +13,7 @@
     # Must have 2
     awscli2
     opencode
+    typst
 
     # desktop
     quickshell
