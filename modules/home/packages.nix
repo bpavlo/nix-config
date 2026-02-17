@@ -111,6 +111,7 @@
     nil
     pyright
     terraform-ls
+    tinymist
 
   ];
 }
