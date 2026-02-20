@@ -1,117 +1,122 @@
 { pkgs, lib, ... }:
 
 {
-  home.packages = with pkgs; [
+  home.packages = (
+    with pkgs;
+    [
 
-    # Must Have
-    brave
-    bitwarden-desktop
-    bitwarden-cli
-    rmpc
-    obsidian
+      # Must Have
+      brave
+      bitwarden-desktop
+      bitwarden-cli
+      rmpc
+      obsidian
 
-    # Must have 2
-    awscli2
-    opencode
-    typst
+      # Must have 2
+      awscli2
+      opencode
+      typst
 
-    # desktop
-    quickshell
-    bluetui
+      # desktop
+      quickshell
+      bluetui
 
-    # Social
-    telegram-desktop
-    signal-desktop
-    vesktop
-    slack
-    zoom-us
+      # Social
+      telegram-desktop
+      signal-desktop
+      vesktop
+      slack
+      zoom-us
 
-    # AI
-    gemini-cli
-    codex
-    claude-code
-    ollama
+      # AI
+      gemini-cli
+      codex
+      claude-code
+      ollama
 
-    # Cloud & Infrastructure
-    aws-vault
-    awscli2
-    google-cloud-sdk
-    stable.ssm-session-manager-plugin
-    teleport
+      # Cloud & Infrastructure
+      aws-vault
+      awscli2
+      google-cloud-sdk
+      stable.ssm-session-manager-plugin
+      teleport
 
-    # Containers & Kubernetes
-    docker
-    k9s
-    kubectl
-    kubectx
-    kubernetes-helm
-    minikube
-    trivy
+      # Containers & Kubernetes
+      docker
+      k9s
+      kubectl
+      kubectx
+      kubernetes-helm
+      minikube
+      trivy
 
-    # IaC
-    packer
-    tenv
-    terraform-docs
-    terraformer
-    tflint
+      # IaC
+      packer
+      tenv
+      terraform-docs
+      terraformer
+      tflint
 
-    # Languages & Runtimes
-    cargo
-    elixir
-    go
-    jdk
-    lua
-    nodejs_24
-    stable.poetry
-    rustc
-    yarn
-    python312
+      # Languages & Runtimes
+      cargo
+      elixir
+      go
+      jdk
+      lua
+      nodejs_24
+      stable.poetry
+      rustc
+      yarn
+      python312
 
-    # Dev Tools
-    gh
-    hugo
-    isort
-    mermaid-cli
-    pre-commit
-    ruff
-    stylua
-    treefmt
-    uv
+      # Dev Tools
+      gh
+      hugo
+      isort
+      mermaid-cli
+      pre-commit
+      ruff
+      stylua
+      treefmt
+      uv
 
-    # CLI Utilities
-    bottom
-    eza
-    fastfetch
-    gnupg
-    mkpasswd
-    nmap
-    ripgrep
-    tree
-    veracrypt
-    yamllint
-    yazi
-    yt-dlp
+      # CLI Utilities
+      bottom
+      eza
+      fastfetch
+      gnupg
+      mkpasswd
+      nmap
+      ripgrep
+      tree
+      veracrypt
+      yamllint
+      yazi
+      yt-dlp
 
-    # Media
-    jellyfin-ffmpeg
-    mpv-unwrapped
+      # Media
+      jellyfin-ffmpeg
+      mpv-unwrapped
 
-    # Gaming
-    gamescope
+      # Gaming
+      gamescope
 
-    # Nix Tools
-    nix-du
-    nix-top
-    nix-tree
+      # Nix Tools
+      nix-du
+      nix-top
+      nix-tree
 
-    # LSPs
-    bash-language-server
-    gopls
-    lua-language-server
-    nil
-    pyright
-    terraform-ls
-    tinymist
-
-  ];
+      # LSPs
+      bash-language-server
+      gopls
+      lua-language-server
+      nil
+      pyright
+      terraform-ls
+      tinymist
+    ]
+    ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      coderabbit-cli
+    ])
+  );
 }
