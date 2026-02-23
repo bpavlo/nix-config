@@ -32,6 +32,10 @@
   qt = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     platformTheme.name = "gtk";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt;
+    };
   };
 
   dconf.settings = lib.mkIf pkgs.stdenv.isLinux {

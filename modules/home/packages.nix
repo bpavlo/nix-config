@@ -16,6 +16,7 @@
       awscli2
       opencode
       typst
+      qbittorrent
 
       # desktop
       quickshell

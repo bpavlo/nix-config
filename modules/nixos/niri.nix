@@ -55,7 +55,9 @@
   environment.systemPackages = with pkgs; [
     xwayland-satellite
     wl-clipboard
+    qt5.qtwayland
     qt6.qtwayland
+    adwaita-qt6
     swaybg
     brightnessctl
     playerctl
