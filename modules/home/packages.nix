@@ -18,6 +18,11 @@
       typst
       qbittorrent
 
+      # Must have 3
+      wowup-cf
+      postgresql_18
+      glab
+
       # desktop
       quickshell
       bluetui
