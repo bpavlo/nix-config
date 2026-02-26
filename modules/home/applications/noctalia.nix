@@ -90,6 +90,11 @@
               id = "Clock";
               usePrimaryColor = false;
             }
+            {
+              id = "KeyboardLayout";
+              displayMode = "alwaysShow";
+              showIcon = true;
+            }
           ];
           right = [
             {
@@ -374,7 +379,7 @@
         lowUrgencyDuration = 3;
         normalUrgencyDuration = 8;
         criticalUrgencyDuration = 15;
-        enableKeyboardLayoutToast = true;
+        enableKeyboardLayoutToast = false;
         sounds = {
           enabled = false;
           volume = 0.5;
