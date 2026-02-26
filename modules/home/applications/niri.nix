@@ -58,9 +58,27 @@ in
           open-floating true
       }
 
+      // Battle.net launcher (Xwayland via xwayland-satellite)
+      window-rule {
+          match app-id="^battle.net$"
+          open-floating true
+      }
+
+      window-rule {
+          match title="^Battle.net$"
+          open-floating true
+      }
+
       output "eDP-1" {
         mode "2880x1920@119.97"
         scale 2.0
+        variable-refresh-rate on-demand=true
+        position x=0 y=0
+      }
+
+      output "DP-3" {
+        mode "2560x1440@143.782"
+        scale 1.0
         variable-refresh-rate on-demand=true
         position x=0 y=0
       }
@@ -69,7 +87,6 @@ in
         off
       }
 
-      spawn-at-startup "xwayland-satellite"
       spawn-at-startup "swaybg" "-c" "#000000"
 
       binds {
