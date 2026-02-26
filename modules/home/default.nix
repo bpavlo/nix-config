@@ -14,6 +14,7 @@
     ./ssh.nix
     ./applications/aerospace.nix
     inputs.zen-browser.homeModules.twilight
+
   ];
 
   home.stateVersion = "25.11";
@@ -37,6 +38,7 @@
 
     zen-browser = lib.mkIf pkgs.stdenv.isLinux {
       enable = true;
+      suppressXdgMigrationWarning = true;
     };
   };
 
