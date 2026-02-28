@@ -64,19 +64,35 @@
   };
 
   # Memory management
-  boot.kernelParams = [ "zswap.enabled=1" ];
+  boot.kernelParams = [ "zswap.enabled=0" ];
 
   zramSwap = {
     enable = true;
     algorithm = "zstd";
-    memoryPercent = 50; # Use 50% of RAM for zram (16GB compressed)
+    memoryPercent = 50;
   };
 
-  # Better OOM handling
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 180;
+    "vm.watermark_boost_factor" = 0;
+    "vm.page-cluster" = 0;
+  };
+
   systemd.oomd = {
     enable = true;
     enableRootSlice = true;
     enableUserSlices = true;
+    settings.OOM = {
+      SwapUsedLimit = "50%";
+      DefaultMemoryPressureDurationSec = "10s";
+    };
+  };
+
+  systemd.slices."user".sliceConfig = {
+    ManagedOOMMemoryPressure = "kill";
+    ManagedOOMMemoryPressureLimit = "50%";
+    MemoryHigh = "28G";
+    MemoryMax = "30G";
   };
 
   # Btrfs-specific options
