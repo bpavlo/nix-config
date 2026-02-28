@@ -70,4 +70,10 @@
   ];
 
   programs.dconf.enable = true;
+
+  # Ensure xdg-desktop-portal-gtk starts with the graphical session.
+  # niri doesn't auto-start D-Bus-activated portal backends the way GNOME does.
+  systemd.user.services.xdg-desktop-portal-gtk = {
+    wantedBy = [ "graphical-session.target" ];
+  };
 }
