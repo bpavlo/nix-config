@@ -92,8 +92,7 @@
             }
             {
               id = "KeyboardLayout";
-              displayMode = "alwaysShow";
-              showIcon = true;
+              showIcon = false;
             }
           ];
           right = [
@@ -121,7 +120,7 @@
             }
             {
               id = "Battery";
-              displayMode = "alwaysShow";
+              displayMode = "graphic"; # graphic-clean omits the %, icon-always/icon-hover for text pill
             }
             {
               id = "ControlCenter";
