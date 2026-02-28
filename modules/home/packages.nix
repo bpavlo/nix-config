@@ -27,6 +27,7 @@
       wowup-cf
       postgresql_18
       glab
+      lazygit
 
       # desktop
       quickshell
