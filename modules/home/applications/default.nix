@@ -4,6 +4,7 @@
   imports = [
     ./ghostty.nix
     ./starship.nix
+    ./xdg.nix
     ./zathura.nix
     ./niri.nix
     ./noctalia.nix

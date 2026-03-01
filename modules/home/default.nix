@@ -27,6 +27,8 @@
 
   home.sessionVariables = {
     GOPATH = "$HOME/go";
+    BROWSER = "zen-twilight";
+    TERMINAL = "ghostty";
   };
 
   programs = {
