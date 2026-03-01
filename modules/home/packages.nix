@@ -103,11 +103,14 @@
       tree
       veracrypt
       yamllint
+      normcap
+      xdg-utils
       yazi
       yt-dlp
 
       # Media
       jellyfin-ffmpeg
+      loupe
       mpv-unwrapped
 
       # Gaming
