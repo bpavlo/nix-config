@@ -19,6 +19,8 @@
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
+    ghostty.url = "github:ghostty-org/ghostty";
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -87,6 +89,12 @@
             config.allowUnfree = true;
           };
         })
+        (
+          final: prev:
+          nixpkgs.lib.optionalAttrs prev.stdenv.isLinux {
+            ghostty = inputs.ghostty.packages.${final.system}.default;
+          }
+        )
       ];
 
       nixpkgsConfig = {

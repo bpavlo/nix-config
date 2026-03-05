@@ -28,6 +28,7 @@
       postgresql_18
       glab
       lazygit
+      heroic
 
       # desktop
       quickshell
