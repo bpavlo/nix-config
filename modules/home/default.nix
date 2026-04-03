@@ -19,6 +19,8 @@
 
   home.stateVersion = "25.11";
 
+  gtk.gtk4.theme = config.gtk.theme;
+
   manual.manpages.enable = false;
 
   home.sessionPath = [
@@ -41,7 +43,6 @@
 
     zen-browser = lib.mkIf pkgs.stdenv.isLinux {
       enable = true;
-      suppressXdgMigrationWarning = true;
     };
   };
 

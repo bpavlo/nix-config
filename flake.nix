@@ -83,18 +83,17 @@
 
       overlays = [
         (final: prev: {
-          # Stable packages available as pkgs.stable.xxx if needed
           stable = import nixpkgs-stable {
             system = final.system;
             config.allowUnfree = true;
           };
         })
-        (
-          final: prev:
-          nixpkgs.lib.optionalAttrs prev.stdenv.isLinux {
-            ghostty = inputs.ghostty.packages.${final.system}.default;
-          }
-        )
+#        (
+#          final: prev:
+#          nixpkgs.lib.optionalAttrs prev.stdenv.isLinux {
+#            ghostty = inputs.ghostty.packages.${final.system}.default;
+#          }
+#        )
       ];
 
       nixpkgsConfig = {
