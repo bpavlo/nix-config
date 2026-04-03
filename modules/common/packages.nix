@@ -6,6 +6,7 @@
     neovim
     ripgrep
     bottom
+    lsof
 
     curl
     wget
