@@ -44,7 +44,6 @@
       # AI
       gemini-cli
       codex
-      claude-code
       ollama
 
       # Cloud & Infrastructure
@@ -132,6 +131,7 @@
       tinymist
     ]
     ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      claude-code
       coderabbit-cli
     ])
   );
