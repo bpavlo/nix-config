@@ -153,7 +153,22 @@
 
   # Optimization: Prevent systemd from waiting for network online
   systemd.network.wait-online.enable = false;
+
   boot.initrd.systemd.network.wait-online.enable = false;
+
+  systemd.services.ryzenadj = {
+    enable = true;
+    description = "Set AMD APU power limits";
+    after = [ "power-profiles-daemon.service" ];
+    wantedBy = [
+      "multi-user.target"
+      "post-resume.target"
+    ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.ryzenadj}/bin/ryzenadj --stapm-limit=26000 --fast-limit=30000 --slow-limit=23000";
+    };
+  };
 
   nix = {
     settings = {
