@@ -207,7 +207,7 @@ in
   };
 
   services.swayidle = lib.mkIf pkgs.stdenv.isLinux {
-    enable = true;
+    enable = false;
     timeouts = [
       {
         timeout = 300;
