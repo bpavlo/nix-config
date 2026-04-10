@@ -141,9 +141,9 @@
         animationSpeed = 1;
         animationDisabled = true;
         compactLockScreen = true;
-        lockOnSuspend = true;
+        lockOnSuspend = false;
         showSessionButtonsOnLockScreen = true;
-        showHibernateOnLockScreen = false;
+        showHibernateOnLockScreen = true;
         enableShadows = true;
         shadowDirection = "bottom_right";
         shadowOffsetX = 2;

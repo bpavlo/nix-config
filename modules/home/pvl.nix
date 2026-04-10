@@ -24,6 +24,8 @@
     neovim = {
       enable = true;
       defaultEditor = true;
+      withRuby = false;
+      withPython3 = false;
     };
     home-manager.enable = true;
   };
