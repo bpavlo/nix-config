@@ -143,7 +143,7 @@
         compactLockScreen = true;
         lockOnSuspend = false;
         showSessionButtonsOnLockScreen = true;
-        showHibernateOnLockScreen = true;
+        showHibernateOnLockScreen = false;
         enableShadows = true;
         shadowDirection = "bottom_right";
         shadowOffsetX = 2;
@@ -344,15 +344,15 @@
         powerOptions = [
           {
             action = "lock";
-            enabled = true;
+            enabled = false;
           }
           {
             action = "suspend";
-            enabled = true;
+            enabled = false;
           }
           {
             action = "hibernate";
-            enabled = true;
+            enabled = false;
           }
           {
             action = "reboot";

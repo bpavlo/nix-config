@@ -61,6 +61,7 @@
     swaybg
     brightnessctl
     playerctl
+    swaylock
 
     # GNOME file manager for XDG portal file pickers
     nautilus

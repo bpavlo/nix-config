@@ -97,6 +97,10 @@ in
           Super+Shift+P { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call controlCenter toggle"; }
           Super+Return { spawn "ghostty"; }
 
+          Super+X { spawn "${pkgs.swaylock}/bin/swaylock" "-f" "-c" "000000"; }
+          Super+Shift+X { spawn "systemctl" "suspend"; }
+          Super+Ctrl+X { spawn "systemctl" "hibernate"; }
+
           Super+S { screenshot; }
           Super+Shift+S { screenshot-screen; }
           Print { screenshot; }
@@ -207,15 +211,21 @@ in
   };
 
   services.swayidle = lib.mkIf pkgs.stdenv.isLinux {
-    enable = false;
+    enable = true;
     timeouts = [
       {
         timeout = 300;
-        command = "loginctl lock-session";
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
       }
       {
         timeout = 600;
         command = "systemctl suspend";
+      }
+    ];
+    events = [
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
       }
     ];
   };
