@@ -38,7 +38,6 @@
     ];
   };
 
-  # Lanzaboote Secure Boot
   boot.loader.systemd-boot.enable = false;
   boot.loader.systemd-boot.consoleMode = "max"; # Larger font for high-DPI displays
   boot.lanzaboote = {
@@ -47,7 +46,6 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # TPM2 auto-unlock for LUKS
   boot.initrd.systemd.enable = true;
   security.tpm2 = {
     enable = true;
@@ -55,15 +53,12 @@
     tctiEnvironment.enable = true;
   };
 
-  # LUKS TPM2 unlock
   boot.initrd.luks.devices."cryptroot" = {
-    # Device will be set by disko
     allowDiscards = true;
     bypassWorkqueues = true;
     crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
 
-  # Memory management
   boot.kernelParams = [ "zswap.enabled=0" ];
 
   zramSwap = {
@@ -95,15 +90,12 @@
     MemoryMax = "30G";
   };
 
-  # Btrfs-specific options
   services.btrfs.autoScrub = {
     enable = true;
     interval = "weekly";
     fileSystems = [ "/" ];
   };
 
-  # Snapshot support
-  # Only snapshot /home since NixOS provides system rollback via generations
   services.snapper = {
     snapshotRootOnBoot = false;
     configs = {
@@ -129,7 +121,7 @@
     nftables.enable = true;
     firewall = {
       enable = true;
-      checkReversePath = "loose"; # Required for Tailscale exit nodes
+      checkReversePath = "loose";
       trustedInterfaces = [ "tailscale0" ];
       allowedUDPPorts = [ config.services.tailscale.port ];
     };
@@ -146,29 +138,13 @@
     };
   };
 
-  # Tailscale nftables support
   systemd.services.tailscaled.serviceConfig.Environment = [
     "TS_DEBUG_FIREWALL_MODE=nftables"
   ];
 
-  # Optimization: Prevent systemd from waiting for network online
   systemd.network.wait-online.enable = false;
 
   boot.initrd.systemd.network.wait-online.enable = false;
-
-  systemd.services.ryzenadj = {
-    enable = true;
-    description = "Set AMD APU power limits";
-    after = [ "power-profiles-daemon.service" ];
-    wantedBy = [
-      "multi-user.target"
-      "post-resume.target"
-    ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.ryzenadj}/bin/ryzenadj --stapm-limit=26000 --fast-limit=30000 --slow-limit=23000";
-    };
-  };
 
   nix = {
     settings = {

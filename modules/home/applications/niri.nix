@@ -88,6 +88,7 @@ in
       }
 
       spawn-at-startup "swaybg" "-c" "#000000"
+      spawn-at-startup "noctalia-shell"
 
       binds {
           Super+D { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call launcher toggle"; }

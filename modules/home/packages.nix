@@ -16,6 +16,7 @@
       bitwarden-cli
       rmpc
       obsidian
+      openssl
 
       # Must have 2
       awscli2
