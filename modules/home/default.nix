@@ -32,15 +32,11 @@
     BROWSER = "zen-twilight";
     TERMINAL = "ghostty";
     TF_PLUGIN_CACHE_DIR = "$HOME/.terraform.d/plugin-cache";
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
   programs = {
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      withRuby = false;
-      withPython3 = false;
-    };
     home-manager.enable = true;
 
     zen-browser = lib.mkIf pkgs.stdenv.isLinux {
