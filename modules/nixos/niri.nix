@@ -49,7 +49,22 @@
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
-    config.common.default = "gnome";
+    config = {
+      common = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+      };
+      niri = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot" = [ "gtk" ];
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -72,9 +87,31 @@
 
   programs.dconf.enable = true;
 
-  # Ensure xdg-desktop-portal-gtk starts with the graphical session.
-  # niri doesn't auto-start D-Bus-activated portal backends the way GNOME does.
-  systemd.user.services.xdg-desktop-portal-gtk = {
-    wantedBy = [ "graphical-session.target" ];
+  # Ensure portal backends are started with the graphical session.
+  # niri doesn't always auto-start D-Bus-activated portal backends reliably.
+  systemd.user.services = {
+    xdg-desktop-portal-gnome = {
+      wantedBy = [ "graphical-session.target" ];
+    };
+    xdg-desktop-portal-gtk = {
+      wantedBy = [ "graphical-session.target" ];
+    };
+    noctalia-shell = {
+      description = "Noctalia shell";
+      wantedBy = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+      path = [
+        "/run/current-system/sw"
+        "/etc/profiles/per-user/pavlo"
+      ];
+      serviceConfig = {
+        ExecStart = "${
+          inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+        }/bin/noctalia-shell";
+        Restart = "on-failure";
+        RestartSec = "3s";
+      };
+    };
   };
 }
