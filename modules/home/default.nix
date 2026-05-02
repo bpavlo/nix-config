@@ -11,6 +11,7 @@
     ./applications
     ./packages.nix
     ./fish.nix
+    ./tmux.nix
     ./ssh.nix
     ./applications/aerospace.nix
     inputs.zen-browser.homeModules.twilight
