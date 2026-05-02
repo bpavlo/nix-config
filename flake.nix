@@ -81,20 +81,7 @@
         system: treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix
       );
 
-      overlays = [
-        (final: prev: {
-          stable = import nixpkgs-stable {
-            system = final.system;
-            config.allowUnfree = true;
-          };
-        })
-        #        (
-        #          final: prev:
-        #          nixpkgs.lib.optionalAttrs prev.stdenv.isLinux {
-        #            ghostty = inputs.ghostty.packages.${final.system}.default;
-        #          }
-        #        )
-      ];
+      overlays = import ./overlays { inherit nixpkgs-stable; };
 
       nixpkgsConfig = {
         allowUnfree = true;
