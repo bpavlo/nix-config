@@ -9,9 +9,9 @@
   home.packages = (
     with pkgs;
     [
-
       # Must Have
       brave
+      brave-origin
       bitwarden-desktop
       bitwarden-cli
       rmpc
