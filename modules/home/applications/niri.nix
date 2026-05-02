@@ -1,214 +1,271 @@
 { pkgs, lib, ... }:
 
 let
-  qs = "qs";
+  spawnQs = method: "qs ipc --pid $(pgrep quickshell) call ${method} toggle";
+  mkSpawnBind = cmd: { action.spawn = [ "sh" "-c" cmd ]; };
+  mkActionBind = actionName: { action.${actionName} = [ ]; };
 in
 {
-  xdg.configFile."niri/config.kdl" = lib.mkIf pkgs.stdenv.isLinux {
-    text = ''
-      input {
-          keyboard {
-              xkb {
-                  layout "us,ca,ru,ua"
-                  options "grp:ctrl_space_toggle"
-              }
-              repeat-delay 250
-              repeat-rate 25
+  programs.niri.settings = lib.mkIf pkgs.stdenv.isLinux {
+    input = {
+      keyboard = {
+        xkb = {
+          layout = "us,ca,ru,ua";
+          options = "grp:ctrl_space_toggle";
+        };
+        repeat-delay = 250;
+        repeat-rate = 25;
+      };
+      touchpad = {
+        tap = true;
+        natural-scroll = true;
+        click-method = "clickfinger";
+      };
+      mouse.natural-scroll = true;
+    };
+
+    layout = {
+      gaps = 14;
+      focus-ring = {
+        enable = true;
+        width = 2;
+        active.color = "#5f8787";
+        inactive.color = "#aaaaaa";
+        urgent.color = "#f3ecd4";
+      };
+      border.enable = false;
+    };
+
+    cursor = {
+      theme = "Adwaita";
+      size = 24;
+    };
+
+    prefer-no-csd = true;
+
+    outputs = {
+      "eDP-1" = {
+        mode = {
+          width = 2880;
+          height = 1920;
+          refresh = 119.97;
+        };
+        scale = 2.0;
+        variable-refresh-rate = "on-demand";
+        position = {
+          x = 0;
+          y = 0;
+        };
+      };
+
+      "DP-4" = {
+        mode = {
+          width = 2560;
+          height = 1440;
+          refresh = 143.973;
+        };
+        scale = 1.0;
+        variable-refresh-rate = "on-demand";
+        position = {
+          x = 0;
+          y = 0;
+        };
+      };
+    };
+
+    animations.enable = false;
+
+    workspaces = {
+      "1-term" = { };
+      "2-web" = { };
+      "3-chat" = { };
+    };
+
+    window-rules = [
+      {
+        matches = [ { app-id = "^steam$"; } ];
+        open-floating = true;
+      }
+      {
+        matches = [ { app-id = "^steam_.*"; } ];
+        open-floating = true;
+      }
+      {
+        matches = [ { app-id = "^battle.net$"; } ];
+        open-floating = true;
+      }
+      {
+        matches = [ { title = "^Battle.net$"; } ];
+        open-floating = true;
+      }
+      {
+        matches = [
+          {
+            app-id = "^zen$|^brave-browser$|brave-origin-beta$";
           }
-
-          touchpad {
-              tap
-              natural-scroll
-              click-method "clickfinger"
+        ];
+        open-on-workspace = "2-web";
+      }
+      {
+        matches = [
+          {
+            app-id = "^Slack$|^org.telegram.desktop$|^vesktop$";
           }
-
-          mouse {
-            natural-scroll
-          }
+        ];
+        open-on-workspace = "3-chat";
       }
+    ];
 
-      layout {
-          gaps 14
-          focus-ring {
-            on
-            width 2
-            active-color "5f8787"
-            inactive-color "aaaaaa"
-            urgent-color "f3ecd4"
-          }
-          border {
-            off
-          }
+    spawn-at-startup = [
+      {
+        argv = [
+          "swaybg"
+          "-c"
+          "#000000"
+        ];
       }
-
-      cursor {
-          xcursor-theme "Adwaita"
-          xcursor-size 24
+      {
+        argv = [ "noctalia-shell" ];
       }
+    ];
 
-      prefer-no-csd
+    binds = {
+      "Super+D" = mkSpawnBind (spawnQs "launcher");
+      "Super+Space" = mkActionBind "switch-focus-between-floating-and-tiling";
+      "Super+Q" = mkActionBind "close-window";
+      "Super+Shift+E" = mkSpawnBind (spawnQs "sessionMenu");
+      "Super+Shift+P" = mkSpawnBind (spawnQs "controlCenter");
+      "Super+Return".action.spawn = "ghostty";
+      "Super+Shift+Return".action.spawn = [ "ghostty" "--class" "ghostty-anywhere" ];
 
-      window-rule {
-          match app-id="^steam$"
-          open-floating true
-      }
+      "Super+WheelScrollLeft".action."focus-column-left" = [ ];
+      "Super+WheelScrollRight".action."focus-column-right" = [ ];
 
-      window-rule {
-          match app-id="^steam_.*"
-          open-floating true
-      }
+      "Super+X".action.spawn = [ "${pkgs.swaylock}/bin/swaylock" "-f" "-c" "000000" ];
+      "Super+Shift+X".action.spawn = [ "systemctl" "suspend" ];
+      "Super+Ctrl+X".action.spawn = [ "systemctl" "hibernate" ];
 
-      // Battle.net launcher (Xwayland via xwayland-satellite)
-      window-rule {
-          match app-id="^battle.net$"
-          open-floating true
-      }
+      "Super+S" = mkActionBind "screenshot";
+      "Super+Shift+S" = mkActionBind "screenshot-screen";
+      "Print" = mkActionBind "screenshot";
+      "Ctrl+Print" = mkActionBind "screenshot-screen";
+      "Alt+Print" = mkActionBind "screenshot-window";
 
-      window-rule {
-          match title="^Battle.net$"
-          open-floating true
-      }
+      "Super+Left" = mkActionBind "focus-column-left";
+      "Super+Right" = mkActionBind "focus-column-right";
+      "Super+Down" = mkActionBind "focus-window-down";
+      "Super+Up" = mkActionBind "focus-window-up";
+      "Super+H" = mkActionBind "focus-column-left";
+      "Super+L" = mkActionBind "focus-column-right";
+      "Super+J" = mkActionBind "focus-window-down";
+      "Super+K" = mkActionBind "focus-window-up";
 
-      output "eDP-1" {
-        mode "2880x1920@119.97"
-        scale 2.0
-        variable-refresh-rate on-demand=true
-        position x=0 y=0
-      }
+      "Super+Shift+Left" = mkActionBind "move-column-left";
+      "Super+Shift+Right" = mkActionBind "move-column-right";
+      "Super+Shift+Down" = mkActionBind "move-window-down";
+      "Super+Shift+Up" = mkActionBind "move-window-up";
+      "Super+Shift+H" = mkActionBind "move-column-left";
+      "Super+Shift+L" = mkActionBind "move-column-right";
+      "Super+Shift+J" = mkActionBind "move-window-down";
+      "Super+Shift+K" = mkActionBind "move-window-up";
 
-      output "DP-3" {
-        mode "2560x1440@143.782"
-        scale 1.0
-        variable-refresh-rate on-demand=true
-        position x=0 y=0
-      }
+      "Super+Home" = mkActionBind "focus-column-first";
+      "Super+End" = mkActionBind "focus-column-last";
 
-      animations {
-        off
-      }
+      "Super+Ctrl+Left" = mkActionBind "focus-monitor-left";
+      "Super+Ctrl+Right" = mkActionBind "focus-monitor-right";
+      "Super+Ctrl+Down" = mkActionBind "focus-monitor-down";
+      "Super+Ctrl+Up" = mkActionBind "focus-monitor-up";
+      "Super+Ctrl+H" = mkActionBind "focus-monitor-left";
+      "Super+Ctrl+L" = mkActionBind "focus-monitor-right";
 
-      spawn-at-startup "swaybg" "-c" "#000000"
-      spawn-at-startup "noctalia-shell"
+      "Super+Shift+Ctrl+Left" = mkActionBind "move-column-to-monitor-left";
+      "Super+Shift+Ctrl+Right" = mkActionBind "move-column-to-monitor-right";
+      "Super+Shift+Ctrl+Down" = mkActionBind "move-column-to-monitor-down";
+      "Super+Shift+Ctrl+Up" = mkActionBind "move-column-to-monitor-up";
+      "Super+Shift+Ctrl+H" = mkActionBind "move-column-to-monitor-left";
+      "Super+Shift+Ctrl+L" = mkActionBind "move-column-to-monitor-right";
 
-      binds {
-          Super+D { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call launcher toggle"; }
-          Super+Space { switch-focus-between-floating-and-tiling; }
-          Super+Q { close-window; }
-          Super+Shift+E { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call sessionMenu toggle"; }
-          Super+Shift+P { spawn "sh" "-c" "qs ipc --pid $(pgrep quickshell) call controlCenter toggle"; }
-          Super+Return { spawn "ghostty"; }
+      "Super+Page_Down" = mkActionBind "focus-workspace-down";
+      "Super+Page_Up" = mkActionBind "focus-workspace-up";
+      "Super+U" = mkActionBind "focus-workspace-down";
+      "Super+I" = mkActionBind "focus-workspace-up";
+      "Super+Ctrl+Page_Down" = mkActionBind "move-column-to-workspace-down";
+      "Super+Ctrl+Page_Up" = mkActionBind "move-column-to-workspace-up";
+      "Super+Ctrl+U" = mkActionBind "move-column-to-workspace-down";
+      "Super+Ctrl+I" = mkActionBind "move-column-to-workspace-up";
 
-          Super+X { spawn "${pkgs.swaylock}/bin/swaylock" "-f" "-c" "000000"; }
-          Super+Shift+X { spawn "systemctl" "suspend"; }
-          Super+Ctrl+X { spawn "systemctl" "hibernate"; }
+      "Super+Shift+Page_Down" = mkActionBind "move-workspace-down";
+      "Super+Shift+Page_Up" = mkActionBind "move-workspace-up";
+      "Super+Shift+U" = mkActionBind "move-workspace-down";
+      "Super+Shift+I" = mkActionBind "move-workspace-up";
 
-          Super+S { screenshot; }
-          Super+Shift+S { screenshot-screen; }
-          Print { screenshot; }
-          Ctrl+Print { screenshot-screen; }
-          Alt+Print { screenshot-window; }
+      "Super+1".action."focus-workspace" = 1;
+      "Super+2".action."focus-workspace" = 2;
+      "Super+3".action."focus-workspace" = 3;
+      "Super+4".action."focus-workspace" = 4;
+      "Super+5".action."focus-workspace" = 5;
+      "Super+6".action."focus-workspace" = 6;
+      "Super+7".action."focus-workspace" = 7;
+      "Super+8".action."focus-workspace" = 8;
+      "Super+9".action."focus-workspace" = 9;
+      "Super+Ctrl+1".action."move-column-to-workspace" = 1;
+      "Super+Ctrl+2".action."move-column-to-workspace" = 2;
+      "Super+Ctrl+3".action."move-column-to-workspace" = 3;
+      "Super+Ctrl+4".action."move-column-to-workspace" = 4;
+      "Super+Ctrl+5".action."move-column-to-workspace" = 5;
+      "Super+Ctrl+6".action."move-column-to-workspace" = 6;
+      "Super+Ctrl+7".action."move-column-to-workspace" = 7;
+      "Super+Ctrl+8".action."move-column-to-workspace" = 8;
+      "Super+Ctrl+9".action."move-column-to-workspace" = 9;
 
-          Super+Left { focus-column-left; }
-          Super+Right { focus-column-right; }
-          Super+Down { focus-window-down; }
-          Super+Up { focus-window-up; }
-          Super+H { focus-column-left; }
-          Super+L { focus-column-right; }
-          Super+J { focus-window-down; }
-          Super+K { focus-window-up; }
+      "Super+Comma" = mkActionBind "consume-window-into-column";
+      "Super+Period" = mkActionBind "expel-window-from-column";
 
-          Super+Shift+Left { move-column-left; }
-          Super+Shift+Right { move-column-right; }
-          Super+Shift+Down { move-window-down; }
-          Super+Shift+Up { move-window-up; }
-          Super+Shift+H { move-column-left; }
-          Super+Shift+L { move-column-right; }
-          Super+Shift+J { move-window-down; }
-          Super+Shift+K { move-window-up; }
+      "Super+BracketLeft" = mkActionBind "consume-or-expel-window-left";
+      "Super+BracketRight" = mkActionBind "consume-or-expel-window-right";
 
-          Super+Home { focus-column-first; }
-          Super+End { focus-column-last; }
+      "Super+R" = mkActionBind "switch-preset-column-width";
+      "Super+Shift+R" = mkActionBind "switch-preset-window-height";
+      "Super+F" = mkActionBind "maximize-column";
+      "Super+Shift+F" = mkActionBind "fullscreen-window";
 
-          Super+Ctrl+Left { focus-monitor-left; }
-          Super+Ctrl+Right { focus-monitor-right; }
-          Super+Ctrl+Down { focus-monitor-down; }
-          Super+Ctrl+Up { focus-monitor-up; }
-          Super+Ctrl+H { focus-monitor-left; }
-          Super+Ctrl+L { focus-monitor-right; }
+      "Super+Minus".action."set-column-width" = "-10%";
+      "Super+Equal".action."set-column-width" = "+10%";
+      "Super+Shift+Minus".action."set-window-height" = "-10%";
+      "Super+Shift+Equal".action."set-window-height" = "+10%";
 
-          Super+Shift+Ctrl+Left { move-column-to-monitor-left; }
-          Super+Shift+Ctrl+Right { move-column-to-monitor-right; }
-          Super+Shift+Ctrl+Down { move-column-to-monitor-down; }
-          Super+Shift+Ctrl+Up { move-column-to-monitor-up; }
-          Super+Shift+Ctrl+H { move-column-to-monitor-left; }
-          Super+Shift+Ctrl+L { move-column-to-monitor-right; }
+      "Super+Shift+Space" = mkActionBind "toggle-window-floating";
+      "Super+O" = mkActionBind "toggle-overview";
 
-          Super+Page_Down { focus-workspace-down; }
-          Super+Page_Up { focus-workspace-up; }
-          Super+U { focus-workspace-down; }
-          Super+I { focus-workspace-up; }
-          Super+Ctrl+Page_Down { move-column-to-workspace-down; }
-          Super+Ctrl+Page_Up { move-column-to-workspace-up; }
-          Super+Ctrl+U { move-column-to-workspace-down; }
-          Super+Ctrl+I { move-column-to-workspace-up; }
-
-          Super+Shift+Page_Down { move-workspace-down; }
-          Super+Shift+Page_Up { move-workspace-up; }
-          Super+Shift+U { move-workspace-down; }
-          Super+Shift+I { move-workspace-up; }
-
-          Super+1 { focus-workspace 1; }
-          Super+2 { focus-workspace 2; }
-          Super+3 { focus-workspace 3; }
-          Super+4 { focus-workspace 4; }
-          Super+5 { focus-workspace 5; }
-          Super+6 { focus-workspace 6; }
-          Super+7 { focus-workspace 7; }
-          Super+8 { focus-workspace 8; }
-          Super+9 { focus-workspace 9; }
-          Super+Ctrl+1 { move-column-to-workspace 1; }
-          Super+Ctrl+2 { move-column-to-workspace 2; }
-          Super+Ctrl+3 { move-column-to-workspace 3; }
-          Super+Ctrl+4 { move-column-to-workspace 4; }
-          Super+Ctrl+5 { move-column-to-workspace 5; }
-          Super+Ctrl+6 { move-column-to-workspace 6; }
-          Super+Ctrl+7 { move-column-to-workspace 7; }
-          Super+Ctrl+8 { move-column-to-workspace 8; }
-          Super+Ctrl+9 { move-column-to-workspace 9; }
-
-          Super+Comma { consume-window-into-column; }
-          Super+Period { expel-window-from-column; }
-
-          Super+BracketLeft { consume-or-expel-window-left; }
-          Super+BracketRight { consume-or-expel-window-right; }
-
-          Super+R { switch-preset-column-width; }
-          Super+Shift+R { switch-preset-window-height; }
-          Super+F { maximize-column; }
-          Super+Shift+F { fullscreen-window; }
-
-          Super+Minus { set-column-width "-10%"; }
-          Super+Equal { set-column-width "+10%"; }
-          Super+Shift+Minus { set-window-height "-10%"; }
-          Super+Shift+Equal { set-window-height "+10%"; }
-
-          Super+Shift+Space { toggle-window-floating; }
-
-          Super+O { toggle-overview; }
-
-          // XF86 Media keys (Function keys on Framework laptop)
-          // Using wpctl for audio control (more reliable than swayosd)
-          XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
-          XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
-          XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-          XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-          XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "5%+"; }
-          XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
-          XF86AudioPlay { spawn "playerctl" "play-pause"; }
-          XF86AudioNext { spawn "playerctl" "next"; }
-          XF86AudioPrev { spawn "playerctl" "previous"; }
-      }
-    '';
+      "XF86AudioRaiseVolume" = {
+        allow-when-locked = true;
+        action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+" ];
+      };
+      "XF86AudioLowerVolume" = {
+        allow-when-locked = true;
+        action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-" ];
+      };
+      "XF86AudioMute" = {
+        allow-when-locked = true;
+        action.spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
+      };
+      "XF86AudioMicMute" = {
+        allow-when-locked = true;
+        action.spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle" ];
+      };
+      "XF86MonBrightnessUp" = {
+        allow-when-locked = true;
+        action.spawn = [ "brightnessctl" "set" "5%+" ];
+      };
+      "XF86MonBrightnessDown" = {
+        allow-when-locked = true;
+        action.spawn = [ "brightnessctl" "set" "5%-" ];
+      };
+      "XF86AudioPlay".action.spawn = [ "playerctl" "play-pause" ];
+      "XF86AudioNext".action.spawn = [ "playerctl" "next" ];
+      "XF86AudioPrev".action.spawn = [ "playerctl" "previous" ];
+    };
   };
 
   services.swayidle = lib.mkIf pkgs.stdenv.isLinux {
