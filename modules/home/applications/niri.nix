@@ -2,7 +2,13 @@
 
 let
   spawnQs = method: "qs ipc --pid $(pgrep quickshell) call ${method} toggle";
-  mkSpawnBind = cmd: { action.spawn = [ "sh" "-c" cmd ]; };
+  mkSpawnBind = cmd: {
+    action.spawn = [
+      "sh"
+      "-c"
+      cmd
+    ];
+  };
   mkActionBind = actionName: { action.${actionName} = [ ]; };
 in
 {
@@ -11,7 +17,7 @@ in
       keyboard = {
         xkb = {
           layout = "us,ca,ru,ua";
-          options = "grp:ctrl_space_toggle";
+          options = "grp:win_space_toggle";
         };
         repeat-delay = 250;
         repeat-rate = 25;
@@ -44,6 +50,19 @@ in
     prefer-no-csd = true;
 
     outputs = {
+      "DP-2" = {
+        mode = {
+          width = 2560;
+          height = 1440;
+          refresh = 143.973;
+        };
+        scale = 1.0;
+        variable-refresh-rate = "on-demand";
+        position = {
+          x = 0;
+          y = 0;
+        };
+      };
       "eDP-1" = {
         mode = {
           width = 2880;
@@ -51,20 +70,6 @@ in
           refresh = 119.97;
         };
         scale = 2.0;
-        variable-refresh-rate = "on-demand";
-        position = {
-          x = 0;
-          y = 0;
-        };
-      };
-
-      "DP-4" = {
-        mode = {
-          width = 2560;
-          height = 1440;
-          refresh = 143.973;
-        };
-        scale = 1.0;
         variable-refresh-rate = "on-demand";
         position = {
           x = 0;
@@ -124,9 +129,6 @@ in
           "#000000"
         ];
       }
-      {
-        argv = [ "noctalia-shell" ];
-      }
     ];
 
     binds = {
@@ -136,14 +138,29 @@ in
       "Super+Shift+E" = mkSpawnBind (spawnQs "sessionMenu");
       "Super+Shift+P" = mkSpawnBind (spawnQs "controlCenter");
       "Super+Return".action.spawn = "ghostty";
-      "Super+Shift+Return".action.spawn = [ "ghostty" "--class" "ghostty-anywhere" ];
+      "Super+Shift+Return".action.spawn = [
+        "ghostty"
+        "--class"
+        "ghostty-anywhere"
+      ];
 
       "Super+WheelScrollLeft".action."focus-column-left" = [ ];
       "Super+WheelScrollRight".action."focus-column-right" = [ ];
 
-      "Super+X".action.spawn = [ "${pkgs.swaylock}/bin/swaylock" "-f" "-c" "000000" ];
-      "Super+Shift+X".action.spawn = [ "systemctl" "suspend" ];
-      "Super+Ctrl+X".action.spawn = [ "systemctl" "hibernate" ];
+      "Super+X".action.spawn = [
+        "${pkgs.swaylock}/bin/swaylock"
+        "-f"
+        "-c"
+        "000000"
+      ];
+      "Super+Shift+X".action.spawn = [
+        "systemctl"
+        "suspend"
+      ];
+      "Super+Ctrl+X".action.spawn = [
+        "systemctl"
+        "hibernate"
+      ];
 
       "Super+S" = mkActionBind "screenshot";
       "Super+Shift+S" = mkActionBind "screenshot-screen";
@@ -240,31 +257,68 @@ in
 
       "XF86AudioRaiseVolume" = {
         allow-when-locked = true;
-        action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+" ];
+        action.spawn = [
+          "wpctl"
+          "set-volume"
+          "@DEFAULT_AUDIO_SINK@"
+          "0.05+"
+        ];
       };
       "XF86AudioLowerVolume" = {
         allow-when-locked = true;
-        action.spawn = [ "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-" ];
+        action.spawn = [
+          "wpctl"
+          "set-volume"
+          "@DEFAULT_AUDIO_SINK@"
+          "0.05-"
+        ];
       };
       "XF86AudioMute" = {
         allow-when-locked = true;
-        action.spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
+        action.spawn = [
+          "wpctl"
+          "set-mute"
+          "@DEFAULT_AUDIO_SINK@"
+          "toggle"
+        ];
       };
       "XF86AudioMicMute" = {
         allow-when-locked = true;
-        action.spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle" ];
+        action.spawn = [
+          "wpctl"
+          "set-mute"
+          "@DEFAULT_AUDIO_SOURCE@"
+          "toggle"
+        ];
       };
       "XF86MonBrightnessUp" = {
         allow-when-locked = true;
-        action.spawn = [ "brightnessctl" "set" "5%+" ];
+        action.spawn = [
+          "brightnessctl"
+          "set"
+          "5%+"
+        ];
       };
       "XF86MonBrightnessDown" = {
         allow-when-locked = true;
-        action.spawn = [ "brightnessctl" "set" "5%-" ];
+        action.spawn = [
+          "brightnessctl"
+          "set"
+          "5%-"
+        ];
       };
-      "XF86AudioPlay".action.spawn = [ "playerctl" "play-pause" ];
-      "XF86AudioNext".action.spawn = [ "playerctl" "next" ];
-      "XF86AudioPrev".action.spawn = [ "playerctl" "previous" ];
+      "XF86AudioPlay".action.spawn = [
+        "playerctl"
+        "play-pause"
+      ];
+      "XF86AudioNext".action.spawn = [
+        "playerctl"
+        "next"
+      ];
+      "XF86AudioPrev".action.spawn = [
+        "playerctl"
+        "previous"
+      ];
     };
   };
 
@@ -277,15 +331,12 @@ in
       }
       {
         timeout = 600;
-        command = "systemctl suspend";
+        command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
-      }
-    ];
+    events = {
+      before-sleep = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+    };
   };
 
   home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
