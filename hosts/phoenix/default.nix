@@ -14,6 +14,7 @@
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/wireguard.nix
     ../../modules/nixos/obs.nix
+    ../../modules/nixos/k3s.nix
     ../../users/pavlo.nix
   ];
 
