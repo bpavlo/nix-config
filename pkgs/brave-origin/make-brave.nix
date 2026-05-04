@@ -79,15 +79,55 @@ let
     makeBinPath
     optionalString
     strings
-    escapeShellArg;
+    escapeShellArg
+    ;
 
   deps = [
-    alsa-lib at-spi2-atk at-spi2-core atk cairo cups dbus expat fontconfig freetype
-    gdk-pixbuf glib gtk3 gtk4 libdrm libx11 libGL libxkbcommon libxscrnsaver
-    libxcomposite libxcursor libxdamage libxext libxfixes libxi libxrandr libxrender
-    libxshmfence libxtst libuuid libgbm nspr nss pango pipewire udev wayland libxcb
-    zlib snappy libkrb5 qt6.qtbase
-  ] ++ optional pulseSupport libpulseaudio ++ optional libvaSupport libva;
+    alsa-lib
+    at-spi2-atk
+    at-spi2-core
+    atk
+    cairo
+    cups
+    dbus
+    expat
+    fontconfig
+    freetype
+    gdk-pixbuf
+    glib
+    gtk3
+    gtk4
+    libdrm
+    libx11
+    libGL
+    libxkbcommon
+    libxscrnsaver
+    libxcomposite
+    libxcursor
+    libxdamage
+    libxext
+    libxfixes
+    libxi
+    libxrandr
+    libxrender
+    libxshmfence
+    libxtst
+    libuuid
+    libgbm
+    nspr
+    nss
+    pango
+    pipewire
+    udev
+    wayland
+    libxcb
+    zlib
+    snappy
+    libkrb5
+    qt6.qtbase
+  ]
+  ++ optional pulseSupport libpulseaudio
+  ++ optional libvaSupport libva;
 
   rpath = makeLibraryPath deps + ":" + makeSearchPathOutput "lib" "lib64" deps;
   binpath = makeBinPath deps;
@@ -96,9 +136,13 @@ let
     optionals enableVideoAcceleration [
       "AcceleratedVideoDecodeLinuxGL"
       "AcceleratedVideoEncoder"
-    ] ++ optional enableVulkan "Vulkan";
+    ]
+    ++ optional enableVulkan "Vulkan";
 
-  disableFeatures = [ "OutdatedBuildDetector" ] ++ optionals enableVideoAcceleration [ "UseChromeOSDirectVideoDecoder" ];
+  disableFeatures = [
+    "OutdatedBuildDetector"
+  ]
+  ++ optionals enableVideoAcceleration [ "UseChromeOSDirectVideoDecoder" ];
 in
 stdenv.mkDerivation {
   inherit pname version;
@@ -115,10 +159,17 @@ stdenv.mkDerivation {
       dpkg
       (buildPackages.wrapGAppsHook3.override { makeWrapper = buildPackages.makeShellWrapper; })
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ unzip makeWrapper ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      unzip
+      makeWrapper
+    ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
-    glib gsettings-desktop-schemas gtk3 gtk4 adwaita-icon-theme
+    glib
+    gsettings-desktop-schemas
+    gtk3
+    gtk4
+    adwaita-icon-theme
   ];
 
   installPhase =
@@ -167,7 +218,8 @@ stdenv.mkDerivation {
       ln -sf ${xdg-utils}/bin/xdg-mime $out/opt/brave.com/brave-origin/xdg-mime
 
       runHook postInstall
-    '' + lib.optionalString stdenv.hostPlatform.isDarwin ''
+    ''
+    + lib.optionalString stdenv.hostPlatform.isDarwin ''
       runHook preInstall
 
       mkdir -p $out/{Applications,bin}
@@ -181,7 +233,12 @@ stdenv.mkDerivation {
     gappsWrapperArgs+=(
       --prefix LD_LIBRARY_PATH : ${rpath}
       --prefix PATH : ${binpath}
-      --suffix PATH : ${lib.makeBinPath [ xdg-utils coreutils ]}
+      --suffix PATH : ${
+        lib.makeBinPath [
+          xdg-utils
+          coreutils
+        ]
+      }
       --set CHROME_WRAPPER ${pname}
       ${optionalString (enableFeatures != [ ]) ''
         --add-flags "--enable-features=${strings.concatStringsSep "," enableFeatures}\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+,WaylandWindowDecorations --enable-wayland-ime=true}}"
@@ -211,7 +268,12 @@ stdenv.mkDerivation {
       + lib.replaceStrings [ "." ] [ "" ] version;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.mpl20;
-    platforms = [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
+    platforms = [
+      "aarch64-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
     mainProgram = "brave-origin";
   };
 }
