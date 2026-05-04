@@ -102,7 +102,7 @@
       nmap
       ripgrep
       tree
-      veracrypt
+      #     veracrypt
       yamllint
       normcap
       xdg-utils
