@@ -10,6 +10,20 @@ let
     ];
   };
   mkActionBind = actionName: { action.${actionName} = [ ]; };
+
+  externalOutput = {
+    mode = {
+      width = 2560;
+      height = 1440;
+      refresh = 143.973;
+    };
+    scale = 1.0;
+    variable-refresh-rate = "on-demand";
+    position = {
+      x = 1440;
+      y = 0;
+    };
+  };
 in
 {
   programs.niri.settings = lib.mkIf pkgs.stdenv.isLinux {
@@ -50,19 +64,8 @@ in
     prefer-no-csd = true;
 
     outputs = {
-      "DP-2" = {
-        mode = {
-          width = 2560;
-          height = 1440;
-          refresh = 143.973;
-        };
-        scale = 1.0;
-        variable-refresh-rate = "on-demand";
-        position = {
-          x = 0;
-          y = 0;
-        };
-      };
+      "DP-2" = externalOutput;
+      "DP-4" = externalOutput;
       "eDP-1" = {
         mode = {
           width = 2880;
@@ -73,7 +76,7 @@ in
         variable-refresh-rate = "on-demand";
         position = {
           x = 0;
-          y = 0;
+          y = 255;
         };
       };
     };
@@ -81,9 +84,9 @@ in
     animations.enable = false;
 
     workspaces = {
-      "1-term" = { };
-      "2-web" = { };
-      "3-chat" = { };
+      "1-term".open-on-output = "DP-2";
+      "2-web".open-on-output = "DP-2";
+      "3-chat".open-on-output = "DP-2";
     };
 
     window-rules = [
