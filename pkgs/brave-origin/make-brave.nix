@@ -134,15 +134,15 @@ let
 
   enableFeatures =
     optionals enableVideoAcceleration [
-      "AcceleratedVideoDecodeLinuxGL"
+      "VaapiVideoDecoder"
+      "VaapiVideoDecodeLinuxGL"
       "AcceleratedVideoEncoder"
     ]
     ++ optional enableVulkan "Vulkan";
 
   disableFeatures = [
     "OutdatedBuildDetector"
-  ]
-  ++ optionals enableVideoAcceleration [ "UseChromeOSDirectVideoDecoder" ];
+  ];
 in
 stdenv.mkDerivation {
   inherit pname version;
