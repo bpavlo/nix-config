@@ -30,6 +30,8 @@
       glab
       lazygit
       heroic
+      tree-sitter
+      fd
 
       # desktop
       quickshell
