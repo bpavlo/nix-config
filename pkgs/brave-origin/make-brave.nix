@@ -135,13 +135,19 @@ let
   enableFeatures =
     optionals enableVideoAcceleration [
       "VaapiVideoDecoder"
-      "VaapiVideoDecodeLinuxGL"
-      "AcceleratedVideoEncoder"
+      "VaapiVideoEncoder"
     ]
     ++ optional enableVulkan "Vulkan";
 
   disableFeatures = [
     "OutdatedBuildDetector"
+  ]
+  ++ optionals enableVideoAcceleration [ "UseChromeOSDirectVideoDecoder" ];
+
+  extraBraveFlags = optionals stdenv.hostPlatform.isLinux [
+    "--use-gl=angle"
+    "--use-angle=gl-egl"
+    "--enable-hardware-overlays"
   ];
 in
 stdenv.mkDerivation {
@@ -245,6 +251,9 @@ stdenv.mkDerivation {
       ''}
       ${optionalString (disableFeatures != [ ]) ''
         --add-flags "--disable-features=${strings.concatStringsSep "," disableFeatures}"
+      ''}
+      ${optionalString (extraBraveFlags != [ ]) ''
+        --add-flags "${strings.concatStringsSep " " extraBraveFlags}"
       ''}
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto}}"
       ${optionalString vulkanSupport ''
