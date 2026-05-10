@@ -1,7 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
   inputs,
   ...
 }:
@@ -13,14 +10,11 @@
     ./fish.nix
     ./tmux.nix
     ./ssh.nix
-    ./applications/aerospace.nix
     inputs.zen-browser.homeModules.twilight
 
   ];
 
   home.stateVersion = "25.11";
-
-  gtk.gtk4.theme = config.gtk.theme;
 
   manual.manpages.enable = false;
 
@@ -40,13 +34,13 @@
   programs = {
     home-manager.enable = true;
 
-    zen-browser = lib.mkIf pkgs.stdenv.isLinux {
+    zen-browser = {
       enable = true;
     };
   };
 
   services = {
-    syncthing = lib.mkIf pkgs.stdenv.isLinux {
+    syncthing = {
       enable = true;
     };
   };

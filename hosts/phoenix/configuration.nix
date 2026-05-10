@@ -74,9 +74,8 @@
   };
 
   services.udev.extraRules = ''
-    # Keychron devices - allow user access for WebHID
-    KERNEL=="hidraw*", ATTRS{idVendor}=="3434", MODE="0666"
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", \
+      MODE="0660", TAG+="uaccess"
   '';
 
   programs.fish.enable = true;
@@ -84,10 +83,25 @@
   programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
+    git
+    neovim
+    ripgrep
+    bottom
+    lsof
+
+    curl
+    wget
+    jq
+    tree
+
+    gnumake
+    gcc
+
     wdisplays
     wlr-randr
     system-config-printer
     ryzenadj
+    wireguard-tools
   ];
 
   fonts = {

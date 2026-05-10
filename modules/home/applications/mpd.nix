@@ -1,12 +1,10 @@
 {
   config,
-  lib,
-  pkgs,
   ...
 }:
 
 {
-  services.mpd = lib.mkIf pkgs.stdenv.isLinux {
+  services.mpd = {
     enable = true;
     musicDirectory = "${config.home.homeDirectory}/Music";
 
@@ -18,7 +16,7 @@
     '';
   };
 
-  services.mpd-mpris = lib.mkIf pkgs.stdenv.isLinux {
+  services.mpd-mpris = {
     enable = true;
   };
 }

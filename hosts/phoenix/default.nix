@@ -1,7 +1,7 @@
 {
   pkgs,
-  inputs,
   config,
+
   ...
 }:
 
@@ -9,20 +9,15 @@
   imports = [
     ./hardware-configuration.nix
     ./configuration.nix
-    ../../modules/common
-    ../../modules/nixos/niri.nix
-    ../../modules/nixos/gaming.nix
-    ../../modules/nixos/wireguard.nix
-    ../../modules/nixos/obs.nix
-    ../../modules/nixos/k3s.nix
+    ../../modules/nixos
     ../../users/pavlo.nix
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
+  modules.nixos = {
+    niri.enable = true;
+    gaming.enable = true;
+    obs.enable = true;
+    k3s.enable = true;
   };
 
   users.users.pavlo = {
@@ -40,7 +35,6 @@
   };
 
   boot.loader.systemd-boot.enable = false;
-  boot.loader.systemd-boot.consoleMode = "max";
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";

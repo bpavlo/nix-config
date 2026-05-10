@@ -1,7 +1,11 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
-  gtk = lib.mkIf pkgs.stdenv.isLinux {
+  gtk = {
     enable = true;
 
     theme = {
@@ -25,6 +29,7 @@
       size = 12;
     };
 
+    gtk4.theme = config.gtk.theme;
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
@@ -34,7 +39,7 @@
     };
   };
 
-  qt = lib.mkIf pkgs.stdenv.isLinux {
+  qt = {
     enable = true;
     platformTheme.name = "gtk";
     style = {
@@ -43,7 +48,7 @@
     };
   };
 
-  dconf.settings = lib.mkIf pkgs.stdenv.isLinux {
+  dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };

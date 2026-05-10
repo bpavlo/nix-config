@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   spawnQs = method: "qs ipc --pid $(pgrep quickshell) call ${method} toggle";
@@ -26,7 +26,7 @@ let
   };
 in
 {
-  programs.niri.settings = lib.mkIf pkgs.stdenv.isLinux {
+  programs.niri.settings = {
     input = {
       keyboard = {
         xkb = {
@@ -325,7 +325,7 @@ in
     };
   };
 
-  services.swayidle = lib.mkIf pkgs.stdenv.isLinux {
+  services.swayidle = {
     enable = true;
     timeouts = [
       {
@@ -340,10 +340,5 @@ in
     events = {
       before-sleep = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
     };
-  };
-
-  home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
-    WAYLAND_DISPLAY = "wayland-1";
-    XDG_SESSION_TYPE = "wayland";
   };
 }

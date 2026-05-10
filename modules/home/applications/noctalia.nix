@@ -1,6 +1,4 @@
 {
-  pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -11,7 +9,7 @@
   ];
 
   # Copy custom color scheme
-  xdg.configFile."noctalia/colorschemes/Monochrome.json" = lib.mkIf pkgs.stdenv.isLinux {
+  xdg.configFile."noctalia/colorschemes/Monochrome.json" = {
     text = builtins.toJSON {
       dark = {
         mPrimary = "#aaaaaa";

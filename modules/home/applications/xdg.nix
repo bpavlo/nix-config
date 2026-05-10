@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ ... }:
 
 let
   browser = "zen-twilight.desktop";
@@ -10,7 +10,7 @@ let
   terminal = "com.mitchellh.ghostty.desktop";
 in
 {
-  xdg = lib.mkIf pkgs.stdenv.isLinux {
+  xdg = {
     enable = true;
     configFile."mimeapps.list".force = true;
     dataFile."applications/mimeapps.list".force = true;

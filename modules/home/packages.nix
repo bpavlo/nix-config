@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -19,7 +18,6 @@
       openssl
 
       # Must have 2
-      awscli2
       opencode
       typst
       qbittorrent
@@ -55,15 +53,6 @@
       google-cloud-sdk
       stable.ssm-session-manager-plugin
       teleport
-
-      # Containers & Kubernetes
-      docker
-      k9s
-      kubectl
-      kubectx
-      kubernetes-helm
-      minikube
-      trivy
 
       # IaC
       packer

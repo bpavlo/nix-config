@@ -1,5 +1,5 @@
 {
-  description = "NixOS and nix-darwin configurations";
+  description = "NixOS configurations";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -10,16 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    darwin = {
-      url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-
-    ghostty.url = "github:ghostty-org/ghostty";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -58,7 +54,6 @@
       nixpkgs,
       nixpkgs-stable,
       home-manager,
-      darwin,
       nixos-hardware,
       treefmt-nix,
       disko,
@@ -72,7 +67,6 @@
     let
       supportedSystems = [
         "x86_64-linux"
-        "aarch64-darwin"
       ];
 
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -85,7 +79,6 @@
 
       nixpkgsConfig = {
         allowUnfree = true;
-        allowUnfreePredicate = _: true;
       };
     in
     {
@@ -94,19 +87,6 @@
       checks = forAllSystems (system: {
         formatting = treefmtEval.${system}.config.build.check self;
       });
-
-      darwinConfigurations.jade = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/jade
-          home-manager.darwinModules.home-manager
-          {
-            nixpkgs.overlays = overlays;
-            nixpkgs.config = nixpkgsConfig;
-          }
-        ];
-      };
 
       nixosConfigurations.phoenix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
