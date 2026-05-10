@@ -45,6 +45,9 @@ in
     services.udisks2.enable = true;
     services.gvfs.enable = true;
 
+    services.tumbler.enable = true;
+    services.gnome.sushi.enable = true;
+
     # Enable XDG portal support for Chromium-based browsers
     environment.sessionVariables = {
       NIXOS_XDG_OPEN_USE_PORTAL = "1";
@@ -91,6 +94,8 @@ in
 
       # GNOME file manager for XDG portal file pickers
       nautilus
+      file-roller
+      gnome-text-editor
 
       # System utilities
       pwvucontrol

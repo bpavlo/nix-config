@@ -132,6 +132,12 @@ in
           "#000000"
         ];
       }
+      {
+        argv = [
+          "playerctld"
+          "daemon"
+        ];
+      }
     ];
 
     binds = {
@@ -312,14 +318,17 @@ in
       };
       "XF86AudioPlay".action.spawn = [
         "playerctl"
+        "--player=playerctld,%any"
         "play-pause"
       ];
       "XF86AudioNext".action.spawn = [
         "playerctl"
+        "--player=playerctld,%any"
         "next"
       ];
       "XF86AudioPrev".action.spawn = [
         "playerctl"
+        "--player=playerctld,%any"
         "previous"
       ];
     };

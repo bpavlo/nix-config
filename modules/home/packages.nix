@@ -102,8 +102,11 @@
 
       # Media
       jellyfin-ffmpeg
-      loupe
+      gthumb
+      papers
       mpv-unwrapped
+      unar
+      p7zip
 
       # Gaming
       gamescope

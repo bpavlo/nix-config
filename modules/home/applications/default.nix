@@ -11,5 +11,6 @@
     ./gtk.nix
     ./mpd.nix
     ./obs.nix
+    ./yazi.nix
   ];
 }

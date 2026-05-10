@@ -3,10 +3,10 @@
 let
   browser = "zen-twilight.desktop";
   fileManager = "org.gnome.Nautilus.desktop";
-  imageViewer = "org.gnome.Loupe.desktop";
+  imageViewer = "org.gnome.gThumb.desktop";
   videoPlayer = "mpv.desktop";
-  pdfReader = "org.pwmt.zathura.desktop";
-  textEditor = "nvim.desktop";
+  pdfReader = "org.gnome.Papers.desktop";
+  textEditor = "ghostty-nvim.desktop";
   terminal = "com.mitchellh.ghostty.desktop";
 in
 {
@@ -91,6 +91,41 @@ in
     # Override Telegram's desktop entry to use the XDG portal file picker
     # instead of the GTK2 platform theme which gives the old-style Qt dialog.
     desktopEntries = {
+      "ghostty-nvim" = {
+        name = "Neovim (Ghostty)";
+        genericName = "Text Editor";
+        exec = "ghostty -e nvim %F";
+        icon = "nvim";
+        terminal = false;
+        type = "Application";
+        categories = [
+          "Utility"
+          "TextEditor"
+          "Development"
+        ];
+        mimeType = [
+          "text/plain"
+          "text/markdown"
+          "text/x-csrc"
+          "text/x-c++src"
+          "text/x-python"
+          "text/x-shellscript"
+          "text/x-makefile"
+          "text/x-lua"
+          "text/x-go"
+          "text/x-rust"
+          "text/x-nix"
+          "application/json"
+          "application/xml"
+          "application/x-yaml"
+          "application/toml"
+        ];
+        settings = {
+          StartupNotify = "true";
+          StartupWMClass = "com.mitchellh.ghostty";
+        };
+      };
+
       "org.telegram.desktop" = {
         name = "Telegram";
         exec = "env QT_QPA_PLATFORMTHEME=xdgdesktopportal Telegram -- %U";
