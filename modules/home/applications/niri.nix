@@ -96,47 +96,6 @@ in
 
     animations.enable = false;
 
-    workspaces = {
-      "1-term".open-on-output = "DP-2";
-      "2-web".open-on-output = "DP-2";
-      "3-chat".open-on-output = "DP-2";
-    };
-
-    window-rules = [
-      {
-        matches = [ { app-id = "^steam$"; } ];
-        open-floating = true;
-      }
-      {
-        matches = [ { app-id = "^steam_.*"; } ];
-        open-floating = true;
-      }
-      {
-        matches = [ { app-id = "^battle.net$"; } ];
-        open-floating = true;
-      }
-      {
-        matches = [ { title = "^Battle.net$"; } ];
-        open-floating = true;
-      }
-      {
-        matches = [
-          {
-            app-id = "^zen$|^brave-browser$|brave-origin-beta$";
-          }
-        ];
-        open-on-workspace = "2-web";
-      }
-      {
-        matches = [
-          {
-            app-id = "^Slack$|^org.telegram.desktop$|^vesktop$";
-          }
-        ];
-        open-on-workspace = "3-chat";
-      }
-    ];
-
     spawn-at-startup = [
       {
         argv = [
