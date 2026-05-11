@@ -50,8 +50,8 @@
                 base 130 130 130
                 background 25 25 25
                 emphasis_0 238 204 108
-                emphasis_1 95 135 135
-                emphasis_2 95 135 135
+                emphasis_1 25  25  25
+                emphasis_2 25  25  25
                 emphasis_3 221 221 221
             }
             ribbon_selected {
