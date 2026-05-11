@@ -8,7 +8,6 @@
     ./applications
     ./packages.nix
     ./fish.nix
-    ./tmux.nix
     ./ssh.nix
     inputs.zen-browser.homeModules.twilight
 
