@@ -40,22 +40,18 @@ in
     security.polkit.enable = true;
     services.gnome.gnome-keyring.enable = true;
 
-    # Automounting for removable storage
     services.udisks2.enable = true;
     services.gvfs.enable = true;
 
     services.tumbler.enable = true;
     services.gnome.sushi.enable = true;
 
-    # Enable XDG portal support for Chromium-based browsers
     environment.sessionVariables = {
       NIXOS_XDG_OPEN_USE_PORTAL = "1";
     };
 
-    # Geolocation for Noctalia night light
     services.geoclue2.enable = true;
 
-    # XDG portals for file pickers, screensharing, etc.
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
@@ -91,19 +87,15 @@ in
       playerctl
       swaylock
 
-      # GNOME file manager for XDG portal file pickers
       nautilus
       file-roller
       gnome-text-editor
 
-      # System utilities
       pwvucontrol
     ];
 
     programs.dconf.enable = true;
 
-    # Ensure portal backends are started with the graphical session.
-    # niri doesn't always auto-start D-Bus-activated portal backends reliably.
     systemd.user.services = {
       xdg-desktop-portal-gnome = {
         wantedBy = [ "graphical-session.target" ];

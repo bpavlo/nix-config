@@ -8,14 +8,12 @@
       "amdgpu.dcdebugmask=0x12"
       "amdgpu.ppfeaturemask=0xffffffff"
       "iomem=relaxed"
-      # Quiet boot so kernel/udev messages don't paint over the greeter.
       "quiet"
       "loglevel=3"
       "rd.udev.log_level=3"
       "vt.global_cursor_default=0"
     ];
 
-    # Stop kernel printk from writing to the VT once userspace is up.
     consoleLogLevel = 0;
     initrd.verbose = false;
   };
