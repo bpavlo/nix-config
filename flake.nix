@@ -46,6 +46,11 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agent-skills = {
+      url = "github:bpavlo/agent-skills";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -62,6 +67,7 @@
       niri,
       noctalia,
       zen-browser,
+      agent-skills,
       ...
     }:
     let

@@ -129,5 +129,8 @@
       claude-code
       coderabbit-cli
     ])
+    ++ [
+      inputs.agent-skills.packages.${pkgs.stdenv.hostPlatform.system}.oc-context
+    ]
   );
 }
