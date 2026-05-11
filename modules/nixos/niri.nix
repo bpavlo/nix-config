@@ -27,7 +27,6 @@ in
       };
     };
 
-    # Fix greetd race condition with niri
     systemd.services.greetd.serviceConfig = {
       Type = "idle";
       StandardInput = "tty";
@@ -118,6 +117,7 @@ in
         after = [ "graphical-session.target" ];
         partOf = [ "graphical-session.target" ];
         path = [
+          "/run/wrappers"
           "/run/current-system/sw"
           "/etc/profiles/per-user/pavlo"
         ];

@@ -11,6 +11,19 @@ let
   };
   mkActionBind = actionName: { action.${actionName} = [ ]; };
 
+  spawnOrFocus =
+    appIdRegex: spawnCmd:
+    mkSpawnBind ''
+      id=$(${pkgs.niri}/bin/niri msg --json windows \
+        | ${pkgs.jq}/bin/jq -r --arg re '${appIdRegex}' \
+            'map(select(.app_id | test($re; "i"))) | sort_by(.focus_timestamp.secs) | last | .id // empty')
+      if [ -n "$id" ]; then
+        ${pkgs.niri}/bin/niri msg action focus-window --id "$id"
+      else
+        ${spawnCmd} &
+      fi
+    '';
+
   externalOutput = {
     mode = {
       width = 2560;
@@ -152,6 +165,10 @@ in
         "--class"
         "ghostty-anywhere"
       ];
+
+      "Super+B" = spawnOrFocus "^brave-origin-beta$" "${pkgs.brave-origin}/bin/brave-origin";
+      "Super+Shift+B" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
+      "Super+P" = spawnOrFocus "^bitwarden$" "${pkgs.bitwarden-desktop}/bin/bitwarden";
 
       "Super+WheelScrollLeft".action."focus-column-left" = [ ];
       "Super+WheelScrollRight".action."focus-column-right" = [ ];
