@@ -16,7 +16,6 @@
       command = "zellij";
       keybind = [
         "super+w=close_tab"
-        "super+t=new_tab"
         "super+c=copy_to_clipboard"
         "super+v=paste_from_clipboard"
       ];
