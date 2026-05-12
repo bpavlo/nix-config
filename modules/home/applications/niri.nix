@@ -160,6 +160,17 @@ in
       "Ctrl+Print" = mkActionBind "screenshot-screen";
       "Alt+Print" = mkActionBind "screenshot-window";
 
+      "Super+A" = mkSpawnBind ''
+        mkdir -p ~/Pictures/Screenshots
+        ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - \
+          | ${pkgs.satty}/bin/satty --filename - \
+              --output-filename ~/Pictures/Screenshots/satty-%Y%m%d-%H%M%S.png \
+              --copy-command ${pkgs.wl-clipboard}/bin/wl-copy \
+              --early-exit \
+              --actions-on-enter save-to-file \
+              --actions-on-enter save-to-clipboard
+      '';
+
       "Super+Left" = mkActionBind "focus-column-left";
       "Super+Right" = mkActionBind "focus-column-right";
       "Super+Down" = mkActionBind "focus-window-down";

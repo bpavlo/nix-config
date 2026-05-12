@@ -86,6 +86,9 @@ in
       brightnessctl
       playerctl
       swaylock
+      grim
+      slurp
+      satty
 
       nautilus
       file-roller
