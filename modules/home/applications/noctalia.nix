@@ -9,7 +9,7 @@
   ];
 
   # Copy custom color scheme
-  xdg.configFile."noctalia/colorschemes/Monochrome.json" = {
+  xdg.configFile."noctalia/colorschemes/Monochrome/Monochrome.json" = {
     text = builtins.toJSON {
       dark = {
         mPrimary = "#aaaaaa";

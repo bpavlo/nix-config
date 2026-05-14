@@ -30,6 +30,7 @@
       heroic
       tree-sitter
       fd
+      streamrip
 
       # desktop
       quickshell
