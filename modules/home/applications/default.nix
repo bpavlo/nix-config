@@ -12,6 +12,5 @@
     ./mpd.nix
     ./obs.nix
     ./yazi.nix
-    ./zellij.nix
   ];
 }

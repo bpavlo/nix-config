@@ -126,7 +126,7 @@ in
       ];
 
       "Super+B" = spawnOrFocus "^brave-origin-beta$" "${pkgs.brave-origin}/bin/brave-origin";
-      "Super+T" = spawnOrFocus "^com\\.mitchellh\\.ghostty$" "ghostty";
+      "Super+Ctrl+Return" = spawnOrFocus "^com\\.mitchellh\\.ghostty$" "ghostty";
       "Super+Slash" = mkActionBind "show-hotkey-overlay";
       "Super+Ctrl+B" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
       "Super+Ctrl+P" = spawnOrFocus "^bitwarden$" "${pkgs.bitwarden-desktop}/bin/bitwarden";
@@ -180,10 +180,6 @@ in
       "Super+J" = mkActionBind "focus-window-down";
       "Super+K" = mkActionBind "focus-window-up";
 
-      "Super+Shift+Left" = mkActionBind "move-column-left";
-      "Super+Shift+Right" = mkActionBind "move-column-right";
-      "Super+Shift+Down" = mkActionBind "move-window-down";
-      "Super+Shift+Up" = mkActionBind "move-window-up";
       "Super+Shift+H" = mkActionBind "move-column-left";
       "Super+Shift+L" = mkActionBind "move-column-right";
       "Super+Shift+J" = mkActionBind "move-window-down";
@@ -192,19 +188,17 @@ in
       "Super+Home" = mkActionBind "focus-column-first";
       "Super+End" = mkActionBind "focus-column-last";
 
-      "Super+Ctrl+Left" = mkActionBind "focus-monitor-left";
-      "Super+Ctrl+Right" = mkActionBind "focus-monitor-right";
-      "Super+Ctrl+Down" = mkActionBind "focus-monitor-down";
-      "Super+Ctrl+Up" = mkActionBind "focus-monitor-up";
-      "Super+Ctrl+H" = mkActionBind "focus-monitor-left";
-      "Super+Ctrl+L" = mkActionBind "focus-monitor-right";
+      # Monitor focus on Super+Shift+Arrow
+      "Super+Shift+Left" = mkActionBind "focus-monitor-left";
+      "Super+Shift+Right" = mkActionBind "focus-monitor-right";
+      "Super+Shift+Down" = mkActionBind "focus-monitor-down";
+      "Super+Shift+Up" = mkActionBind "focus-monitor-up";
 
-      "Super+Shift+Ctrl+Left" = mkActionBind "move-column-to-monitor-left";
-      "Super+Shift+Ctrl+Right" = mkActionBind "move-column-to-monitor-right";
-      "Super+Shift+Ctrl+Down" = mkActionBind "move-column-to-monitor-down";
-      "Super+Shift+Ctrl+Up" = mkActionBind "move-column-to-monitor-up";
-      "Super+Shift+Ctrl+H" = mkActionBind "move-column-to-monitor-left";
-      "Super+Shift+Ctrl+L" = mkActionBind "move-column-to-monitor-right";
+      # Move column to monitor on Super+Ctrl+Arrow
+      "Super+Ctrl+Left" = mkActionBind "move-column-to-monitor-left";
+      "Super+Ctrl+Right" = mkActionBind "move-column-to-monitor-right";
+      "Super+Ctrl+Down" = mkActionBind "move-column-to-monitor-down";
+      "Super+Ctrl+Up" = mkActionBind "move-column-to-monitor-up";
 
       "Super+Page_Down" = mkActionBind "focus-workspace-down";
       "Super+Page_Up" = mkActionBind "focus-workspace-up";
