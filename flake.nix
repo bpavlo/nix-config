@@ -71,45 +71,19 @@
       ...
     }:
     let
-      supportedSystems = [
-        "x86_64-linux"
-      ];
-
+      supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
       treefmtEval = forAllSystems (
         system: treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} ./treefmt.nix
       );
-
-      overlays = import ./overlays { inherit nixpkgs-stable; };
-
-      nixpkgsConfig = {
-        allowUnfree = true;
-      };
+      vars = import ./vars;
+      mkSystem = import ./lib/mksystem.nix { inherit nixpkgs inputs vars; };
     in
     {
       formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
-
       checks = forAllSystems (system: {
         formatting = treefmtEval.${system}.config.build.check self;
       });
-
-      nixosConfigurations.phoenix = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          nixos-hardware.nixosModules.framework-13-7040-amd
-          disko.nixosModules.disko
-          lanzaboote.nixosModules.lanzaboote
-          niri.nixosModules.niri
-          ./hosts/phoenix
-          ./hosts/phoenix/disko-config.nix
-          home-manager.nixosModules.home-manager
-          {
-            nixpkgs.overlays = overlays;
-            nixpkgs.config = nixpkgsConfig;
-          }
-        ];
-      };
+      nixosConfigurations.phoenix = mkSystem "phoenix" { };
     };
 }
