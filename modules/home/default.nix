@@ -23,7 +23,7 @@
 
   home.sessionVariables = {
     GOPATH = "$HOME/go";
-    BROWSER = "zen-twilight";
+    BROWSER = "brave-origin";
     TERMINAL = "ghostty";
     TF_PLUGIN_CACHE_DIR = "$HOME/.terraform.d/plugin-cache";
     EDITOR = "nvim";

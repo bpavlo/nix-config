@@ -73,6 +73,7 @@ in
           ];
           "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
           "org.freedesktop.impl.portal.Screenshot" = [ "gtk" ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
         };
       };
     };

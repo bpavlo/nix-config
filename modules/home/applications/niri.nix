@@ -130,7 +130,8 @@ in
       "Super+Slash" = mkActionBind "show-hotkey-overlay";
       "Super+Ctrl+B" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
       "Super+Ctrl+P" = spawnOrFocus "^bitwarden$" "${pkgs.bitwarden-desktop}/bin/bitwarden";
-      "Super+Ctrl+T" = spawnOrFocus "^org\\.telegram\\.desktop$" "${pkgs.telegram-desktop}/bin/Telegram";
+      "Super+Ctrl+T" =
+        spawnOrFocus "^org\\.telegram\\.desktop$" "env QT_QPA_PLATFORMTHEME=xdgdesktopportal ${pkgs.telegram-desktop}/bin/Telegram";
       "Super+Ctrl+S" = spawnOrFocus "^slack$" "${pkgs.slack}/bin/slack -s";
       "Super+Ctrl+V" = spawnOrFocus "^vesktop$" "${pkgs.vesktop}/bin/vesktop";
       "Super+Ctrl+N" = spawnOrFocus "^obsidian$" "${pkgs.obsidian}/bin/obsidian";
