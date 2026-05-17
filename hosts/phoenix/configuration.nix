@@ -18,39 +18,6 @@
     initrd.verbose = false;
   };
 
-  time.timeZone = "America/Toronto";
-  i18n.defaultLocale = "en_CA.UTF-8";
-
-  services.printing = {
-    enable = true;
-    drivers = [
-      pkgs.epson-escpr
-      pkgs.epson-escpr2
-    ];
-  };
-
-  # Network printer discovery
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  services.fwupd.enable = true;
-
-  services.flatpak.enable = true;
-
-  services.tailscale.enable = true;
-
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   virtualisation.docker = {
@@ -70,10 +37,6 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
-  services.upower.enable = true;
-  services.power-profiles-daemon.enable = true;
-
   networking.networkmanager.wifi = {
     powersave = false;
     scanRandMacAddress = false;
@@ -84,57 +47,11 @@
       MODE="0660", TAG+="uaccess", TAG+="udev-acl"
   '';
 
-  programs.fish.enable = true;
-
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
-    git
-    neovim
-    ripgrep
-    bottom
-    lsof
-
-    curl
-    wget
-    jq
-    tree
-
-    gnumake
-    gcc
-
     wdisplays
     wlr-randr
     system-config-printer
     ryzenadj
     wireguard-tools
   ];
-
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.commit-mono
-      nerd-fonts.roboto-mono
-
-      inter
-      roboto
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-      font-awesome
-    ];
-
-    fontconfig = {
-      defaultFonts = {
-        sansSerif = [ "Noto Sans" ];
-        serif = [ "Noto Serif" ];
-        monospace = [
-          "FiraCode Nerd Font"
-          "Noto Sans Mono"
-        ];
-        emoji = [ "Noto Color Emoji" ];
-      };
-    };
-  };
 }

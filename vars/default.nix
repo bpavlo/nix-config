@@ -1,6 +1,7 @@
 {
   username = "pavlo";
   fullName = "Pavlo Bunakalia";
+  timeZone = "America/Toronto";
   locale = "en_CA.UTF-8";
 
   hosts = {

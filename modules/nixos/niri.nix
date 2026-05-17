@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  vars,
   ...
 }:
 let
@@ -114,7 +115,7 @@ in
         path = [
           "/run/wrappers"
           "/run/current-system/sw"
-          "/etc/profiles/per-user/pavlo"
+          "/etc/profiles/per-user/${vars.username}"
         ];
         serviceConfig = {
           ExecStart = "${

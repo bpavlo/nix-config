@@ -16,24 +16,11 @@
   ];
 
   modules.nixos = {
+    desktop.enable = true;
     niri.enable = true;
     gaming.enable = true;
     obs.enable = true;
     k3s.enable = true;
-  };
-
-  users.users.pavlo = {
-    isNormalUser = true;
-    description = "pavlo";
-    home = "/home/pavlo";
-    shell = pkgs.fish;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "audio"
-      "docker"
-    ];
   };
 
   boot.loader.systemd-boot.enable = false;

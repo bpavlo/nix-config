@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./desktop.nix
     ./gaming.nix
     ./k3s.nix
     ./niri.nix

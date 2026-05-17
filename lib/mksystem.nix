@@ -20,7 +20,7 @@ nixpkgs.lib.nixosSystem {
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.niri.nixosModules.niri
     inputs.home-manager.nixosModules.home-manager
-
+    ../modules/common
     ../hosts/${name}
 
     (
