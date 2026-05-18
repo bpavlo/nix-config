@@ -51,6 +51,11 @@
       url = "github:bpavlo/agent-skills";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -68,6 +73,7 @@
       noctalia,
       zen-browser,
       agent-skills,
+      sops-nix,
       ...
     }:
     let

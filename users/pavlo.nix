@@ -31,5 +31,6 @@
         desktop.enable = true;
       };
     };
+    backupFileExtension = "hm-backup";
   };
 }

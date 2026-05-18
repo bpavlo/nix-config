@@ -1,0 +1,10 @@
+keys:
+  - &pavlo_personal age1l0hgrtd22gwh6jj944xaf99sx7ejqcca0rl3p9ftp8qdyxhq0fwqnuhmnm
+  - &phoenix age1q06ct25p9f9t4lxujl803770ptqv85kym0lmg6pf20fjq8uk390qxgk2cl
+
+creation_rules:
+  - path_regex: secrets/phoenix/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *pavlo_personal
+          - *phoenix

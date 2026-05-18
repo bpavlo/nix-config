@@ -8,6 +8,7 @@
     ./applications
     ./packages.nix
     ./fish.nix
+    ./git.nix
     ./ssh.nix
     ./dev.nix
     ./desktop.nix

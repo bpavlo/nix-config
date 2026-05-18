@@ -1,20 +1,17 @@
-{
-  config,
-  ...
-}:
+{ osConfig, config, ... }:
 
 {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
 
-    matchBlocks."*" = {
-      addKeysToAgent = "yes";
-    };
-  };
+    matchBlocks = {
+      "*".addKeysToAgent = "yes";
 
-  home.sessionVariables = {
-    SSH_AUTH_SOCK = "${config.home.homeDirectory}/.bitwarden-ssh-agent.sock";
+      "github.com" = {
+        identityFile = "${config.home.homeDirectory}/.ssh/id_ed25519_${osConfig.networking.hostName}";
+      };
+    };
   };
 
   services.ssh-agent.enable = false;
