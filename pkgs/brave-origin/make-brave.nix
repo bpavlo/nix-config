@@ -143,12 +143,6 @@ let
     "OutdatedBuildDetector"
   ]
   ++ optionals enableVideoAcceleration [ "UseChromeOSDirectVideoDecoder" ];
-
-  extraBraveFlags = optionals stdenv.hostPlatform.isLinux [
-    "--use-gl=angle"
-    "--use-angle=gl-egl"
-    "--enable-hardware-overlays"
-  ];
 in
 stdenv.mkDerivation {
   inherit pname version;
@@ -251,9 +245,6 @@ stdenv.mkDerivation {
       ''}
       ${optionalString (disableFeatures != [ ]) ''
         --add-flags "--disable-features=${strings.concatStringsSep "," disableFeatures}"
-      ''}
-      ${optionalString (extraBraveFlags != [ ]) ''
-        --add-flags "${strings.concatStringsSep " " extraBraveFlags}"
       ''}
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto}}"
       ${optionalString vulkanSupport ''

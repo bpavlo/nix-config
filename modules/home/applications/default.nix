@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./brave.nix
+    ./chromium.nix
     ./ghostty.nix
     ./starship.nix
     ./xdg.nix

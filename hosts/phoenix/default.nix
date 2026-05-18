@@ -16,6 +16,7 @@
   ];
 
   modules.nixos = {
+    browser-policies.enable = true;
     desktop.enable = true;
     niri.enable = true;
     gaming.enable = true;

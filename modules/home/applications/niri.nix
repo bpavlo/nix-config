@@ -125,10 +125,10 @@ in
         "ghostty-anywhere"
       ];
 
-      "Super+B" = spawnOrFocus "^brave-origin-beta$" "${pkgs.brave-origin}/bin/brave-origin";
+      "Super+B" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
       "Super+Ctrl+Return" = spawnOrFocus "^com\\.mitchellh\\.ghostty$" "ghostty";
       "Super+Slash" = mkActionBind "show-hotkey-overlay";
-      "Super+Ctrl+B" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
+      "Super+Ctrl+B" = spawnOrFocus "^chromium-browser$" "${pkgs.chromium}/bin/chromium";
       "Super+Ctrl+P" = spawnOrFocus "^bitwarden$" "${pkgs.bitwarden-desktop}/bin/bitwarden";
       "Super+Ctrl+T" =
         spawnOrFocus "^org\\.telegram\\.desktop$" "env QT_QPA_PLATFORMTHEME=xdgdesktopportal ${pkgs.telegram-desktop}/bin/Telegram";

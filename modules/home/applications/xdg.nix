@@ -1,7 +1,7 @@
 { ... }:
 
 let
-  browser = "brave-origin.desktop";
+  browser = "brave-browser.desktop";
   fileManager = "org.gnome.Nautilus.desktop";
   imageViewer = "org.gnome.gThumb.desktop";
   videoPlayer = "mpv.desktop";

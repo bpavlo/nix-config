@@ -1,137 +1,39 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
-  home.packages = (
-    with pkgs;
-    [
-      # Must Have
-      brave
-      brave-origin
-      bitwarden-desktop
-      bitwarden-cli
-      rmpc
-      obsidian
-      openssl
+  home.packages = with pkgs; [
+    # Core — useful on any host with a user
+    opencode
+    openssl
+    bitwarden-cli
+    rmpc
+    typst
+    streamrip
+    jellyfin-ffmpeg
 
-      # Must have 2
-      opencode
-      typst
-      qbittorrent
+    # CLI utilities
+    bottom
+    eza
+    fastfetch
+    fd
+    gnupg
+    mkpasswd
+    nmap
+    normcap
+    ripgrep
+    tree
+    xdg-utils
+    yamllint
+    yazi
+    yt-dlp
 
-      # Must have 3
-      wowup-cf
-      postgresql_18
-      glab
-      lazygit
-      heroic
-      tree-sitter
-      fd
-      streamrip
+    # Archives
+    unar
+    p7zip
 
-      # desktop
-      quickshell
-      bluetui
-
-      # Social
-      telegram-desktop
-      signal-desktop
-      vesktop
-      slack
-      zoom-us
-
-      # AI
-      gemini-cli
-      codex
-      ollama
-
-      # Cloud & Infrastructure
-      aws-vault
-      awscli2
-      google-cloud-sdk
-      stable.ssm-session-manager-plugin
-      teleport
-
-      # IaC
-      packer
-      tenv
-      terraform-docs
-      terraformer
-      tflint
-
-      # Languages & Runtimes
-      cargo
-      elixir
-      go
-      jdk
-      lua
-      nodejs_24
-      stable.poetry
-      rustc
-      yarn
-      python312
-
-      # Dev Tools
-      gh
-      hugo
-      isort
-      mermaid-cli
-      pre-commit
-      ruff
-      stylua
-      treefmt
-      uv
-
-      # CLI Utilities
-      bottom
-      eza
-      fastfetch
-      gnupg
-      mkpasswd
-      nmap
-      ripgrep
-      tree
-      #     veracrypt
-      yamllint
-      normcap
-      xdg-utils
-      yazi
-      yt-dlp
-
-      # Media
-      jellyfin-ffmpeg
-      gthumb
-      papers
-      mpv-unwrapped
-      unar
-      p7zip
-
-      # Gaming
-      gamescope
-
-      # Nix Tools
-      nix-du
-      nix-top
-      nix-tree
-
-      # LSPs
-      bash-language-server
-      gopls
-      lua-language-server
-      nil
-      pyright
-      terraform-ls
-      tinymist
-    ]
-    ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
-      claude-code
-      coderabbit-cli
-    ])
-    ++ [
-      inputs.agent-skills.packages.${pkgs.stdenv.hostPlatform.system}.oc-context
-    ]
-  );
+    # Nix tools
+    nix-du
+    nix-top
+    nix-tree
+  ];
 }

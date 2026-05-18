@@ -24,6 +24,12 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs vars; };
-    users.pavlo = import ../modules/home;
+    users.${vars.username} = {
+      imports = [ ../modules/home ];
+      modules.home = {
+        dev.enable = true;
+        desktop.enable = true;
+      };
+    };
   };
 }

@@ -28,7 +28,6 @@ in
       k9s
       kubectx
       minikube
-      trivy
     ];
 
     networking.firewall.trustedInterfaces = [ "cni0" ];

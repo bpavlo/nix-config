@@ -9,8 +9,9 @@
     ./packages.nix
     ./fish.nix
     ./ssh.nix
+    ./dev.nix
+    ./desktop.nix
     inputs.zen-browser.homeModules.twilight
-
   ];
 
   home.stateVersion = "25.11";
@@ -23,7 +24,7 @@
 
   home.sessionVariables = {
     GOPATH = "$HOME/go";
-    BROWSER = "brave-origin";
+    BROWSER = "brave";
     TERMINAL = "ghostty";
     TF_PLUGIN_CACHE_DIR = "$HOME/.terraform.d/plugin-cache";
     EDITOR = "nvim";
