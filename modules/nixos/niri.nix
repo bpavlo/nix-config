@@ -99,6 +99,7 @@ in
       gnome-text-editor
 
       pwvucontrol
+      pavucontrol
     ];
 
     programs.dconf.enable = true;

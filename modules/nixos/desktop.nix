@@ -6,10 +6,25 @@
 }:
 let
   cfg = config.modules.nixos.desktop;
+  bluetoothCfg = cfg.bluetooth;
 in
 {
   options.modules.nixos.desktop.enable =
     lib.mkEnableOption "desktop services (audio, fonts, printing, bluetooth, fwupd, firefox)";
+
+  options.modules.nixos.desktop.bluetooth = {
+    playbackOnly = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "Keep Bluetooth audio in A2DP-only playback mode.";
+    };
+
+    allowHeadsetProfile = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Allow HFP/HSP headset profiles for Bluetooth microphone use.";
+    };
+  };
 
   config = lib.mkIf cfg.enable {
     # Audio
@@ -20,6 +35,28 @@ in
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.extraConfig.bluetoothEnhancements = {
+        "monitor.bluez.properties" = {
+          "bluez5.enable-sbc-xq" = true;
+          "bluez5.enable-msbc" = true;
+          "bluez5.enable-hw-volume" = true;
+          "bluez5.roles" =
+            if bluetoothCfg.playbackOnly && !bluetoothCfg.allowHeadsetProfile then
+              [
+                "a2dp_sink"
+                "a2dp_source"
+              ]
+            else
+              [
+                "a2dp_sink"
+                "a2dp_source"
+                "hsp_hs"
+                "hsp_ag"
+                "hfp_hf"
+                "hfp_ag"
+              ];
+        };
+      };
     };
 
     # Firmware / power
@@ -32,7 +69,10 @@ in
     programs.firefox.enable = true;
 
     # Bluetooth
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
 
     # Printing
     services.printing = {
