@@ -8,6 +8,7 @@
     ./starship.nix
     ./xdg.nix
     ./zathura.nix
+    ./music.nix
     ./niri.nix
     ./noctalia.nix
     ./gtk.nix
