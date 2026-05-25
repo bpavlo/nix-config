@@ -13,6 +13,7 @@
       { id = "clngdbkpkpeebahjckkjfobafhncgmne"; }
       { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; }
       { id = "jinjaccalgkegednnccohejagnlnfdag"; }
+      { id = "ddkjiahejlhfcafbddmgiahcphecmpfh"; }
     ];
     commandLineArgs = [ "--enable-features=VerticalTabs" ];
   };
