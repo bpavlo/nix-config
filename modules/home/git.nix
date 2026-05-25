@@ -12,15 +12,15 @@ in
 {
   programs.git = {
     enable = true;
-    userName = vars.fullName;
-    userEmail = vars.email;
+    settings = {
+      user.name = vars.fullName;
+      user.email = vars.email;
+      gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
+    };
     signing = {
       key = signingKeyPath;
       signByDefault = true;
       format = "ssh";
-    };
-    extraConfig = {
-      gpg.ssh.allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers";
     };
   };
 
