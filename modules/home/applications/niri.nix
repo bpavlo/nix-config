@@ -118,8 +118,8 @@ in
       "Super+Q" = mkActionBind "close-window";
       "Super+Shift+E" = mkSpawnBind (spawnQs "sessionMenu");
       "Super+Shift+P" = mkSpawnBind (spawnQs "controlCenter");
-      "Super+Return".action.spawn = "ghostty";
-      "Super+Shift+Return".action.spawn = [
+      "Super+Shift+Return".action.spawn = "ghostty";
+      "Super+Return".action.spawn = [
         "ghostty"
         "--class"
         "ghostty-anywhere"
