@@ -6,12 +6,12 @@
 {
   imports = [
     ./applications
-    ./packages.nix
+    ./desktop.nix
+    ./dev.nix
     ./fish.nix
     ./git.nix
+    ./packages.nix
     ./ssh.nix
-    ./dev.nix
-    ./desktop.nix
     inputs.zen-browser.homeModules.twilight
   ];
 

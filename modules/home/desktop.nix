@@ -13,31 +13,22 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      # Productivity GUI
       bitwarden-desktop
-      obsidian
-      qbittorrent
-
-      # Wayland desktop
-      quickshell
       bluetui
-
-      # Social
-      telegram-desktop
-      signal-desktop
-      vesktop
-      slack
-      zoom-us
-
-      # GUI media
-      gthumb
-      papers
-      mpv-unwrapped
-
-      # Gaming
       gamescope
+      gthumb
       heroic
+      mpv-unwrapped
+      obsidian
+      papers
+      qbittorrent
+      quickshell
+      signal-desktop
+      slack
+      telegram-desktop
+      vesktop
       wowup-cf
+      zoom-us
     ];
   };
 }
