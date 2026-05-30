@@ -12,7 +12,7 @@
     ./niri.nix
     ./noctalia.nix
     ./gtk.nix
-    ./helix.nix 
+    ./helix.nix
     ./mpd.nix
     ./obs.nix
     ./yazi.nix
