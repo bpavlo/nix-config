@@ -118,12 +118,8 @@ in
       "Super+Q" = mkActionBind "close-window";
       "Super+Shift+E" = mkSpawnBind (spawnQs "sessionMenu");
       "Super+Shift+P" = mkSpawnBind (spawnQs "controlCenter");
-      "Super+Shift+Return".action.spawn = "ghostty";
-      "Super+Return".action.spawn = [
-        "ghostty"
-        "--class"
-        "ghostty-anywhere"
-      ];
+      "Super+Shift+Return" = mkSpawnBind "ghostty";
+      "Super+Return" = mkSpawnBind "ghostty --class=ghostty-anywhere";
 
       "Super+B" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
       "Super+Ctrl+Return" = spawnOrFocus "^com\\.mitchellh\\.ghostty$" "ghostty";
