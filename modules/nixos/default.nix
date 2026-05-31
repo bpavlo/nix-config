@@ -10,5 +10,7 @@
     ./obs.nix
     ./openclaw.nix
     ./ppc.nix
+    ./radicale.nix
+    ./syncthing.nix
   ];
 }

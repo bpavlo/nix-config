@@ -1,6 +1,7 @@
 keys:
   - &pavlo_personal age1l0hgrtd22gwh6jj944xaf99sx7ejqcca0rl3p9ftp8qdyxhq0fwqnuhmnm
   - &phoenix age1q06ct25p9f9t4lxujl803770ptqv85kym0lmg6pf20fjq8uk390qxgk2cl
+  - &openclaw age1x0lvfug96vq0pvj9zgu7u7lumnar5gkyh3pvedvh3wrkl7uhwqlqchv7qz
 
 creation_rules:
   - path_regex: secrets/phoenix/[^/]+\.yaml$
@@ -8,3 +9,8 @@ creation_rules:
       - age:
           - *pavlo_personal
           - *phoenix
+  - path_regex: secrets/openclaw/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *pavlo_personal
+          - *openclaw

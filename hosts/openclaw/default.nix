@@ -6,10 +6,14 @@
     ./configuration.nix
     ../../modules/nixos/ppc.nix
     ../../modules/nixos/openclaw.nix
+    ../../modules/nixos/radicale.nix
+    ../../modules/nixos/syncthing.nix
   ];
 
   modules.nixos.ppc.enable = false;
-  modules.nixos.openclaw.enable = false;
+  modules.nixos.openclaw.enable = true;
+  modules.nixos.radicale.enable = true;
+  modules.nixos.syncthing.enable = true;
 
   users.users.pavlo = {
     isNormalUser = true;

@@ -1,0 +1,21 @@
+{
+  config,
+  lib,
+  ...
+}:
+let
+  cfg = config.modules.nixos.syncthing;
+in
+{
+  options.modules.nixos.syncthing.enable = lib.mkEnableOption "Syncthing for the Obsidian vault";
+
+  config = lib.mkIf cfg.enable {
+    services.syncthing = {
+      enable = true;
+      guiAddress = "0.0.0.0:8384";
+      overrideDevices = false;
+      overrideFolders = false;
+      settings.folders.obsidian.path = "/var/lib/syncthing/obsidian";
+    };
+  };
+}

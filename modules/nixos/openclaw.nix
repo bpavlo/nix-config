@@ -8,7 +8,6 @@
 let
   cfg = config.modules.nixos.openclaw;
   gwToken = config.sops.secrets."openclaw-gateway-token".path;
-  apiKey = config.sops.secrets."openclaw-anthropic-api-key".path;
   tgToken = config.sops.secrets."openclaw-telegram-token".path;
 in
 {
@@ -22,10 +21,10 @@ in
       isNormalUser = true;
       home = "/home/openclaw";
       linger = true;
+      extraGroups = [ "syncthing" ];
     };
 
     sops.secrets."openclaw-gateway-token".owner = "openclaw";
-    sops.secrets."openclaw-anthropic-api-key".owner = "openclaw";
     sops.secrets."openclaw-telegram-token".owner = "openclaw";
 
     home-manager.users.openclaw =
@@ -33,13 +32,19 @@ in
       {
         imports = [ inputs.nix-openclaw.homeManagerModules.openclaw ];
         home.stateVersion = "25.11";
+        home.enableNixpkgsReleaseCheck = false;
+
+        programs.bash = {
+          enable = true;
+          initExtra = ''export OPENCLAW_GATEWAY_TOKEN="$(cat ${gwToken} 2>/dev/null)"'';
+        };
 
         programs.openclaw = {
           enable = true;
+          documents = inputs.openclaw-persona;
 
           environment = {
             OPENCLAW_GATEWAY_TOKEN = gwToken;
-            ANTHROPIC_API_KEY = apiKey;
           };
 
           config = {
@@ -54,10 +59,13 @@ in
               allowFrom = [ 272820312 ];
               dmPolicy = "pairing";
             };
-            agents.defaults.model.primary = "anthropic/claude-opus-4-8";
+            agents.defaults = {
+              model.primary = "openai/gpt-5.5";
+              models."openai/gpt-5.5".agentRuntime.id = "openclaw";
+            };
             tools.exec = {
-              security = "deny";
-              ask = "always";
+              security = "full";
+              ask = "off";
             };
           };
         };

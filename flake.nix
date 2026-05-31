@@ -67,6 +67,11 @@
       flake = false;
     };
 
+    openclaw-persona = {
+      url = "git+ssh://git@github.com/bpavlo/openclaw-persona.git";
+      flake = false;
+    };
+
   };
 
   outputs =
