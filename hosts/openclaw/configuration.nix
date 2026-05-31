@@ -7,13 +7,13 @@
   };
 
   networking.useDHCP = lib.mkDefault true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
   zramSwap.enable = true;
 
   services.openssh = {
     enable = true;
+    openFirewall = false;
     settings = {
-      PermitRootLogin = "prohibit-password";
+      PermitRootLogin = "no";
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
     };
