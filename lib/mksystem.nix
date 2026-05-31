@@ -11,14 +11,13 @@ name:
 
 let
   hostMeta = vars.hosts.${name};
+  inherit (nixpkgs) lib;
 in
 nixpkgs.lib.nixosSystem {
   system = hostMeta.system;
   specialArgs = { inherit inputs vars headless; };
   modules = [
     inputs.disko.nixosModules.disko
-    inputs.lanzaboote.nixosModules.lanzaboote
-    inputs.niri.nixosModules.niri
     inputs.home-manager.nixosModules.home-manager
     ../modules/common
     ../hosts/${name}
@@ -31,5 +30,9 @@ nixpkgs.lib.nixosSystem {
         nixpkgs.config.allowUnfree = true;
       }
     )
+  ]
+  ++ lib.optionals (!headless) [
+    inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.niri.nixosModules.niri
   ];
 }

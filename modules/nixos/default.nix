@@ -8,5 +8,7 @@
     ./k3s.nix
     ./niri.nix
     ./obs.nix
+    ./openclaw.nix
+    ./ppc.nix
   ];
 }

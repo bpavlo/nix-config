@@ -56,6 +56,17 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-openclaw = {
+      url = "github:openclaw/nix-openclaw";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ppc = {
+      url = "git+ssh://git@github.com/bpavlo/ppc.git";
+      flake = false;
+    };
+
   };
 
   outputs =
@@ -91,5 +102,6 @@
         formatting = treefmtEval.${system}.config.build.check self;
       });
       nixosConfigurations.phoenix = mkSystem "phoenix" { };
+      nixosConfigurations.openclaw = mkSystem "openclaw" { headless = true; };
     };
 }
