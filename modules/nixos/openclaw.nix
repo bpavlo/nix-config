@@ -12,6 +12,7 @@ let
   tgToken = config.sops.secrets."openclaw-telegram-token".path;
   caldavPw = config.sops.secrets."openclaw-caldav-password".path;
   gitSshKey = config.sops.secrets."openclaw-ssh-key".path;
+  bbToken = config.sops.secrets."openclaw-bitbucket-token".path;
 in
 {
   options.modules.nixos.openclaw.enable =
@@ -31,6 +32,7 @@ in
     sops.secrets."openclaw-telegram-token".owner = "openclaw";
     sops.secrets."openclaw-caldav-password".owner = "openclaw";
     sops.secrets."openclaw-ssh-key".owner = "openclaw";
+    sops.secrets."openclaw-bitbucket-token".owner = "openclaw";
 
     home-manager.users.openclaw =
       { ... }:
@@ -72,7 +74,11 @@ in
 
         programs.bash = {
           enable = true;
-          initExtra = ''export OPENCLAW_GATEWAY_TOKEN="$(cat ${gwToken} 2>/dev/null)"'';
+          initExtra = ''
+            export OPENCLAW_GATEWAY_TOKEN="$(cat ${gwToken} 2>/dev/null)"
+            export BB_USER="pbunakalia@provectus.com"
+            export BB_TOKEN="$(cat ${bbToken} 2>/dev/null)"
+          '';
         };
 
         programs.git = {
