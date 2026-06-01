@@ -38,6 +38,37 @@ in
         imports = [ inputs.nix-openclaw.homeManagerModules.openclaw ];
         home.stateVersion = "25.11";
         home.enableNixpkgsReleaseCheck = false;
+        home.packages = with pkgs; [
+          # CLI utilities
+          bat
+          bottom
+          eza
+          fd
+          jq
+          ripgrep
+          tree
+          yamllint
+
+          # Archives
+          p7zip
+          unar
+
+          # Git / forge
+          gh
+          glab
+          pre-commit
+          treefmt
+
+          # Python
+          python312
+          uv
+          ruff
+          isort
+
+          # Secrets
+          sops
+          ssh-to-age
+        ];
 
         programs.bash = {
           enable = true;
