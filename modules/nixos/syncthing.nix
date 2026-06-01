@@ -15,7 +15,9 @@ in
       guiAddress = "0.0.0.0:8384";
       overrideDevices = false;
       overrideFolders = false;
-      settings.folders.obsidian.path = "/var/lib/syncthing/obsidian";
+      settings.folders.brain.path = "/var/lib/syncthing/brain";
     };
+
+    systemd.services.syncthing.serviceConfig.UMask = "0007";
   };
 }
