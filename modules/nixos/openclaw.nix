@@ -117,6 +117,12 @@ in
               tokenFile = tgToken;
               allowFrom = [ 272820312 ];
               dmPolicy = "pairing";
+              groupPolicy = "allowlist";
+              groupAllowFrom = [ 272820312 ];
+              groups."-3931602419" = {
+                enabled = true;
+                requireMention = true;
+              };
             };
 
             agents.defaults = {
