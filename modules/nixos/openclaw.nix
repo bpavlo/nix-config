@@ -38,6 +38,15 @@ in
         imports = [ inputs.nix-openclaw.homeManagerModules.openclaw ];
         home.stateVersion = "25.11";
         home.enableNixpkgsReleaseCheck = false;
+        home.packages = with pkgs; [
+          bat
+          eza
+          fd
+          gh
+          jq
+          ripgrep
+          tree
+        ];
 
         programs.bash = {
           enable = true;
