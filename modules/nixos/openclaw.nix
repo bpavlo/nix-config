@@ -119,9 +119,9 @@ in
               dmPolicy = "pairing";
               groupPolicy = "allowlist";
               groupAllowFrom = [ 272820312 ];
-              groups."-3931602419" = {
+              groups."-1003931602419" = {
                 enabled = true;
-                requireMention = true;
+                requireMention = false;
               };
             };
 
