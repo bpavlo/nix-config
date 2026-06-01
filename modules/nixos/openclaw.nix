@@ -74,11 +74,7 @@ in
 
         programs.bash = {
           enable = true;
-          initExtra = ''
-            export OPENCLAW_GATEWAY_TOKEN="$(cat ${gwToken} 2>/dev/null)"
-            export BB_USER="pbunakalia@provectus.com"
-            export BB_TOKEN="$(cat ${bbToken} 2>/dev/null)"
-          '';
+          initExtra = ''export OPENCLAW_GATEWAY_TOKEN="$(cat ${gwToken} 2>/dev/null)"'';
         };
 
         programs.git = {
@@ -108,6 +104,8 @@ in
           environment = {
             OPENCLAW_GATEWAY_TOKEN = gwToken;
             CALDAV_PASSWORD = caldavPw;
+            BB_USER = "pbunakalia@provectus.com";
+            BB_TOKEN = bbToken;
           };
 
           config = {
