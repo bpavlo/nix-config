@@ -137,6 +137,16 @@ in
               };
             };
             tools.exec.mode = "auto";
+
+            mcp.servers.atlassian = {
+              command = "npx";
+              args = [
+                "-y"
+                "mcp-remote"
+                "https://mcp.atlassian.com/v1/sse"
+                "5598"
+              ];
+            };
           };
         };
       };
