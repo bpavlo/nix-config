@@ -8,12 +8,14 @@
     ../../modules/nixos/openclaw.nix
     ../../modules/nixos/radicale.nix
     ../../modules/nixos/syncthing.nix
+    ../../modules/nixos/github-runner.nix
   ];
 
-  modules.nixos.ppc.enable = false;
+  modules.nixos.ppc.enable = true;
   modules.nixos.openclaw.enable = true;
   modules.nixos.radicale.enable = true;
   modules.nixos.syncthing.enable = true;
+  modules.nixos.githubRunner.enable = true;
 
   users.users.pavlo = {
     isNormalUser = true;
