@@ -130,7 +130,7 @@ in
             };
 
             agents.defaults = {
-              model.primary = "openai-codex/gpt-5.5";
+              model.primary = "anthropic/claude-opus-4-8";
               models = {
                 "openai/gpt-5.5".agentRuntime.id = "openclaw";
                 "anthropic/claude-opus-4-8".agentRuntime.id = "claude-cli";
