@@ -62,11 +62,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ppc = {
-      url = "git+ssh://git@github.com/bpavlo/ppc.git";
-      flake = false;
-    };
-
     openclaw-persona = {
       url = "git+ssh://git@github.com/bpavlo/openclaw-persona.git";
       flake = false;

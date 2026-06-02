@@ -576,22 +576,6 @@
         "url": "ssh://git@github.com/bpavlo/openclaw-persona.git"
       }
     },
-    "ppc": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779906269,
-        "narHash": "sha256-OPgHTrOr9HUH8MDPUrXzlMuzOm+Y4fUl9yhazQxUoPw=",
-        "ref": "refs/heads/main",
-        "rev": "531e0b8d54bc749e5a5b57ad27fde928262d2b59",
-        "revCount": 5,
-        "type": "git",
-        "url": "ssh://git@github.com/bpavlo/ppc.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/bpavlo/ppc.git"
-      }
-    },
     "pre-commit": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -655,7 +639,6 @@
         "nixpkgs-stable": "nixpkgs-stable_2",
         "noctalia": "noctalia",
         "openclaw-persona": "openclaw-persona",
-        "ppc": "ppc",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix_3",
         "zen-browser": "zen-browser"
