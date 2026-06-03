@@ -102,7 +102,9 @@ in
           documents = inputs.openclaw-persona;
 
           customPlugins = [
-            { source = inputs.agent-skills.outPath; }
+            # Pinned flakeref (not .outPath) so getFlake works under pure eval;
+            # rev/narHash track the agent-skills flake input lock.
+            { source = "github:bpavlo/agent-skills?rev=${inputs.agent-skills.rev}&narHash=${inputs.agent-skills.narHash}"; }
           ];
 
           environment = {
