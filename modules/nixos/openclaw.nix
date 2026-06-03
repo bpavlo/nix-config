@@ -101,12 +101,6 @@ in
           enable = true;
           documents = inputs.openclaw-persona;
 
-          customPlugins = [
-            # Pinned flakeref (not .outPath) so getFlake works under pure eval;
-            # rev/narHash track the agent-skills flake input lock.
-            { source = "github:bpavlo/agent-skills?rev=${inputs.agent-skills.rev}&narHash=${inputs.agent-skills.narHash}"; }
-          ];
-
           environment = {
             OPENCLAW_GATEWAY_TOKEN = gwToken;
             CALDAV_PASSWORD = caldavPw;
