@@ -101,11 +101,17 @@ in
           enable = true;
           documents = inputs.openclaw-persona;
 
-          customPlugins = [
-            # Pinned flakeref (not .outPath) so getFlake works under pure eval;
-            # rev/narHash track the agent-skills flake input lock.
-            { source = "github:bpavlo/agent-skills?rev=${inputs.agent-skills.rev}&narHash=${inputs.agent-skills.narHash}"; }
-          ];
+          skills =
+            let
+              src = inputs.agent-skills;
+              isSkill = n: t: t == "directory" && builtins.pathExists "${src}/${n}/SKILL.md";
+              dirs = lib.attrNames (lib.filterAttrs isSkill (builtins.readDir src));
+            in
+            map (n: {
+              name = n;
+              source = "${src}/${n}";
+              mode = "symlink";
+            }) dirs;
 
           environment = {
             OPENCLAW_GATEWAY_TOKEN = gwToken;
