@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778467731,
-        "narHash": "sha256-wtsZsDzbxUk9EbD9zTprJfG9OHfrQiE61QyG4xHpUtQ=",
+        "lastModified": 1780456912,
+        "narHash": "sha256-ItUhPH3d5pwMnQ6Wi/fWSw1HD8EgcrxGZZz0HD59aDI=",
         "owner": "bpavlo",
         "repo": "agent-skills",
-        "rev": "7843b7cb1ead132ffb2cedb9852281637a53c447",
+        "rev": "5a004e41011fde8b84ea410fd23c7c4cf6c433ab",
         "type": "github"
       },
       "original": {

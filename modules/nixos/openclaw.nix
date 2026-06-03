@@ -101,6 +101,10 @@ in
           enable = true;
           documents = inputs.openclaw-persona;
 
+          customPlugins = [
+            { source = inputs.agent-skills.outPath; }
+          ];
+
           environment = {
             OPENCLAW_GATEWAY_TOKEN = gwToken;
             CALDAV_PASSWORD = caldavPw;
