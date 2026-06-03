@@ -13,6 +13,13 @@ let
   caldavPw = config.sops.secrets."openclaw-caldav-password".path;
   gitSshKey = config.sops.secrets."openclaw-ssh-key".path;
   bbToken = config.sops.secrets."openclaw-bitbucket-token".path;
+
+  agentSkillsSrc = inputs.agent-skills;
+  agentSkillNames =
+    let
+      isSkill = n: t: t == "directory" && builtins.pathExists "${agentSkillsSrc}/${n}/SKILL.md";
+    in
+    lib.attrNames (lib.filterAttrs isSkill (builtins.readDir agentSkillsSrc));
 in
 {
   options.modules.nixos.openclaw.enable =
@@ -90,28 +97,33 @@ in
           };
         };
 
-        home.file.".ssh/config".text = ''
-          Host github.com bitbucket.org
-            IdentityFile ${gitSshKey}
-            IdentitiesOnly yes
-            StrictHostKeyChecking accept-new
-        '';
+        home.file = lib.mkMerge [
+          {
+            ".ssh/config".text = ''
+              Host github.com bitbucket.org
+                IdentityFile ${gitSshKey}
+                IdentitiesOnly yes
+                StrictHostKeyChecking accept-new
+            '';
+          }
+          # The claude-cli harness scans ~/.claude/skills, which OpenClaw's skills.load.extraDirs don't reach.
+          (builtins.listToAttrs (
+            map (n: {
+              name = ".claude/skills/${n}";
+              value.source = "${agentSkillsSrc}/${n}";
+            }) agentSkillNames
+          ))
+        ];
 
         programs.openclaw = {
           enable = true;
           documents = inputs.openclaw-persona;
 
-          skills =
-            let
-              src = inputs.agent-skills;
-              isSkill = n: t: t == "directory" && builtins.pathExists "${src}/${n}/SKILL.md";
-              dirs = lib.attrNames (lib.filterAttrs isSkill (builtins.readDir src));
-            in
-            map (n: {
-              name = n;
-              source = "${src}/${n}";
-              mode = "symlink";
-            }) dirs;
+          skills = map (n: {
+            name = n;
+            source = "${agentSkillsSrc}/${n}";
+            mode = "symlink";
+          }) agentSkillNames;
 
           environment = {
             OPENCLAW_GATEWAY_TOKEN = gwToken;
