@@ -134,6 +134,7 @@ in
               models = {
                 "openai/gpt-5.5".agentRuntime.id = "openclaw";
                 "anthropic/claude-opus-4-8".agentRuntime.id = "claude-cli";
+                "anthropic/claude-sonnet-4-6".agentRuntime.id = "claude-cli";
               };
             };
             tools.exec.mode = "auto";
@@ -143,7 +144,7 @@ in
               args = [
                 "-y"
                 "mcp-remote"
-                "https://mcp.atlassian.com/v1/sse"
+                "https://mcp.atlassian.com/v1/mcp"
                 "5598"
               ];
             };
