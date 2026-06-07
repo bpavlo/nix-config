@@ -90,7 +90,7 @@
       open = {
         rules = [
           {
-            name = "*/";
+            mime = "inode/directory";
             use = [
               "edit"
               "open"
