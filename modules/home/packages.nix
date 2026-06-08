@@ -5,7 +5,6 @@
     # Core — useful on any host with a user
     opencode
     openssl
-    bitwarden-cli
     rmpc
     typst
     streamrip

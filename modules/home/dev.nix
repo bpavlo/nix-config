@@ -61,6 +61,7 @@ in
         gemini-cli
         codex
         ollama
+        context7-mcp
       ])
       ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
         claude-code
