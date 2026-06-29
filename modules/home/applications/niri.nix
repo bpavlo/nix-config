@@ -120,8 +120,8 @@ in
       "Super+Shift+P" = mkSpawnBind (spawnQs "controlCenter");
       "Super+Shift+Return" = mkSpawnBind "ghostty --class=ghostty-anywhere";
 
-      "Super+B" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
-      "Super+Z" = spawnOrFocus "^zen-twilight$" "zen-twilight";
+      "Super+Z" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
+      "Super+B" = spawnOrFocus "^zen-twilight$" "zen-twilight";
       "Super+Return" = spawnOrFocus "^com\\.mitchellh\\.ghostty$" "ghostty";
       "Super+Slash" = mkActionBind "show-hotkey-overlay";
       "Super+Ctrl+B" = spawnOrFocus "^chromium-browser$" "${pkgs.chromium}/bin/chromium";
