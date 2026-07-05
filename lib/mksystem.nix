@@ -34,5 +34,6 @@ nixpkgs.lib.nixosSystem {
   ++ lib.optionals (!headless) [
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.niri.nixosModules.niri
+    inputs.noctalia-greeter.nixosModules.default
   ];
 }

@@ -2,8 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
-  vars,
   ...
 }:
 let
@@ -18,13 +16,57 @@ in
       package = pkgs.niri;
     };
 
-    services.greetd = {
+    services.greetd.settings.default_session.user = "greeter";
+
+    programs.noctalia-greeter = {
       enable = true;
       settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
-          user = "greeter";
+        session.default = "Niri";
+        keyboard = {
+          layout = "us,ca,ru,ua";
+          options = "grp:win_space_toggle";
         };
+        cursor = {
+          theme = "Adwaita";
+          size = 24;
+        };
+        appearance = {
+          scheme = "Synced";
+          hide_logo = true;
+        };
+      };
+    };
+
+    systemd.tmpfiles.settings."11-noctalia-greeter-appearance" = {
+      "/var/lib/noctalia-greeter/appearance.json".C = {
+        argument = "${pkgs.writeText "noctalia-greeter-appearance.json" (
+          builtins.toJSON {
+            version = 1;
+            theme_mode = "dark";
+            corner_radius_scale = 1.0;
+            palette = {
+              primary = "#aaaaaa";
+              on_primary = "#111111";
+              secondary = "#a7a7a7";
+              on_secondary = "#111111";
+              tertiary = "#cccccc";
+              on_tertiary = "#111111";
+              error = "#dddddd";
+              on_error = "#111111";
+              surface = "#111111";
+              on_surface = "#828282";
+              surface_variant = "#191919";
+              on_surface_variant = "#5d5d5d";
+              outline = "#3c3c3c";
+              shadow = "#000000";
+              hover = "#cccccc";
+              on_hover = "#111111";
+            };
+          }
+        )}";
+        user = "root";
+        group = "root";
+        mode = "0644";
       };
     };
 
@@ -110,24 +152,6 @@ in
       };
       xdg-desktop-portal-gtk = {
         wantedBy = [ "graphical-session.target" ];
-      };
-      noctalia-shell = {
-        description = "Noctalia shell";
-        wantedBy = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
-        partOf = [ "graphical-session.target" ];
-        path = [
-          "/run/wrappers"
-          "/run/current-system/sw"
-          "/etc/profiles/per-user/${vars.username}"
-        ];
-        serviceConfig = {
-          ExecStart = "${
-            inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-          }/bin/noctalia-shell";
-          Restart = "on-failure";
-          RestartSec = "3s";
-        };
       };
     };
   };

@@ -23,7 +23,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v1.0.0";
+      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,6 +39,11 @@
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -82,6 +87,7 @@
       llm-agents,
       niri,
       noctalia,
+      noctalia-greeter,
       zen-browser,
       agent-skills,
       sops-nix,

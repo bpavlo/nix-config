@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  spawnQs = method: "qs ipc --pid $(pgrep quickshell) call ${method} toggle";
+  spawnQs = panelId: "noctalia msg panel-toggle ${panelId}";
   mkSpawnBind = cmd: {
     action.spawn = [
       "sh"
@@ -36,6 +36,17 @@ let
       x = 1440;
       y = 0;
     };
+  };
+
+  noctaliaIpcBinds = {
+    "Mod+Space" = mkSpawnBind (spawnQs "launcher");
+    "Mod+S" = mkSpawnBind (spawnQs "control-center");
+    "Mod+Comma" = mkSpawnBind "noctalia msg settings-toggle";
+    "XF86AudioRaiseVolume" = mkSpawnBind "noctalia msg volume-up";
+    "XF86AudioLowerVolume" = mkSpawnBind "noctalia msg volume-down";
+    "XF86AudioMute" = mkSpawnBind "noctalia msg volume-mute";
+    "XF86MonBrightnessUp" = mkSpawnBind "noctalia msg brightness-up";
+    "XF86MonBrightnessDown" = mkSpawnBind "noctalia msg brightness-down";
   };
 in
 {
@@ -96,6 +107,32 @@ in
 
     animations.enable = false;
 
+    window-rules = [
+      {
+        geometry-corner-radius = {
+          top-left = 5.0;
+          top-right = 5.0;
+          bottom-right = 5.0;
+          bottom-left = 5.0;
+        };
+        clip-to-geometry = true;
+      }
+      {
+        matches = [ { app-id = "^dev\\.noctalia\\.Noctalia\\.Settings$"; } ];
+        open-floating = true;
+        default-column-width = {
+          fixed = 1080;
+        };
+        default-window-height = {
+          fixed = 920;
+        };
+      }
+    ];
+
+    debug = {
+      "honor-xdg-activation-with-invalid-serial" = [ ];
+    };
+
     spawn-at-startup = [
       {
         argv = [
@@ -116,12 +153,15 @@ in
       "Super+D" = mkSpawnBind (spawnQs "launcher");
       "Super+Space" = mkActionBind "switch-focus-between-floating-and-tiling";
       "Super+Q" = mkActionBind "close-window";
-      "Super+Shift+E" = mkSpawnBind (spawnQs "sessionMenu");
-      "Super+Shift+P" = mkSpawnBind (spawnQs "controlCenter");
+      "Super+Shift+E" = mkSpawnBind (spawnQs "session");
+      "Super+Shift+P" = mkSpawnBind (spawnQs "control-center");
       "Super+Shift+Return" = mkSpawnBind "ghostty --class=ghostty-anywhere";
 
-      "Super+Z" = spawnOrFocus "^brave-browser$" "${pkgs.brave}/bin/brave";
-      "Super+B" = spawnOrFocus "^zen-twilight$" "zen-twilight";
+      "Super+Ctrl+P" = mkSpawnBind "noctalia msg power-cycle";
+      "Super+Ctrl+C" = mkSpawnBind "noctalia msg caffeine-toggle";
+
+      "Super+Z" = spawnOrFocus "^zen-twilight$" "zen-twilight";
+      "Super+B" = spawnOrFocus "^brave-browser$" "brave";
       "Super+Return" = spawnOrFocus "^com\\.mitchellh\\.ghostty$" "ghostty";
       "Super+Slash" = mkActionBind "show-hotkey-overlay";
       "Super+Ctrl+B" = spawnOrFocus "^chromium-browser$" "${pkgs.chromium}/bin/chromium";
