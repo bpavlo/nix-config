@@ -6,7 +6,5 @@
       system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
-
-    brave-origin = final.callPackage ../pkgs/brave-origin/package.nix { };
   })
 ]
