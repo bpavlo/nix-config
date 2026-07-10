@@ -8,17 +8,10 @@ let
   cfg = config.modules.nixos.gaming;
 in
 {
-  options.modules.nixos.gaming.enable = lib.mkEnableOption "gaming (Steam, gamemode, mangohud, ROCm)";
+  options.modules.nixos.gaming.enable =
+    lib.mkEnableOption "gaming (Steam, gamemode, mangohud, hardware video accel)";
   config = lib.mkIf cfg.enable {
-    hardware.graphics = {
-      enable = true;
-
-      extraPackages = with pkgs; [
-        rocmPackages.clr.icd
-        libva
-        libva-vdpau-driver
-      ];
-    };
+    hardware.graphics.enable = true;
 
     services.hardware.bolt.enable = true;
 
@@ -35,7 +28,6 @@ in
       mangohud
       vulkan-tools
       clinfo
-      nvtopPackages.amd
     ];
   };
 }

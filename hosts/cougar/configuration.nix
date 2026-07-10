@@ -5,9 +5,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
-      "amdgpu.dcdebugmask=0x12"
-      "amdgpu.ppfeaturemask=0xffffffff"
-      "iomem=relaxed"
+      "xe.enable_psr=0"
       "quiet"
       "loglevel=3"
       "rd.udev.log_level=3"
@@ -21,9 +19,9 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-    libva
-    libva-vdpau-driver
+    intel-media-driver
+    vpl-gpu-rt
+    intel-compute-runtime
   ];
 
   virtualisation.docker = {
@@ -57,8 +55,7 @@
     wdisplays
     wlr-randr
     system-config-printer
-    ryzenadj
     wireguard-tools
-    nvtopPackages.amd
+    nvtopPackages.intel
   ];
 }
