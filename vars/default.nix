@@ -1,6 +1,6 @@
 {
   username = "pavlo";
-  fullName = "Pavlo B";
+  fullName = "Pavlo";
   timeZone = "America/Toronto";
   locale = "en_CA.UTF-8";
   email = "git@bpavlo.com";
