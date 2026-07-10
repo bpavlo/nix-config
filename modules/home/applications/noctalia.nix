@@ -154,6 +154,7 @@
         panel = {
           control_center_placement = "floating";
           control_center_position = "auto";
+          open_near_click_control_center = true;
         };
         launcher = {
           categories = true;
