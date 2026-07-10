@@ -11,6 +11,8 @@ in
   options.modules.nixos.niri.enable =
     lib.mkEnableOption "niri compositor with greetd, portals, and noctalia";
   config = lib.mkIf cfg.enable {
+    niri-flake.cache.enable = false;
+
     programs.niri = {
       enable = true;
       package = pkgs.niri;
