@@ -38,16 +38,6 @@ let
     };
   };
 
-  noctaliaIpcBinds = {
-    "Mod+Space" = mkSpawnBind (spawnQs "launcher");
-    "Mod+S" = mkSpawnBind (spawnQs "control-center");
-    "Mod+Comma" = mkSpawnBind "noctalia msg settings-toggle";
-    "XF86AudioRaiseVolume" = mkSpawnBind "noctalia msg volume-up";
-    "XF86AudioLowerVolume" = mkSpawnBind "noctalia msg volume-down";
-    "XF86AudioMute" = mkSpawnBind "noctalia msg volume-mute";
-    "XF86MonBrightnessUp" = mkSpawnBind "noctalia msg brightness-up";
-    "XF86MonBrightnessDown" = mkSpawnBind "noctalia msg brightness-down";
-  };
 in
 {
   programs.niri.settings = {
@@ -118,7 +108,7 @@ in
         clip-to-geometry = true;
       }
       {
-        matches = [ { app-id = "^dev\\.noctalia\\.Noctalia\\.Settings$"; } ];
+        matches = [ { app-id = "^dev\\.noctalia\\.Noctalia$"; } ];
         open-floating = true;
         default-column-width = {
           fixed = 1080;

@@ -207,7 +207,6 @@
           "keyboard_layout"
         ];
         end = [
-          "tray"
           "notifications"
           "volume"
           "bluetooth"
