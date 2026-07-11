@@ -1,6 +1,10 @@
 { config, ... }:
 {
   services.tailscale.enable = true;
+  services.tor = {
+    enable = true;
+    openFirewall = true;
+  };
   networking.nftables.enable = true;
   networking.firewall = {
     enable = true;

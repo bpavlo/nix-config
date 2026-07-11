@@ -25,6 +25,7 @@ in
       signal-desktop
       slack
       telegram-desktop
+      tor-browser
       vesktop
       wowup-cf
       zoom-us
