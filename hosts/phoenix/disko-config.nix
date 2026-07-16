@@ -24,13 +24,11 @@
               content = {
                 type = "luks";
                 name = "cryptroot";
-                passwordFile = "/tmp/secret.key"; # Create this file during installation
+                passwordFile = "/tmp/secret.key";
                 settings = {
-                  # Boot-time unlock settings
                   allowDiscards = true;
                   bypassWorkqueues = true;
                 };
-                # LUKS2 creation options (used during formatting)
                 extraFormatArgs = [
                   "--type=luks2"
                   "--cipher=aes-xts-plain64"
@@ -48,7 +46,6 @@
                     "nixos"
                   ];
                   subvolumes = {
-                    # Root subvolume
                     "@root" = {
                       mountpoint = "/";
                       mountOptions = [
@@ -60,7 +57,6 @@
                       ];
                     };
 
-                    # Home directory
                     "@home" = {
                       mountpoint = "/home";
                       mountOptions = [
@@ -72,7 +68,6 @@
                       ];
                     };
 
-                    # Nix store - heavily compressed as packages don't change
                     "@nix" = {
                       mountpoint = "/nix";
                       mountOptions = [
@@ -84,13 +79,6 @@
                       ];
                     };
 
-                    # Snapshots directory
-                    # NOTE: Currently unused. On next reinstall, replace with:
-                    # "@home-snapshots" = {
-                    #   mountpoint = "/home/.snapshots";
-                    #   mountOptions = [ "compress=zstd:1" "noatime" "space_cache=v2" "discard=async" "ssd" ];
-                    # };
-                    # We only need home snapshots since NixOS provides system rollback via generations.
                     "@snapshots" = {
                       mountpoint = "/.snapshots";
                       mountOptions = [
@@ -102,7 +90,6 @@
                       ];
                     };
 
-                    # Swap subvolume - no compression, no CoW
                     "@swap" = {
                       mountpoint = "/swap";
                       mountOptions = [
