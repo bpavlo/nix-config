@@ -533,22 +533,6 @@
         "type": "github"
       }
     },
-    "openclaw-persona": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780348403,
-        "narHash": "sha256-Efq4Bxo9og+kXK6NHrNOkPesL9APfso3X8+4No0ct2M=",
-        "ref": "refs/heads/main",
-        "rev": "2dd2803647fafa5369dc9956c875034e327f0e84",
-        "revCount": 2,
-        "type": "git",
-        "url": "ssh://git@github.com/bpavlo/openclaw-persona.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/bpavlo/openclaw-persona.git"
-      }
-    },
     "pre-commit": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -611,7 +595,6 @@
         "nixpkgs-stable": "nixpkgs-stable_2",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
-        "openclaw-persona": "openclaw-persona",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix_2",
         "zen-browser": "zen-browser"

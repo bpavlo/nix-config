@@ -66,12 +66,6 @@
       url = "github:openclaw/nix-openclaw";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    openclaw-persona = {
-      url = "git+ssh://git@github.com/bpavlo/openclaw-persona.git";
-      flake = false;
-    };
-
   };
 
   outputs =

@@ -99,7 +99,6 @@ in
 
         programs.openclaw = {
           enable = true;
-          documents = inputs.openclaw-persona;
 
           environment = {
             OPENCLAW_GATEWAY_TOKEN = gwToken;
@@ -130,11 +129,10 @@ in
             };
 
             agents.defaults = {
-              model.primary = "anthropic/claude-opus-4-8";
+              model.primary = "anthropic/claude-sonnet-5";
               models = {
-                "openai/gpt-5.5".agentRuntime.id = "openclaw";
                 "anthropic/claude-opus-4-8".agentRuntime.id = "claude-cli";
-                "anthropic/claude-sonnet-4-6".agentRuntime.id = "claude-cli";
+                "anthropic/claude-sonnet-5".agentRuntime.id = "claude-cli";
               };
             };
             tools.exec.mode = "auto";
