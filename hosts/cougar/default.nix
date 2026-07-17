@@ -27,7 +27,7 @@
   boot.loader.systemd-boot.enable = false;
   boot.lanzaboote = {
     enable = true;
-    pkiBundle = "/etc/secureboot";
+    pkiBundle = "/var/lib/sbctl";
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
