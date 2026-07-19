@@ -12,6 +12,7 @@
     home = "/home/${vars.username}";
     shell = pkgs.fish;
     extraGroups = [
+      "gamemode"
       "networkmanager"
       "wheel"
       "video"

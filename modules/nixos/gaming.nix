@@ -16,12 +16,17 @@ in
     services.hardware.bolt.enable = true;
 
     programs.gamemode.enable = true;
+    programs.gamemode.settings.cpu.pin_cores = "yes";
     programs.steam = {
       enable = true;
+      package = pkgs.steam.override {
+        extraPkgs = pkgs: with pkgs; [ gamemode ];
+      };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
       gamescopeSession.enable = true;
+      extraCompatPackages = with pkgs; [ proton-ge-bin ];
     };
 
     environment.systemPackages = with pkgs; [
