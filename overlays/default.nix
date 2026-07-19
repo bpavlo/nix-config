@@ -7,4 +7,8 @@
       config.allowUnfree = true;
     };
   })
+
+  (final: _prev: {
+    usbeehive = final.callPackage ../pkgs/usbeehive { };
+  })
 ]

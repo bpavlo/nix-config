@@ -21,6 +21,7 @@
     normcap
     ripgrep
     tree
+    usbeehive
     xdg-utils
     yamllint
     yazi
