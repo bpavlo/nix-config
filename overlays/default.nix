@@ -18,7 +18,13 @@
     vial = prev.vial.override {
       appimageTools = prev.appimageTools // {
         wrapType2 =
-          args: prev.appimageTools.wrapType2 (args // { extraPkgs = pkgs: [ pkgs.libgpg-error ]; });
+          args:
+          prev.appimageTools.wrapType2 (
+            args
+            // {
+              extraPkgs = pkgs: (args.extraPkgs or (_: [ ])) pkgs ++ [ pkgs.libgpg-error ];
+            }
+          );
       };
     };
   })
