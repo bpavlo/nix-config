@@ -81,7 +81,6 @@ in
 
       "monitor.bluez.properties" = {
         "bluez5.enable-sbc-xq" = lib.elem "sbc_xq" cfg.codecs;
-        "bluez5.enable-msbc" = cfg.allowHeadsetProfile;
         "bluez5.roles" = roles;
         "bluez5.codecs" = cfg.codecs;
       };
