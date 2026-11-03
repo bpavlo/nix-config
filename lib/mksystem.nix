@@ -26,7 +26,7 @@ nixpkgs.lib.nixosSystem {
       { ... }:
       {
         networking.hostName = name;
-        nixpkgs.overlays = import ../overlays { inherit (inputs) nixpkgs-stable; };
+        nixpkgs.overlays = import ../overlays { inherit (inputs) nixpkgs-stable ghostty; };
         nixpkgs.config.allowUnfree = true;
       }
     )

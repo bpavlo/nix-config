@@ -13,7 +13,6 @@
     ];
 
     consoleLogLevel = 0;
-    initrd.verbose = false;
   };
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
