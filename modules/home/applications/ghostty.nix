@@ -13,6 +13,7 @@
       window-padding-x = 10;
       window-padding-y = 10;
       gtk-single-instance = true;
+      shell-integration-features = "ssh-env,ssh-terminfo";
       keybind = [
         "super+t=new_tab"
         "super+w=close_surface"

@@ -7,7 +7,6 @@
 
       shellAliases = {
         "v" = "nvim";
-        "ssh" = "ghostty +ssh --";
       };
 
       interactiveShellInit = ''
