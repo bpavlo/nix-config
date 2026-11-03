@@ -21,14 +21,11 @@ in
       obsidian
       papers
       qbittorrent
-      quickshell
-      signal-desktop
       slack
       telegram-desktop
       signal-desktop
       tor-browser
       vesktop
-      wowup-cf
     ];
   };
 }
