@@ -128,7 +128,6 @@ in
       swaybg
       brightnessctl
       playerctl
-      swaylock
       grim
       slurp
       satty

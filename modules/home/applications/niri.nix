@@ -180,14 +180,6 @@ in
       "Super+WheelScrollLeft".action."focus-column-left" = [ ];
       "Super+WheelScrollRight".action."focus-column-right" = [ ];
 
-      "Super+X" = mkSpawnBind "noctalia msg session lock";
-
-      #      "Super+X".action.spawn = [
-      #        "${pkgs.swaylock}/bin/swaylock"
-      #        "-f"
-      #        "-c"
-      #        "000000"
-      #      ];
       #      "Super+Shift+X".action.spawn = [
       #        "systemctl"
       #        "suspend"
@@ -365,6 +357,7 @@ in
     };
   };
 
+  # Fallback only: noctalia's idle.behavior locks and suspends. Set enable = true to use it.
   services.swayidle = {
     enable = false;
     timeouts = [
@@ -372,13 +365,7 @@ in
         timeout = 300;
         command = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
       }
-      {
-        timeout = 600;
-        command = "${pkgs.systemd}/bin/systemctl suspend";
-      }
     ];
-    events = {
-      before-sleep = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
-    };
+    events.before-sleep = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
   };
 }
