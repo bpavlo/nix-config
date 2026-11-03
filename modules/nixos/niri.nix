@@ -6,6 +6,29 @@
 }:
 let
   cfg = config.modules.nixos.niri;
+  monochrome = import ../../lib/palettes/monochrome.nix;
+
+  # Convert a noctalia palette variant (mPrimary, mOnSurfaceVariant, ..., terminal) to the
+  # greeter's [appearance.palette] keys (primary, on_surface_variant, ...). The greeter
+  # needs all 16 color roles for the palette to be complete; terminal colors don't apply.
+  toGreeterPalette = variant: {
+    primary = variant.mPrimary;
+    on_primary = variant.mOnPrimary;
+    secondary = variant.mSecondary;
+    on_secondary = variant.mOnSecondary;
+    tertiary = variant.mTertiary;
+    on_tertiary = variant.mOnTertiary;
+    error = variant.mError;
+    on_error = variant.mOnError;
+    surface = variant.mSurface;
+    on_surface = variant.mOnSurface;
+    surface_variant = variant.mSurfaceVariant;
+    on_surface_variant = variant.mOnSurfaceVariant;
+    outline = variant.mOutline;
+    shadow = variant.mShadow;
+    hover = variant.mHover;
+    on_hover = variant.mOnHover;
+  };
 in
 {
   options.modules.nixos.niri.enable =
@@ -20,7 +43,7 @@ in
 
     services.greetd.settings.default_session.user = "greeter";
 
-    programs.noctalia-greeter = {
+    services.displayManager.noctalia-greeter = {
       enable = true;
       settings = {
         session.default = "Niri";
@@ -35,40 +58,10 @@ in
         appearance = {
           scheme = "Synced";
           hide_logo = true;
+          theme_mode = "dark";
+          # A complete palette here wins over anything Sync writes to sync.toml.
+          palette = toGreeterPalette monochrome.dark;
         };
-      };
-    };
-
-    systemd.tmpfiles.settings."11-noctalia-greeter-appearance" = {
-      "/var/lib/noctalia-greeter/appearance.json".C = {
-        argument = "${pkgs.writeText "noctalia-greeter-appearance.json" (
-          builtins.toJSON {
-            version = 1;
-            theme_mode = "dark";
-            corner_radius_scale = 1.0;
-            palette = {
-              primary = "#aaaaaa";
-              on_primary = "#111111";
-              secondary = "#a7a7a7";
-              on_secondary = "#111111";
-              tertiary = "#cccccc";
-              on_tertiary = "#111111";
-              error = "#dddddd";
-              on_error = "#111111";
-              surface = "#111111";
-              on_surface = "#828282";
-              surface_variant = "#191919";
-              on_surface_variant = "#5d5d5d";
-              outline = "#3c3c3c";
-              shadow = "#000000";
-              hover = "#cccccc";
-              on_hover = "#111111";
-            };
-          }
-        )}";
-        user = "root";
-        group = "root";
-        mode = "0644";
       };
     };
 
