@@ -3,6 +3,15 @@
   ...
 }:
 
+let
+  # Lock screen login box centered on an output; cx/cy are the box center in logical pixels.
+  centeredLoginBox = output: width: height: {
+    type = "login_box";
+    inherit output;
+    cx = width / 2.0;
+    cy = height / 2.0;
+  };
+in
 {
   imports = [
     inputs.noctalia.homeModules.default
@@ -27,9 +36,14 @@
         };
       };
 
-      lockscreen = {
-        enabled = true;
-        lock_before_suspend = true;
+      plugins.enabled = [ "noctalia/screen_recorder" ];
+
+      lockscreen.transition = [ ];
+
+      lockscreen_widgets.widget = {
+        "lockscreen-login-box@eDP-1" = centeredLoginBox "eDP-1" 1440 960;
+        # Serial of the LG UltraGear, so the box follows it across DP-* connectors.
+        "lockscreen-login-box@LG" = centeredLoginBox "107NTRL50718" 2560 1440;
       };
 
       idle.behavior = {
@@ -53,18 +67,8 @@
         address = "Montreal";
       };
 
-      weather = {
-        enabled = true;
-      };
-
       nightlight = {
         enabled = true;
-        temperature_day = 6500;
-        temperature_night = 4000;
-      };
-
-      dock = {
-        enabled = false;
       };
 
       control_center = {
@@ -80,16 +84,18 @@
 
       shell = {
         clipboard_enabled = false;
+        launch_apps_as_systemd_services = true;
+        animation.enabled = false;
         panel = {
           control_center_placement = "floating";
-          control_center_position = "auto";
           open_near_click_control_center = true;
         };
         launcher = {
-          categories = true;
-          show_icons = true;
-          app_grid = false;
-          sort_by_usage = true;
+          layout = "simple";
+          categories = false;
+          compact = true;
+          show_app_origin_indicator = false;
+          ignore_mouse = true;
         };
         session = {
           actions = [
@@ -123,7 +129,6 @@
             }
             {
               action = "shutdown";
-#              variant = "destructive";
               enabled = true;
               shortcut = "6";
             }
@@ -132,11 +137,8 @@
       };
 
       bar.main = {
-        position = "top";
         capsule = true;
-        capsule_opacity = 1.0;
         margin_ends = 8;
-        margin_edge = 0;
         start = [
           "workspaces"
           "active_window"
@@ -151,7 +153,7 @@
           "volume"
           "bluetooth"
           "network"
-          "cpu_usage"
+          "cpu"
           "ram_pct"
           "battery"
           "control-center"
@@ -163,14 +165,10 @@
           album_art_only = true;
         };
         keyboard_layout = {
-          show_icon = false;
+          show_glyph = false;
         };
         battery = {
           display_mode = "graphic";
-        };
-        cpu_usage = {
-          type = "sysmon";
-          stat = "cpu_usage";
         };
         ram_pct = {
           type = "sysmon";
