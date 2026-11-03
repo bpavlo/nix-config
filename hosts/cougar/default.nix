@@ -45,7 +45,10 @@
     crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
 
-  boot.kernelParams = [ "zswap.enabled=1" "zswap.max_pool_percent=40" ];
+  boot.kernelParams = [
+    "zswap.enabled=1"
+    "zswap.max_pool_percent=40"
+  ];
 
   boot.kernel.sysctl = {
     "vm.swappiness" = 10;
