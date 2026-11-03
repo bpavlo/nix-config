@@ -6,25 +6,10 @@
 }:
 let
   cfg = config.modules.nixos.desktop;
-  bluetoothCfg = cfg.bluetooth;
 in
 {
   options.modules.nixos.desktop.enable =
-    lib.mkEnableOption "desktop services (audio, fonts, printing, bluetooth, fwupd, firefox)";
-
-  options.modules.nixos.desktop.bluetooth = {
-    playbackOnly = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-      description = "Keep Bluetooth audio in A2DP-only playback mode.";
-    };
-
-    allowHeadsetProfile = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Allow HFP/HSP headset profiles for Bluetooth microphone use.";
-    };
-  };
+    lib.mkEnableOption "desktop services (audio, fonts, printing, fwupd, firefox)";
 
   config = lib.mkIf cfg.enable {
     # Audio
@@ -35,29 +20,6 @@ in
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      wireplumber.extraConfig.bluetoothEnhancements = {
-        "monitor.bluez.properties" = {
-          "bluez5.enable-sbc-xq" = true;
-          "bluez5.enable-msbc" = true;
-          "bluez5.enable-hw-volume" = true;
-          "bluez5.roles" = [
-            "a2dp_sink"
-            "a2dp_source"
-          ];
-        };
-
-        "monitor.bluez.rules" = [
-          {
-            matches = [ { "device.name" = "~bluez_card.*"; } ];
-            actions.update-props = {
-              "bluez5.codecs" = [
-                "sbc_xq"
-                "sbc"
-              ];
-            };
-          }
-        ];
-      };
     };
 
     # Firmware / power
@@ -68,12 +30,6 @@ in
     # Apps & runtime
     services.flatpak.enable = true;
     programs.firefox.enable = true;
-
-    # Bluetooth
-    hardware.bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
 
     # Printing
     services.printing = {

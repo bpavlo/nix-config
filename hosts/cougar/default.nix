@@ -16,6 +16,7 @@
   ];
 
   modules.nixos = {
+    bluetooth.enable = true;
     browser-policies.enable = true;
     desktop.enable = true;
     niri.enable = true;
