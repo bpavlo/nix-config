@@ -9,7 +9,7 @@
     settings = {
       font-family = "FiraCode Nerd Font";
       font-size = 14;
-      theme = "Black Metal (Mayhem)";
+      theme = "Selenized Dark";
       window-padding-x = 10;
       window-padding-y = 10;
       gtk-single-instance = true;
