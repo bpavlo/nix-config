@@ -16,9 +16,15 @@
 
     settings = {
       theme = {
-        mode = "dark";
         source = "custom";
         custom_palette = "Monochrome";
+        templates = {
+          enable_builtin_templates = true;
+          builtin_ids = [
+            "niri"
+            "helix"
+          ];
+        };
       };
 
       lockscreen = {

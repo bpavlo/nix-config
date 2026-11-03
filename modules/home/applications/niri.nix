@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  inputs,
+  options,
+  pkgs,
+  ...
+}:
 
 let
   spawnQs = panelId: "noctalia msg panel-toggle ${panelId}";
@@ -40,6 +45,16 @@ let
 
 in
 {
+  # Append noctalia's generated colors (theme.templates "niri") after the settings so they
+  # win. Optional, because the file only exists once noctalia has run and niri-flake
+  # validates this config at build time.
+  programs.niri.config = options.programs.niri.config.default ++ [
+    (inputs.niri.lib.kdl.leaf "include" [
+      { optional = true; }
+      "noctalia.kdl"
+    ])
+  ];
+
   programs.niri.settings = {
     input = {
       keyboard = {
