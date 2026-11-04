@@ -37,8 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # No nixpkgs.follows: it changes the derivation hash and misses noctalia.cachix.org.
-    # The cachix branch always points at the latest commit CI has already cached.
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
     noctalia-greeter = {
@@ -46,8 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Tag pin: nixos-unstable lags master. No nixpkgs.follows, so the
-    # package matches what ghostty.cachix.org has built.
     ghostty.url = "github:ghostty-org/ghostty/v1.4.0";
 
     zen-browser = {
