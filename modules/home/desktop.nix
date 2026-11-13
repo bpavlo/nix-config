@@ -17,6 +17,8 @@ in
       gamescope
       gthumb
       heroic
+      faugus-launcher
+      wowup-cf
       mpv-unwrapped
       obsidian
       papers
