@@ -9,6 +9,7 @@
     ./k3s.nix
     ./niri.nix
     ./obs.nix
+    ./secureboot.nix
     ./syncthing.nix
     ./vial.nix
   ];

@@ -22,27 +22,16 @@
     niri.enable = true;
     gaming.enable = true;
     obs.enable = true;
+    secureboot.enable = true;
     k3s.enable = true;
     vial.enable = true;
   };
 
-  boot.loader.systemd-boot.enable = false;
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/var/lib/sbctl";
-  };
   boot.loader.efi.canTouchEfiVariables = true;
-
-  security.tpm2 = {
-    enable = true;
-    pkcs11.enable = true;
-    tctiEnvironment.enable = true;
-  };
 
   boot.initrd.luks.devices."cryptroot" = {
     allowDiscards = true;
     bypassWorkqueues = true;
-    crypttabExtraOpts = [ "tpm2-device=auto" ];
   };
 
   boot.kernelParams = [
