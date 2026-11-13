@@ -75,6 +75,7 @@ in
         shortcuts = [
           { type = "wifi"; }
           { type = "bluetooth"; }
+          { type = "caffeine"; }
           { type = "nightlight"; }
           { type = "power_profile"; }
           { type = "screen_recorder"; }
