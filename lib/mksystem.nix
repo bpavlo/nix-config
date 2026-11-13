@@ -15,7 +15,12 @@ let
 in
 nixpkgs.lib.nixosSystem {
   system = hostMeta.system;
-  specialArgs = { inherit inputs vars headless; };
+  specialArgs = {
+    inherit inputs headless;
+    vars = vars // {
+      username = hostMeta.username or vars.username;
+    };
+  };
   modules = [
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager

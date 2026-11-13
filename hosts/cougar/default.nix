@@ -12,7 +12,7 @@
     ./disko-config.nix
     ./configuration.nix
     ../../modules/nixos
-    ../../users/pavlo.nix
+    ../../users/primary.nix
   ];
 
   modules.nixos = {
