@@ -15,7 +15,7 @@
       system = "x86_64-linux";
       role = "workstation";
       username = "gremlin";
-      signingPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPLACEHOLDERPLACEHOLDERPLACEHOLDERPLACEHOLDERx gremlin@ghost";
+      signingPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHWtLNAxNEHROi3hD4N3c1qPUT6jpESF1aisLyeo9egs gremlin@ghost";
     };
   };
 }
