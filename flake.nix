@@ -95,5 +95,6 @@
         formatting = treefmtEval.${system}.config.build.check self;
       });
       nixosConfigurations.cougar = mkSystem "cougar" { };
+      nixosConfigurations.ghost = mkSystem "ghost" { };
     };
 }
