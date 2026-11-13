@@ -13,6 +13,7 @@
     ./noctalia.nix
     ./gtk.nix
     ./helix.nix
+    ./helium.nix
     ./mpd.nix
     ./yazi.nix
   ];

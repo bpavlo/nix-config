@@ -51,6 +51,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agent-skills = {
       url = "github:bpavlo/agent-skills";
       inputs.nixpkgs.follows = "nixpkgs";
