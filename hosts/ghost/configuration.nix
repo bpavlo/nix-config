@@ -52,6 +52,12 @@
       MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
   '';
 
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+    startupProfile = "off";
+  };
+
   environment.systemPackages = with pkgs; [
     wdisplays
     wlr-randr
