@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./benchmark.nix
     ./bluetooth.nix
     ./browser-policies.nix
     ./desktop.nix
