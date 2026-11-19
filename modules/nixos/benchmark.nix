@@ -24,6 +24,7 @@ in
       hwinfo
       inxi
       lm_sensors
+      i2c-tools
 
       stress-ng
       stressapptest
