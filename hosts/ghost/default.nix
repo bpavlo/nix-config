@@ -10,15 +10,17 @@
   ];
 
   modules.nixos = {
+    amd.enable = true;
     benchmark.enable = true;
     bluetooth.enable = true;
     browser-policies.enable = true;
     desktop.enable = true;
-    niri.enable = true;
     gaming.enable = true;
+    k3s.enable = true;
+    niri.enable = true;
+    nvidia.enable = true;
     obs.enable = true;
     secureboot.enable = false;
-    k3s.enable = true;
     vial.enable = true;
   };
 
